@@ -6,7 +6,7 @@ function [out] = swapbyte(infile,hdrs)
 %
 
 fp=fopen(infile,'r');
-if fp<0, error('Unable to open the file in swapbyte.m ');
+if fp<0, error('在 swapbyte.m 中无法打开文件');
 end
 
 fseek(fp,hdrs,'bof'); % ..... skip hdrs bytes in header 

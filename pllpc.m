@@ -1,5 +1,6 @@
 function pllpc(t0)
 
+% 绘制/更新LPC谱窗体
 % Copyright (c) 1995 by Philipos C. Loizou
 %
 
@@ -20,7 +21,7 @@ global oha ore opy opn ope
 
 fftSize=512;
 
-clr='ymcrgbw';  % define all  colors 'y'=yellow, 'm'=magenta ,etc
+clr='ymcrgbw';  % 颜色定义define all  colors 'y'=yellow, 'm'=magenta ,etc
 chr='ox*+';
 lns='-:-.--';
 
@@ -55,7 +56,7 @@ if isempty(plt_type), plt_type='line'; end;
 	
 	fp = fopen(fname,'r');
 	if fp<=0
-	  error('Could not open input filename in pllpc.m');
+	  error('无法打开输入的文件');
 	end
 	
 
@@ -67,17 +68,18 @@ if isempty(plt_type), plt_type='line'; end;
 	if ncount<nSamples, nSamples=ncount;  
 	end;
 	if nSamples<20, 
-	  fprintf('\nERROR in plotting the LPC spectra. The window was too small..\n\n');
+	  fprintf('\n画LPC谱时出现错误. 窗口过小..\n\n');
 	  fclose(fp); return;
 	end
 	
 	fclose(fp);
    
-%----------- Remove the DC bias------------
+%----------- 消除直流分量 ------------
 meen=mean(inp);
 inp=inp-meen;
 
 
+%---- 对信号等级进行错误检查 ---
 %---- Do some error checking on the signal level ---
 if norm(inp,2) < 1.0e-7
   if meen < 1.0e-3
@@ -106,19 +108,20 @@ else
 
 end
 
-if isempty(ctlFig) %---- Draw the controls panel ------------
+%---- 绘制控制窗体 ------------
+if isempty(ctlFig) 
  drawctls;
 end
 
 
 
 
-% --check to see if the number of samples is greater than the FFT size
+% --检查帧数大于傅里叶变换采样数
 
 if FFT_SET == 1 
     fftSize= pFFT;
     if nSamples>fftSize
-      errordlg('The frame size is larger than the FFT size.','WARNING','on');
+      errordlg('帧数大于傅里叶变换采样数','WARNING','on');
     end
 else
 
@@ -137,8 +140,8 @@ end
 fft2=fftSize/2;
 
 
-
-if (LPCSpec == 1)   %----------------- Plot the LPC spectrum ----------------
+%----------------- 绘制LPC频谱图 ----------------
+if (LPCSpec == 1)   
      inpLP=inp;
      if lpcParam(2)==1  % use 1-st order pre-emphasis filter
         inpLP=filter([1 -0.95],[1],inp);      
@@ -269,11 +272,11 @@ end
       x_max=sratef/2; 
       if SET_X_AXIS==1, if F_MAX< x_max, x_max=F_MAX; end; end;
       axis([0 x_max ymin2 ymax2+3])
-      xlabel('Frequency (Hz)');
+      xlabel('频率(Hz)');
     end
 
     set(gca,'LineStyleOrder',sclr);
-    h=ylabel('Magnitude (dB)');  set(h,'FontSize',9);
+    h=ylabel('强度 (dB)');  set(h,'FontSize',9);
 
     set(gca,'FontSize',9); 
     
@@ -297,52 +300,52 @@ inc  = high + 8;
 %--------Set up the Print and Save Menu --------------
 
 
- prM=uimenu('Label','Print');
-     uimenu(prM,'Label','Portrait','Callback','prnt2(''portr'')');
-     uimenu(prM,'Label','Landscape','Callback','prnt2(''landsc'')');
- prM2= uimenu('Label','Save');
+ prM=uimenu('Label','打印');
+     uimenu(prM,'Label','Portrait模型','Callback','prnt2(''portr'')');
+     uimenu(prM,'Label','Landscape图形','Callback','prnt2(''landsc'')');
+ prM2= uimenu('Label','保存');
        uimenu(prM2,'Label','Black/White Postscript','Callback','prnt2(''bwps'')');
        uimenu(prM2,'Label','Color Postscript','Callback','prnt2(''ceps'')');
-       uimenu(prM2,'Label','Bit Map','Callback','prnt2(''bmp'')');
-       uimenu(prM2,'Label','Windows Metafile','Callback','prnt2(''wmf'')');
-       uimenu(prM2,'Label','Clipboard','Callback','prnt2(''clip'')');
+       uimenu(prM2,'Label','位映象','Callback','prnt2(''bmp'')');
+       uimenu(prM2,'Label','Windows图元文件','Callback','prnt2(''wmf'')');
+       uimenu(prM2,'Label','剪贴板','Callback','prnt2(''clip'')');
 
-uil=uimenu('Label','Label');
-	uimenu(uil,'Label','Add Text','Callback','itext(''add'')');
-	uimenu(uil,'Label','Delete Text','Callback','itext(''del'')');
+uil=uimenu('Label','标签');
+	uimenu(uil,'Label','添加文本','Callback','itext(''add'')');
+	uimenu(uil,'Label','删除文本','Callback','itext(''del'')');
 
 
-optm=uimenu('Label','Options');
-    	uf=uimenu(optm,'Label','Set Frequency Range');
-		   uimenu(uf,'Label','Default','Callback','setpar(''range_def'')');
+optm=uimenu('Label','选项');
+    	uf=uimenu(optm,'Label','设置频率范围');
+		   uimenu(uf,'Label','默认','Callback','setpar(''range_def'')');
 	 	   uimenu(uf,'Label','0-5 kHz','Callback','setpar(''range_5k'')');
 		   uimenu(uf,'Label','0-4 kHz','Callback','setpar(''range_4k'')');
 		   uimenu(uf,'Label','0-3.2 kHz','Callback','setpar(''range_32'')');
 
-		oplp=uimenu(optm,'Label','LPC analysis');
-	   owi=uimenu(oplp,'Label','Window');
-		oha=uimenu(owi,'Label','Hamming','Checked','on','Callback',...
+		oplp=uimenu(optm,'Label','LPC谱分析');
+	   owi=uimenu(oplp,'Label','窗口');
+		oha=uimenu(owi,'Label','汉明窗','Checked','on','Callback',...
 			   'setovr(''LPhamming'')');
-		ore=uimenu(owi,'Label','Rectangular','Callback',...
+		ore=uimenu(owi,'Label','矩形窗','Callback',...
 			   'setovr(''LPrect'')');
-	   opr=uimenu(oplp,'Label','Preemphasis');
-		opn=uimenu(opr,'Label','No','Checked','on','Callback',...
+	   opr=uimenu(oplp,'Label','预加重');
+		opn=uimenu(opr,'Label','否','Checked','on','Callback',...
 			   'setovr(''LPnoPre'')');
-		opy=uimenu(opr,'Label','Yes','Callback',...
+		opy=uimenu(opr,'Label','是','Callback',...
 			   'setovr(''LPyesPre'')');
-		uimenu(oplp,'Label','Save LPC data in a file','Callback','savelpc');
+		uimenu(oplp,'Label','在文件中储存LPC数据','Callback','savelpc');
 
- 	opft=uimenu(optm,'Label','FFT analysis');
-		uimenu(opft,'Label','Picket spectrum','Callback','setpar(''FFT_pick'')');
-	 	uimenu(opft,'Label','Line spectrum','Callback','setpar(''FFT_line'')');
-			ufs=uimenu(opft,'Label','FFT Size');
-		   uimenu(ufs,'Label','Default','Callback','setpar(''size_def'')');
+ 	opft=uimenu(optm,'Label','FFT分析');
+		uimenu(opft,'Label','纠察谱','Callback','setpar(''FFT_pick'')');
+	 	uimenu(opft,'Label','线性谱','Callback','setpar(''FFT_line'')');
+			ufs=uimenu(opft,'Label','FFT 范围');
+		   uimenu(ufs,'Label','默认','Callback','setpar(''size_def'')');
 		   uimenu(ufs,'Label','x2','Callback','setpar(''size_x2'')');
          uimenu(ufs,'Label','x4','Callback','setpar(''size_x4'')'); 
-         fowi=uimenu(opft,'Label','Window');
-         foha=uimenu(fowi,'Label','Hamming','Checked','on','Callback',...
+         fowi=uimenu(opft,'Label','窗口');
+         foha=uimenu(fowi,'Label','汉明窗','Checked','on','Callback',...
 			   'setpar(''hamming'')');
-         fore=uimenu(fowi,'Label','Rectangular','Callback',...
+         fore=uimenu(fowi,'Label','矩形窗','Callback',...
 			   'setpar(''rect'')');
 
 

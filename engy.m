@@ -40,7 +40,7 @@ end
 fp = fopen(fname,'r');
 
 if fp <=0
-	disp('ERROR! File not found..')
+	disp('错误! 文件未找到..')
 	return;
 end
 
@@ -57,7 +57,7 @@ meen=mean(x);
 x= x - meen; %----------remove the DC bias---
 
 
-nmF='Energy Plot';
+nmF='能量图';
 
 
 if (isempty(eFig))	
@@ -105,5 +105,5 @@ ylabel('dB');
 %ylabel('#zc');
 subplot(2,1,2),plot(x);
 set(gca,'Xlim',[0 n_samples-1]);
-ylabel('Ampl.');
-xlabel('Samples');
+ylabel('振幅.');
+xlabel('采样');

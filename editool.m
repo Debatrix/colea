@@ -13,7 +13,7 @@ global cutvec modChange bpsa bpsa2 ftype ftype2 adsOp fedun
 zm=0;
 
 if isempty(cutvec) & strcmp(action,'paste')==1
-	errordlg('Nothing to paste','ERROR','on');
+	errordlg('没有粘贴内容','ERROR','on');
 	return;
 end
 
@@ -92,7 +92,7 @@ if (S1 > S0) | (strcmp(action,'paste')==1)
 	if strcmp(action,'cut') % ========== CUT ==============
 	  NsamNew=inpNS-nSamples+1;
 	  if NsamNew<5
-		errordlg('No region has been selected','ERROR','on');
+		errordlg('没有被选中的区域','错误','on');
 		edinp=inp;
 		zm=0;
 	  else
@@ -109,7 +109,7 @@ if (S1 > S0) | (strcmp(action,'paste')==1)
 	  modChange=1;	
 	  lastS0=S0;
 	  if TWOFILES==1, lastTOP=TOP; end;
-	 fedun=uimenu(fed,'Label','Undo last cut','Callback','editool(''paste'',''special'')',...
+	 fedun=uimenu(fed,'Label','撤销上一次剪切','Callback','editool(''paste'',''special'')',...
 		'Separator','on');       
 
 	elseif strcmp(action,'copy') % ========== COPY============
@@ -134,15 +134,15 @@ if (S1 > S0) | (strcmp(action,'paste')==1)
 	  modChange=1;
 	  if TWOFILES==1 & nargin==1
 	   if abs(Srate-Srate2)>200  | strcmp(ftype,ftype2)~=1
-	    warn=sprintf('The two waveforms have different data types (e.g., sampl. freq, bytes/sample).');
-	    warndlg(warn,'WARNING in paste');
+	    warn=sprintf('这两个波形有不同的数据类型 (e.g., 采样率, 比特率).');
+	    warndlg(warn,'粘贴警告');
 	   end
 	  end	
 
       elseif strcmp(action,'addsil') % ========ADD SILENCE  ==========
 	  
 	  nmsec=str2num(get(adsOp,'String'));
-	  if nmsec<0, errordlg('The number has to be greater than 0 msec.','ERROR','on'); 
+	  if nmsec<0, errordlg('必须大于0毫秒.','错误','on'); 
 		edinp=inp;
 		zm=0;
 	  else
@@ -186,8 +186,8 @@ if (S1 > S0) | (strcmp(action,'paste')==1)
 	  zm=1;
 	  modChange=1;
 	  if srat ~= sfreq
-	    warn=sprintf('The inserted waveform was sampled at a different sampling frequency.');
-	    warndlg(warn,'WARNING in inserting file');
+	    warn=sprintf('插入波形的采样率不一致.');
+	    warndlg(warn,'插入警告');
 	  end
   
   elseif strcmp(action,'upsample') % ========== UPSAMPLE ==========
@@ -207,8 +207,8 @@ if (S1 > S0) | (strcmp(action,'paste')==1)
 	  modChange=1;
 	  if TWOFILES==1
 	   if abs(Srate-Srate2)>200  | strcmp(ftype,ftype2)~=1
-	    warn=sprintf('The two waveforms have different data types (e.g., sampl. freq, bytes/sample).');
-	    warndlg(warn,'WARNING in paste');
+	    warn=sprintf('这两个波形有不同的数据类型 (e.g., 采样率, 比特率).');
+	    warndlg(warn,'粘贴警告');
 	   end
 	  end	
 
@@ -243,6 +243,6 @@ end
  
 	
 else	
-	errordlg('Invalid segment selection. Right mark is less than left mark.','ERROR','on');
+	errordlg('无效的选择！右标记小于左标记.','错误','on');
 end
 

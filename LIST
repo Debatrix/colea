@@ -1,110 +1,184 @@
-LPCSET.M
-MCLICK.M
-SYNTH.M
-PREEMP.M
-PUTTEXT.M
-SETCHAN.M
-SETLPC.M
-SPECT.M
-SPECTRG.M
-SPECSEL.M
-SETDUR.M
-LOADFILE.M
-FORMPE.M
-WATER.M
-GETREC.M
-ZOOMI.M
-CLOSEM.M
-DLGOPEN.M
-SETDISP.M
-FORMANTS.M
-GETSLIDE.M
-ISNR.M
-FILETOOL.M
-SMSPSPEC.M
-SETON.M
-PLAYF.M
-GETSRATE.M
-ENDPOINT.M
-GETHDR.M
-INIT.M
-EDITOOL.M
-BUT.M
-MFCC.M
-FILTOOL.M
-APFILTER.M
-FILTPAR.M
-GETCONTR.M
-FTRACK.M
-STACKFIL.M
-MODIFY.M
-METRIC.M
-SAVEFILE.M
-CONVERT.M
-ENGY.M
-PRNT.M
-PRNT2.M
-ITEXT.M
-ADTEXT.M
-QUITALL.M
-SETOVR.M
-ZCHAN.M
-PITCH.M
-PITCH3.M
-ESTF0.M
-PITCH2.M
-GETF0.M
-SAVEHDER.M
-PREFER.M
-CRSRLINE.M
-DISTANCE.M
-FRMNTS.M
-RAW2ILS.M
-CENTFREQ.M
-BLOWUP.M
-SAVEPARM.M
-GETVEC.M
-PRNTG.M
-PRNTG2.M
-SAVECHAN.M
-COLEA.M
-SINGEN.M
-SINTOOL.M
-SETSIN.M
-DRAWCTLS.M
-LABEL.M
-LABTEXT.M
-LABTOOL.M
-PITCHAUT.M
-MAPFUN.M
-INITMAP.M
-RMS.M
-SETFFT.M
-SETPAR.M
-IADSIL.M
-ilpc.m
-GREENW.M
-MEL.M
-DESIGN.M
-DISTOOL.M
-COMPTOOL.M
-FILTDESI.M
-CONTENTS.M
-CONVTOOL.M
-GETVOL.M
-VOLTOOL.M
-VOLOPT.M
-ISHANDL.M
-ESTPSD.M
-SHOWPT.M
-HELPF.M
-SWAPBYTE.M
-CPRINT.M
-GETKB.M
-MODHDER.M
-autoc.m
-COLORIG.M
-SAVELPC.M
-pllpc.m
-spectro.m
-pr_fig.m
+colea_anl
+|--- adtext.m
+    标签窗体函数
+    在图形上添加标签
+|--- apfilter.m
+|--- autoc.m
+    #功能#
+    计算自相关序列R（i）  compute the autocorrelation sequence R(i)
+    function rxx = autoc(x,p)
+    x 加窗后的样本点 
+    p LPC阶数
+|--- centfreq.m
+|--- closem.m
+    关闭窗口
+|--- colea.m
+    程序入口 
+    绘制程序主窗体
+    允许命令行打开
+|--- colorig.m
+|--- comptool.m
+|--- contents.m
+|--- convert.m
+|--- convtool.m
+|--- cprint.m
+|--- crsrline.m
+    绘制光标线
+|--- design.m
+|--- distance.m
+|--- distool.m
+|--- dlgopen.m
+    文件打开/保存窗口
+    function [p,f] = dlgopen(cmd,ext)
+        cmd 命令类型 只允许'open'和‘save’
+        ext 许可的文件类型
+        p 文件路径名
+        f 文件名
+|--- drawctls.m
+    绘制/更新控制窗体
+|--- editool.m
+|--- endpoint.m
+|--- engy.m
+|--- estf0.m
+|--- estpsd.m
+|--- filetool.m
+|--- filtdesi.m
+|--- filtool.m
+|--- filtpar.m
+|--- formants.m
+|--- formpe.m
+|--- frmnts.m
+|--- ftrack.m
+|--- getcontr.m
+|--- getf0.m
+|--- gethdr.m
+    获取音频文件头等信息 返回音频文件头大小 音频长度 采样位数 
+    function [HDRSIZE, Srate1, bps, filet] =  gethdr(fp,ext)
+    fp 文件指针
+    ext 扩展名
+    filet 文件数据实际组织形式？我看到char和short
+    bps  Bits per sample?
+    HDRSIZE 文件头大小
+|--- getkb.m
+    输入qQ退出
+|--- getrec.m
+    录音 但是是废物
+|--- getslide.m
+|--- getvec.m
+|--- getvol.m
+|--- had.ils
+|--- helpf.m
+    各种帮助
+|--- iadsil.m
+|--- ilpc.m
+    #功能#
+    LPC分析
+    function [a,rx] = ilpc(x,p) 
+    x 加窗后的样本点 
+    p LPC阶数
+|--- ishandl.m
+|--- isnr.m
+|--- itext.m
+    添加或删除文本
+|--- label.m
+|--- labtext.m
+|--- labtool.m
+|--- LIST
+|--- loadfile.m
+|--- lpcset.m
+|--- manual.pdf
+|--- mapfun.m
+|--- mclick.m
+    处理鼠标点击事件
+|--- mel.m
+|--- metric.m
+|--- mod1.frm
+|--- mod1.wav
+|--- modhder.m
+|--- modify.m
+|--- pitch.m
+|--- pitch2.m
+|--- pitch3.m
+|--- pitchaut.m
+|--- playf.m
+|--- pllpc.m
+    绘制/更新LPC谱窗体
+|--- preemp.m
+|--- prefer.m
+|--- prnt.m
+|--- prnt2.m
+    LPC窗体菜单函数
+    保存输出各种东西
+|--- prntg.m
+|--- prntg2.m
+|--- pr_fig.m
+|--- puttext.m
+    响应LPC窗体鼠标点击 
+    在控制窗体输出光标位置
+|--- quitall.m
+|--- raw2ils.m
+|--- README.TXT
+|--- savechan.m
+|--- savefile.m
+|--- savehder.m
+|--- savelpc.m
+    保存LPC数据
+|--- saveparm.m
+|--- sentence.phn
+|--- sentence.wav
+|--- setchan.m
+|--- setdisp.m
+|--- setdur.m
+    控制窗体函数
+    设置时间长度/采样点数量
+|--- setfft.m
+    控制窗体函数
+    设置fft大小
+|--- setlpc.m
+    控制窗体函数
+    设置LPC阶数
+|--- seton.m
+    控制窗体函数
+    允许重复显示
+|--- setovr.m
+    LPC窗体函数
+    设置参数
+|--- setpar.m
+    LPC窗体函数
+    设置参数
+|--- setsin.m
+|--- showpt.m
+    主窗体响应函数 获取光标位置
+    确定单文件模式与双文件模式
+    在主窗体显示时间频率等
+|--- singen.m
+|--- sintool.m
+|--- smspspec.m
+|--- sndcard.cfg
+|--- specsel.m
+    控制窗体函数
+    设置LPC/FFT
+|--- spectrg.m
+|--- swapbyte.m
+|--- volopt.m
+|--- voltool.m
+|--- zoomi.m
+
+[global]
+bpsa 采样位数
+ftype 数据结构
+Srate 采样率
+n_samples 采样点数
+n_Secs 音频时长
+Dur 时间窗（毫秒）
+S1 选区右标？
+S0 选区左标？
+Be 采样点开头
+En 采样点结尾
+nLPC LPC阶数
+
+[default setting]
+OVRL  if 1 then hold off plots, else hold on plots in 'pllpc'
+
+[gui]
+fno 最顶上那个窗口的句柄

@@ -6,7 +6,7 @@ function colea(filename,Srate1)
 %clf reset
 
 if (nargin < 1)
- [pth,fname] = dlgopen('open','*.ils;*.wav');
+ [pth,fname] = dlgopen('打开','*.ils;*.wav');
  if ((~isstr(fname)) | ~min(size(fname))), return; end  
  filename=[pth,fname];
 end
@@ -46,7 +46,7 @@ VOL_NORM=1;		% if 1, then volume is normalized
 fp = fopen(filename,'r');
 
 if fp <=0
-	disp('ERROR! File not found..')
+	disp('错误！文件未找到')
 	return;
 end
 
@@ -78,9 +78,9 @@ end
 fclose(fp); 
 
 if Srate<6000 | Srate>45000 & nargin<2
-h=warndlg('Sampling rate not in the range: 10,000 < F < 45,000 . Setting it to  10,000 Hz.','WARNING!');
-  disp('Warning! Sampling rate not in the range: 6,000 < F < 45,000');
-  disp('...Setting it to the default value of 10,000 Hz.');
+h=warndlg('采样率不在范围内: 10,000 < F < 45,000 . 请设置到  10,000 Hz.','警告!');
+  disp('警告! 采样率不在范围内: 6,000 < F < 45,000');
+  disp('...设置默认值为 10,000 Hz.');
   Srate=10000;
 end    
 
@@ -91,7 +91,7 @@ x= x - mean(x);  %----------remove the DC bias----
 if (nargin==2)
  Srate  = str2num(Srate1);
  if Srate<10000 | Srate>45000
-	error('Invalid sampling frequency specified: 10,000<F<45,000');
+	error('指定的采样频率无效: 10,000<F<45,000');
  end
 end
 
@@ -110,7 +110,7 @@ Be=S0;
 En=S1;
 OVRL=1;  % if 1 then hold off plots, else hold on plots in 'pllpc'
 
-fprintf('Samp.Freq: %d Hz,  num.samples: %d (%4.2f secs)\n',Srate,n_samples,n_Secs);
+fprintf('采样率: %d Hz,  采样点数: %d (%4.2f 秒)\n',Srate,n_samples,n_Secs);
 
 fno =  figure('Units', 'Pixels', 'Position', [LEFT BOTTOM WIDTH HEIGHT],...
 	'WindowButtonDownFcn','mclick','Pointer','crosshair',...
@@ -232,30 +232,30 @@ uicontrol('Style','Frame','Position',[left top-high-10 wide+5 high+30],...
 	'BackgroundColor','b');
  
 uicontrol('Style','text','Position',[left+wide/3 top 40 high-3],'BackGroundColor','b',...
-	'HorizontalAlignment','left','ForeGroundColor','w','String','Play');
+	'HorizontalAlignment','left','ForeGroundColor','w','String','播放');
 
 plUp = uicontrol('Style', 'PushButton', 'Callback', 'playf(''all'')', ...
-	  'HorizontalAlign','center', 'String', 'all',...
+	  'HorizontalAlign','center', 'String', '全部',...
 	  'Position', [left top-high wide/2 high]);
 
 uicontrol('Style', 'PushButton', 'Callback', 'playf(''sel'')', ...
-	  'HorizontalAlign','center', 'String', 'sel',...
+	  'HorizontalAlign','center', 'String', '显示全部',...
 	  'Position', [left+wide/2+5 top-high wide/2 high]);
   
 top = top - inc-10;
 ChanpUp = uicontrol('Style', 'Popup', 'Callback', 'setchan', ...
-	  'HorizontalAlign','center', 'String', ['# Channels | 3 | 4 | 5 | 6 | 7 | 8 | 10 | 12 | 14 | 16 | 18 | 20'],...
+	  'HorizontalAlign','center', 'String', ['# 声道 | 3 | 4 | 5 | 6 | 7 | 8 | 10 | 12 | 14 | 16 | 18 | 20'],...
 	  'Position', [left top-high wide high]); 
 
 top = top - inc;
 DurUp = uicontrol('Style', 'Popup', 'Callback', 'setdur', ...
-	  'HorizontalAlign','center', 'String', ['Duration | 10 ms | 20 ms | 30 ms | In samples | 64 | 128 | 256 | 512'],...
+	  'HorizontalAlign','center', 'String', ['持续时间 | 10 ms | 20 ms | 30 ms | In samples | 64 | 128 | 256 | 512'],...
 	  'Position', [left top-high wide high]); 
 
   
 top = top - inc;
 uicontrol('Style', 'PushB', 'Callback', 'quitall',... 
-	  'HorizontalAlign','center', 'String', 'Quit', ...
+	  'HorizontalAlign','center', 'String', '退出', ...
 	  'Position', [left top-high wide high]);  
 
 %top=top-inc;
@@ -285,46 +285,46 @@ frq=uicontrol('Style','text','Position',[10 10 wide+10 15],'BackGroundColor',[0 
   % uimenu(fed,'Label','Upsample','CallBack','editool(''upsample'')');
 
 
-ff=uimenu('Label','File');
-   uimenu(ff,'Label','&Load and stack','Callback','loadfile(''stack'')');
-   uimenu(ff,'Label','Load and &replace','Callback','loadfile(''replace'')');
-   uimenu(ff,'Label','&Save whole file','Callback','savefile(''whole'')','Separator','on');
-   uimenu(ff,'Label','Sa&ve selected region','Callback','savefile(''seg'')');
-   uimenu(ff,'Label','Insert file at cursor','CallBack','editool(''insfile'')','Separator','on');
-   uimenu(ff,'Label','File utility','Callback','filetool');
-   uimenu(ff,'Label','Print-Landscape','Callback','cprint(''landscape'',''printer'')','Separator','on');
-   uimenu(ff,'Label','Print-Portrait','Callback','cprint(''portrait'',''printer'')');
-   fprf=uimenu(ff,'Label','Print to file ...');
+ff=uimenu('Label','文件');
+   uimenu(ff,'Label','载入','Callback','loadfile(''stack'')');
+   uimenu(ff,'Label','载入并替代','Callback','loadfile(''replace'')');
+   uimenu(ff,'Label','保存整个文件','Callback','savefile(''whole'')','Separator','on');
+   uimenu(ff,'Label','保存选中的区域','Callback','savefile(''seg'')');
+   uimenu(ff,'Label','在光标处插入文件','CallBack','editool(''insfile'')','Separator','on');
+   uimenu(ff,'Label','文件应用','Callback','filetool');
+   uimenu(ff,'Label','绘制图形','Callback','cprint(''landscape'',''printer'')','Separator','on');
+   uimenu(ff,'Label','绘制模型','Callback','cprint(''portrait'',''printer'')');
+   fprf=uimenu(ff,'Label','绘制到文件 ...');
 	uimenu(fprf,'Label','Postscript','Callback','cprint(''landscape'',''eps'')');
 	%uimenu(fprf,'Label','Windows metafile','Callback','cprint(''landscape'',''meta'')');
 
 
-   uimenu(ff,'Label','Exit','CallBack','quitall','Separator','on');
+   uimenu(ff,'Label','退出','CallBack','quitall','Separator','on');
 
-fed=uimenu('Label','Edit');
-    uimenu(fed,'Label','Cut','CallBack','editool(''cut'')');
-    uimenu(fed,'Label','Copy','CallBack','editool(''copy'')');
-    uimenu(fed,'Label','Paste','CallBack','editool(''paste'')');
+fed=uimenu('Label','编辑');
+    uimenu(fed,'Label','剪切','CallBack','editool(''cut'')');
+    uimenu(fed,'Label','复制','CallBack','editool(''copy'')');
+    uimenu(fed,'Label','粘贴','CallBack','editool(''paste'')');
     
 global fed
-fd=uimenu('Label','Display');
-	uimenu(fd,'Label','Time Waveform','Callback','setdisp(''time'')');
-       fd0= uimenu(fd,'Label','Spectrogram');
+fd=uimenu('Label','视图');
+	uimenu(fd,'Label','时间波形','Callback','setdisp(''time'')');
+       fd0= uimenu(fd,'Label','语谱图');
 	uimenu(fd0,'Callback','setdisp(''spec'',''clr'')',...
-	    'Label','Color');
+	    'Label','颜色');
 	uimenu(fd0,'Callback','setdisp(''spec'',''noclr'')',...
-	    'Label','Gray Scale');
+	    'Label','灰度');
 	uimenu(fd0,'Callback','setdisp(''spec'',''4khz'')',...
 	    'Label','0-4 kHz');
 	uimenu(fd0,'Callback','setdisp(''spec'',''5khz'')',...
 	    'Label','0-5 kHz');
 	uimenu(fd0,'Callback','setdisp(''spec'',''full'')',...
-	    'Label','Full Range');
-	fd01=uimenu(fd0,'Label','Preferences');
-	    preUp=uimenu(fd01,'Label','Preemphasis','Checked','on',...
+	    'Label','满标度');
+	fd01=uimenu(fd0,'Label','首选项');
+	    preUp=uimenu(fd01,'Label','预加重','Checked','on',...
 		   'Callback','prefer(''preemp'')');
-	    fd02=uimenu(fd01,'Label','Window Size');
-		defUp=uimenu(fd02,'Label','Default','Checked','on',...
+	    fd02=uimenu(fd01,'Label','窗长');
+		defUp=uimenu(fd02,'Label','默认','Checked','on',...
 		   'Callback','prefer(''win_default'')');
 		w64Up=uimenu(fd02,'Label','64 pts','Checked','off',...
 		   'Callback','prefer(''win_64'')');
@@ -335,66 +335,66 @@ fd=uimenu('Label','Display');
 		w512Up=uimenu(fd02,'Label','512 pts','Checked','off',...
 		   'Callback','prefer(''win_512'')');
 
-	   fd03=uimenu(fd01,'Label','Update frame size');
-		uimenu(fd03,'Label','Default','Callback','prefer(''upd_default'')');
+	   fd03=uimenu(fd01,'Label','更新帧大小');
+		uimenu(fd03,'Label','默认','Callback','prefer(''upd_default'')');
 		uimenu(fd03,'Label','8 pts','Callback','prefer(''upd_8'')');
 		uimenu(fd03,'Label','16 pts','Callback','prefer(''upd_16'')');
 		uimenu(fd03,'Label','32 pts','Callback','prefer(''upd_32'')');
 		uimenu(fd03,'Label','64 pts','Callback','prefer(''upd_64'')');
 	
-	 fd04=uimenu(fd01,'Label','Formant enhancement');
-		uimenu(fd04,'Label','Default','Callback','prefer(''enh_default'')');
+	 fd04=uimenu(fd01,'Label','共振峰增强');
+		uimenu(fd04,'Label','默认','Callback','prefer(''enh_default'')');
 		uimenu(fd04,'Label','0.3','Callback','prefer(''enh_3'')');
 		uimenu(fd04,'Label','0.4','Callback','prefer(''enh_4'')');
 		uimenu(fd04,'Label','0.5','Callback','prefer(''enh_5'')');
 		uimenu(fd04,'Label','0.6','Callback','prefer(''enh_6'')');
 
-	narUp=uimenu(fd01,'Label','Narrowband','Callback','prefer(''narrow'')');
+	narUp=uimenu(fd01,'Label','窄带','Callback','prefer(''narrow'')');
 
 	
 	global preUp  defUp w64Up w128Up w256Up w512Up narUp
 
-	uimenu(fd,'Label','Single Window','Callback','setdisp(''single'')');
-	uimenu(fd,'Label','Blow Up','Callback','setdisp(''blow'')');
-	fd1=uimenu(fd,'Label','Filters');
-	fd2=uimenu(fd1,'Label','CIS filters');
-		uimenu(fd2,'Label','Linear Scale','Callback','vfilter(1)');
-		uimenu(fd2,'Label','Log Scale','Callback','vfilter(2)');
-		uimenu(fd2,'Label','Show center freqs','Callback','vfilter(6)');
-	uimenu(fd1,'Label','Vienna filter','Callback','vfilter(3)');
-	uimenu(fd1,'Label','SMSP filter','Callback','vfilter(4)');
-	uimenu(fd1,'Label','Ineraid filter','Callback','vfilter(5)');
-	uimenu(fd,'Label','Energy Plot','Callback','engy');
-	fdf0=uimenu(fd,'Label','F0 contour');
-	     uimenu(fdf0,'Label','Autocorrelation approach','Callback','estf0(''autocor'')');
-	     uimenu(fdf0,'Label','Cepstrum approach','Callback','estf0(''cepstrum'')');
-	uimenu(fd,'Label','Glottal flow','Callback','glottal');
-	uimenu(fd,'Label','Formant track','Callback','ftrack(''plot'')');
-	uimenu(fd,'Label','Power Spectral Density','Callback','estpsd');
-	fd2=uimenu(fd,'Label','Preferences');
-	    crsUp=uimenu(fd2,'Label','  Show Cursor Lines','Checked','on',...
+	uimenu(fd,'Label','单窗口','Callback','setdisp(''single'')');
+	uimenu(fd,'Label','爆炸','Callback','setdisp(''blow'')');
+	fd1=uimenu(fd,'Label','过滤器');
+	fd2=uimenu(fd1,'Label','CIS 过滤器');
+		uimenu(fd2,'Label','线性刻度','Callback','vfilter(1)');
+		uimenu(fd2,'Label','对数刻度','Callback','vfilter(2)');
+		uimenu(fd2,'Label','显示中心频率','Callback','vfilter(6)');
+	uimenu(fd1,'Label','Vienna 过滤器','Callback','vfilter(3)');
+	uimenu(fd1,'Label','SMSP 过滤器','Callback','vfilter(4)');
+	uimenu(fd1,'Label','Ineraid 过滤器','Callback','vfilter(5)');
+	uimenu(fd,'Label','能量图','Callback','engy');
+	fdf0=uimenu(fd,'Label','F0 绘制');
+	     uimenu(fdf0,'Label','自相关分析','Callback','estf0(''autocor'')');
+	     uimenu(fdf0,'Label','倒谱分析','Callback','estf0(''cepstrum'')');
+	uimenu(fd,'Label','声门波','Callback','glottal');
+	uimenu(fd,'Label','共振峰轨迹','Callback','ftrack(''plot'')');
+	uimenu(fd,'Label','功率谱密度','Callback','estpsd');
+	fd2=uimenu(fd,'Label','首选项');
+	    crsUp=uimenu(fd2,'Label','  显示光标线','Checked','on',...
 		   'Callback','prefer(''crs'')');
-	    chnUp=uimenu(fd2,'Label','  Show LPC-Channel Outputs Window','Checked','on',...
+	    chnUp=uimenu(fd2,'Label','  显示 LPC频道 输出窗口','Checked','on',...
 		   'Callback','prefer(''chn'')'); 
-	    lpcUp=uimenu(fd2,'Label','  Show only LPC spectrum','Checked','off',...
+	    lpcUp=uimenu(fd2,'Label','  只显示LPC谱','Checked','off',...
 		   'Callback','setovr(''lpconly'')');
-	    chnlpUp=uimenu(fd2,'Label','  Show LPC and channel outputs','Checked','on',...
+	    chnlpUp=uimenu(fd2,'Label','  显示LPC和频道输出','Checked','on',...
 		   'Callback','setovr(''lpc_chan'')');
-	    filUp=uimenu(fd2,'Label','  Filter type');
-	           fbrd=uimenu(filUp,'Label','Broadband','Checked','on',...
+	    filUp=uimenu(fd2,'Label','  过滤器类型');
+	           fbrd=uimenu(filUp,'Label','宽带','Checked','on',...
 		        'Callback','prefer(''broad'')');
-		   fnar=uimenu(filUp,'Label','Narrowband','Checked','off',...
+		   fnar=uimenu(filUp,'Label','窄带','Checked','off',...
 		        'Callback','prefer(''narrfil'')');
 
 global crsUp chnUp lpcUp chnlpUp fbrd fnar
 
-fa=uimenu('Label','Analog','Callback','analog(''noLPF'')');
+fa=uimenu('Label','模拟','Callback','analog(''noLPF'')');
 %fpu=uimenu('Label','Pulsatile');
 %	uimenu(fpu,'Label','300 pps','Callback','pulse(300)');
 %	uimenu(fpu,'Label','800 pps','Callback','pulse(800)');
 %	uimenu(fpu,'Label','1100 pps','Callback','pulse(1100)');
 	
-fpa=uimenu('Label','Analysis');
+fpa=uimenu('Label','分析');
 	uimenu(fpa,'Label','300 pps','Callback','analysis(300)');
 %	uimenu(fpa,'Label','500 pps','Callback','analysis(500)');
 	uimenu(fpa,'Label','800 pps','Callback','analysis(800)');
@@ -405,31 +405,31 @@ fpa=uimenu('Label','Analysis');
 
 
 
-fty=uimenu('Label','Type');
+fty=uimenu('Label','类型');
 	fty1=uimenu(fty,'Label','F0/F1/F2');
-	     uimenu(fty1,'Label','Freqs.','Callback','f0f1f2(''freq'')');
-	     uimenu(fty1,'Label','Ampl.','Callback','f0f1f2(''ampl'')');
+	     uimenu(fty1,'Label','频率.','Callback','f0f1f2(''freq'')');
+	     uimenu(fty1,'Label','振幅.','Callback','f0f1f2(''ampl'')');
 	uimenu(fty,'Label','MPEAK','Callback','mpeak');
 	uimenu(fty,'Label','SMSP','Callback','smsp');
 	uimenu(fty,'Label','House/3M','Callback','house','Separator','On');
 	uimenu(fty,'Label','Vienna/3M','Callback','vienna');
 	uimenu(fty,'Label','Buzz/Hiss','Callback','bhiss');
 	fty1=uimenu(fty,'Label','Shannon','Separator','on');
-	     uimenu(fty1,'Label','2 Channels','Callback',...
+	     uimenu(fty1,'Label','2声道','Callback',...
 		'shannon(2)');
-		uimenu(fty1,'Label','3 Channels','Callback',...
+		uimenu(fty1,'Label','3声道','Callback',...
 		'shannon(3)');
-		uimenu(fty1,'Label','4 Channels','Callback',...
+		uimenu(fty1,'Label','4声道','Callback',...
 		'shannon(4)');
-		uimenu(fty1,'Label','# CIS Channels','Callback',...
+		uimenu(fty1,'Label','# CIS声道','Callback',...
 		'shannon(5)');
-		uimenu(fty1,'Label','# CIS Channels+Flip','Callback',...
+		uimenu(fty1,'Label','# CIS声道+Flip','Callback',...
 		'shannon(5,''flip'')');
-		uimenu(fty1,'Label','# CIS Channels+Noise','Callback',...
+		uimenu(fty1,'Label','# CIS声道+噪音','Callback',...
 		'shans(5)');
-		fty2=uimenu(fty1,'Label','Preferences');
-		  uimenu(fty2,'Label','Show filters','Callback','vfiltsha');
-		  shW=uimenu(fty2,'Label','Show channel outputs','Callback','setovr(''shanwin'')');
+		fty2=uimenu(fty1,'Label','首选项');
+		  uimenu(fty2,'Label','显示过滤器','Callback','vfiltsha');
+		  shW=uimenu(fty2,'Label','显示声道输出','Callback','setovr(''shanwin'')');
 
 	global shW
 	uimenu(fty,'Label','Ineraid','Callback','ineraid');     
@@ -445,13 +445,13 @@ fty=uimenu('Label','Type');
 	     uimenu(ftlo,'Label','Flip Loizou','Callback','loizud(''128'',''flip'')');
 		%uimenu(ftlo,'Label','Rand Loizou','Callback','loizud(''128'',''rand'')');
 		uimenu(ftlo,'Label','Loizou-5-6 ch','Callback','loizud(''128'',''poor'')');
-	uimenu(ftlo,'Label','test','Callback','loi2(''128'')');
+	uimenu(ftlo,'Label','测试','Callback','loi2(''128'')');
 		%uimenu(ftlo,'Label','128 pts+Interp','Callback','loizou(''interp'')');
 		%uimenu(fty,'Label','New','Callback','loinew(''128'')');
 		%uimenu(fty,'Label','Hamming','Callback','loizou2(''128'')');
 		uimenu(fty,'Label','B-Plomp','Callback','plomp');
-		fti=uimenu(fty,'Label','Insertions');
-		    uimenu(fti,'Label','Normal','Callback','loitest(''normal'')');
+		fti=uimenu(fty,'Label','插入');
+		    uimenu(fti,'Label','一般','Callback','loitest(''normal'')');
 		    uimenu(fti,'Label','22 mm','Callback','loitest(''actual'',''5_22'')');
 		    uimenu(fti,'Label','23 mm','Callback','loitest(''actual'',''5_23'')');
 		    uimenu(fti,'Label','24 mm','Callback','loitest(''actual'',''5_24'')');
@@ -464,21 +464,21 @@ fty=uimenu('Label','Type');
 		     uimenu(fts,'Label','4x8','Callback','loinm(''128'',''norm'',''4'')');
 		     uimenu(fts,'Label','3x8','Callback','loinm(''128'',''norm'',''3'')');
 		     uimenu(fts,'Label','2x8','Callback','loinm(''128'',''norm'',''2'')');
-		     uimenu(fts,'Label','Actual loc','Callback','loismsp(''128'',''act'')');
+		     uimenu(fts,'Label','实际位置','Callback','loismsp(''128'',''act'')');
 		%uimenu(ftlo,'Label','CIS-LPC','Callback','loilpc(''64'')');
 		ftb=uimenu(ftlo,'Label','CIS4');
 		uimenu(ftb,'Label','64 pts','Callback','loiz4(''64'')');
 		uimenu(ftb,'Label','128 pts','Callback','loiz4(''128'')');
 		uimenu(ftlo,'Label','CIS5-match-filters','Callback','loiz5(''128'')');
 		uimenu(ftb,'Label','128+Virtual','Callback','loiz4(''128'',''virt2'')');
-		fta=uimenu(ftlo,'Label','Actual location');
+		fta=uimenu(ftlo,'Label','实际位置');
 		    uimenu(fta,'Label','6 channels','Callback','loizou(''actual'',''6'')');
 		    uimenu(fta,'Label','5 channels-22mm','Callback','loizou(''actual'',''5_22'')');
 		    uimenu(fta,'Label','5 channels-25mm','Callback','loizou(''actual'',''5_25'')');
 		%ftab=uimenu(ftlo,'Label','Blake W.');
 		%   uimenu(ftab,'Label','Normal','Callback','blake(''128'',''normal'')'); 
 		%   uimenu(ftab,'Label','Shifted','Callback','blake(''128'',''5_22'')');          
-	ftlon=uimenu(fty,'Label','Formant shifter');
+	ftlon=uimenu(fty,'Label','共振峰移相器');
 		uimenu(ftlon,'Label',' +800  Hz','Callback','loizn(''800'')');
 		uimenu(ftlon,'Label',' +1000 Hz','Callback','loizn(''1000'')');
 		uimenu(ftlon,'Label',' +1200 Hz','Callback','loizn(''1200'')');
@@ -486,24 +486,24 @@ fty=uimenu('Label','Type');
 		uimenu(ftlon,'Label',' +1800 Hz','Callback','loizn(''1800'')');
 		uimenu(ftlon,'Label',' +2000 Hz','Callback','loizn(''2000'')');
 		uimenu(ftlon,'Label',' +3000 Hz','Callback','loizn(''3000'')');
-fv1=uimenu('Label','Record','CallBack','getrec');
-fm1=uimenu('Label','Tools');
+fv1=uimenu('Label','记录','CallBack','getrec');
+fm1=uimenu('Label','工具');
     
-    uimenu(fm1,'Label','Zero','CallBack','modify(''zero'')');
-    fm2=uimenu(fm1,'Label','Amplify/Attenuate');        
+    uimenu(fm1,'Label','零','CallBack','modify(''zero'')');
+    fm2=uimenu(fm1,'Label','放大/衰减');        
 	uimenu(fm2,'Label','X2','CallBack','modify(''multi2'')');       
 	uimenu(fm2,'Label','X0.5','CallBack','modify(''multi05'')');
-     uimenu(fm1,'Label','Insert silence','CallBack','iadsil');
-    fm3=uimenu(fm1,'Label','Noise (SCN)','Callback','modify(''scn'')');                 
-    uimenu(fm1,'Label','Gaussian Noise','CallBack','isnr(''gaussian'')');
-    uimenu(fm1,'Label','Spectrally-shaped Noise','CallBack','isnr(''spec'')');
-    uimenu(fm1,'Label','Filter Tool','Callback','filtool');
-    uimenu(fm1,'Label','Sine wave generator','Callback','sintool');
-    uimenu(fm1,'Label','Label tool','Callback','labtool'); 
-    uimenu(fm1,'Label','Comparison tool','Callback','distool');
-    uimenu(fm1,'Label','Volume control','Callback','voltool');
+     uimenu(fm1,'Label','插入静音段','CallBack','iadsil');
+    fm3=uimenu(fm1,'Label','噪音 (SCN)','Callback','modify(''scn'')');                 
+    uimenu(fm1,'Label','高斯 噪音','CallBack','isnr(''gaussian'')');
+    uimenu(fm1,'Label','谱形噪音','CallBack','isnr(''spec'')');
+    uimenu(fm1,'Label','过滤器工具','Callback','filtool');
+    uimenu(fm1,'Label','正弦波发生器','Callback','sintool');
+    uimenu(fm1,'Label','标签工具','Callback','labtool'); 
+    uimenu(fm1,'Label','比较工具','Callback','distool');
+    uimenu(fm1,'Label','音量控制','Callback','voltool');
 
-uimenu('Label','Help','Callback','helpf(''colea'')');
+uimenu('Label','帮助','Callback','helpf(''colea'')');
 
 %-----------Initialize handles to cursor lines ------------
 

@@ -28,7 +28,7 @@ if strcmp(action,'replace') % ============ Replace existing file ===============
 	filename=fname2; 
 	fp2 = fopen(filename,'r');
  	if fp2 <=0
-		disp('ERROR! File not found..')
+		disp('错误！文件未找到..')
 		return;
  	end
 
@@ -53,8 +53,8 @@ if strcmp(action,'replace') % ============ Replace existing file ===============
 	 Srate=srat;
 
         if Srate<6000 | Srate>45000
-  	    disp('Warning! Sampling rate not in the range: 6,000 < F < 45,000');
-  	    disp('...Setting it to the default value of 10,000 Hz.');
+  	    disp('警告！采样率不在范围内: 6,000 < F < 45,000');
+  	    disp('...将被设置为默认值 10,000 Hz.');
   	    Srate=10000;
 	end 
 
@@ -82,10 +82,10 @@ if strcmp(action,'replace') % ============ Replace existing file ===============
 	S0=0;
 	Be=S0;
 	En=S1;
-	fprintf('Samp.Freq: %d Hz,  num.samples: %d (%4.2f secs)\n',Srate,n_samples,n_Secs);
+	fprintf('采样率: %d Hz,  采样点数: %d (%4.2f secs)\n',Srate,n_samples,n_Secs);
 	
 	if TWOFILES==1
-	  nm=sprintf('Top: %s --- Bottom: %s',lower(filename2),lower(fname));
+	  nm=sprintf('顶: %s --- 底: %s',lower(filename2),lower(fname));
 	  set(fno,'Name',nm);
 	  TOP=0;
 	  doit1=0;
@@ -111,7 +111,7 @@ else  %=======================Stack the two files on two windows================
  filename2=fname2;
  fp2 = fopen(filename2,'r');
  if fp2 <=0
-	disp('ERROR! File not found..')
+	disp('错误！文件未找到..')
 	return;
  end
 
@@ -131,8 +131,8 @@ else  %=======================Stack the two files on two windows================
  
  if Srate2<6000 | Srate2>45000
   disp(sprintf('\a')); % beep
-  disp('Warning! Sampling rate not in the range: 6,000 < F < 45,000');
-  disp('...Setting it to the default value of 10,000 Hz.');
+  disp('警告！采样率不在范围内: 6,000 < F < 45,000');
+  disp('...将被设置为默认值 10,000 Hz.');
   Srate2=10000;
 end   
 %----------remove the DC bias----
@@ -151,8 +151,8 @@ Be2=0;
 En2=n_samples2;
 
 
-fprintf('TOP FILE:  Samp.Freq: %d Hz,  num.samples: %d (%4.2f secs)\n',Srate2,n_samples2,n_Secs2);
-fprintf('BOTTOM FILE: Samp.Freq: %d Hz,  num.samples: %d (%4.2f secs)\n',Srate,n_Secs*Srate,n_Secs);
+fprintf('TOP FILE:  采样率: %d Hz,  采样点数: %d (%4.2f secs)\n',Srate2,n_samples2,n_Secs2);
+fprintf('BOTTOM FILE: 采样率: %d Hz,  采样点数: %d (%4.2f secs)\n',Srate,n_Secs*Srate,n_Secs);
 
 if TWOFILES==1
  TOP=1;
@@ -221,6 +221,6 @@ else
 end
 
 if strcmp(action,'stack')
- nm=sprintf('Top: %s --- Bottom: %s',lower(fname),filename);
+ nm=sprintf('顶: %s --- 底: %s',lower(fname),filename);
  set(fno,'Name',nm);
 end

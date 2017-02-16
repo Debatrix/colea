@@ -1,5 +1,5 @@
 function [HDRSIZE, Srate1, bps, filet] =  gethdr(fp,ext)
-
+%获取音频文件头等信息 返回音频文件头大小 音频长度 采样位数
 
 bps=2; filet='short';  % bytes per samples
 
@@ -7,7 +7,7 @@ if strcmp(ext,'ils') %---- ILS ---
 	HDRSIZE=512;   % Header size in bytes
 	[xx, cnt] = fread(fp,HDRSIZE/2,'short');
 	if cnt < HDRSIZE/2
-	  fprintf('ERROR in reading file %s (possibly a zero-bytes file)\n',filename);
+	  fprintf('文件读取错误 %s (可能为空文件)\n',filename);
 	  return;
 	end
    Srate1 = xx(62); 
@@ -27,18 +27,18 @@ elseif strcmp(ext,'adc')  %-- old TIMIT format----
 				 % xx(2)= version
 				 % xx(3)= number of channels 
 	if xx(2)>10 | xx(3)>3
-	  error('ERROR reading TIMIT header..');
+	  error('读取TIMIT头错误..');
 	end
 	HDRSIZE=xx(1)*2; % header size in bytes 
 	if HDRSIZE<0 | HDRSIZE>20
-	   error('ERROR reading TIMIT header..');
+	   error('读取TIMIT头错误..');
 	end
 	srt=fread(fp,1,'short'); % sampling period in 1/4 microsecs
 	nsam=fread(fp,1,'int32'); % number of samples
 	if srt>0
 	  Srate1=4*10^6/srt; 
 	else
-	 error('ERROR reading TIMIT header..');
+	 error('读取TIMIT头错误..');
 	end
    
  
@@ -49,7 +49,7 @@ elseif strcmp(ext,'adc')  %-- old TIMIT format----
         fseek(fp,0,'bof');
         nist=fscanf(fp,'%s',1);
         if strcmp(nist(1:4),'NIST') ==0
-          error('Error reading voice file header, not a MS Windows WAV nor TIMIT ..');
+          error('文件头读取错误, 不是 MS Windows WAV 或 TIMIT 文件 ..');
           return;
         end 
         
@@ -84,7 +84,7 @@ elseif strcmp(ext,'adc')  %-- old TIMIT format----
            if strcmp('fact',setstr(xx)')==1, nsam=fread(fp,3,'int32'); end;
               
          else
-           fprintf('ERROR! Not a valid wav file. Missing data.\n');
+           fprintf('错误! 不是有效的wav文件. 数据缺失.\n');
         end
         nsam=fread(fp,1,'int32'); % Number of samples in bytes
         HDRSIZE=ftell(fp);
@@ -99,7 +99,7 @@ elseif strcmp(ext,'voc') %-------- Creative Lab's VOC files-------
 	xx=fread(fp,20,'char');
 	vf=setstr(xx');
 	if strcmp(vf(1:19),'Creative Voice File')==0
-	  disp('ERROR! File is not a proper VOC file');
+	  disp('错误! 不是正确的VOC文件');
 	  return;
 	end
 	xoff=fread(fp,1,'short');
@@ -112,18 +112,18 @@ elseif strcmp(ext,'voc') %-------- Creative Lab's VOC files-------
 	  tconst=fread(fp,1,'uchar');
 	  Srate1=10^6/(256-tconst);
 	  pck=fread(fp,1,'uchar');
-	  if pck ~=0, disp('WARNING! Voice data is not in 8-bit sample format'); end;
+	  if pck ~=0, disp('警告! 语音数据不是8位样本格式'); end;
 	  fread(fp,1,'uchar');
 	else
 	  Srate1=11125;
-	  disp('WARNING! Not a voice file.');
+	  disp('警告! 不是声音文件.');
 	end
 	HDRSIZE=ftell(fp);
 	WAV=1; bps=1; filet='char';
 else
 	
 	
-   fprintf('ERROR! Unknown file extension..\n');
+   fprintf('错误! 未知扩展名..\n');
     Srate1=0;   
 	 convert; % convert file format
     

@@ -85,8 +85,8 @@ end;
 	 semilogx(f,10*log10(abs(h)),'m');
 	 axis([100 FS -50 5]);
 	 hold on
-	 ylabel('Amplitude (dB)');
-	 xlabel('Frequency (Hz)');
+	 ylabel('Õñ·ù (dB)');
+	 xlabel('ÆµÂÊ (Hz)');
 	 set(gca,'Box','off');
 	end
   end

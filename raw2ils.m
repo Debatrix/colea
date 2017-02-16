@@ -20,8 +20,8 @@ end
 fp=fopen(filename,'r');
 
 if fp<0
- fprintf('ERROR! Could not find file: %s\n',filename);
- fprintf('...skipping file\n');
+ fprintf('错误! 无法找到文件: %s\n',filename);
+ fprintf('...正在跳过文件\n');
  return;
 end
 

@@ -5,7 +5,7 @@ hdr='     iy    ih   ey    eh    er    ae    uh    ah    au    ou    ay    oo   
 
 fp = fopen('fb1.dat','r');
 if (fp<=0)
-	error('cannot read input file');
+	error('无法读取输入文件');
 end
 
 nRows=13;
@@ -16,7 +16,7 @@ for i=1:nRows
 	if cn==12
 		A(i,:)=y';
 	else
-	 error('error in reading');
+	 error('文件读取错误');
 	end
 end
 
@@ -59,7 +59,7 @@ end
 
 
 %----Use the first 3 channels --------------
-fprintf('\n-------------Using only the first 3 channels ----------\n\n');
+fprintf('\n-------------仅使用开始的3个声道 ----------\n\n');
 fprintf('%s\n',hdr);
 k=1;
 for i=1:nRows
@@ -110,7 +110,7 @@ end
 
 return
 %---Use the last 3 channels ----------------------------
-fprintf('\n-------------Using only the last 3 channels ----------\n\n');
+fprintf('\n-------------仅使用开始的3个声道----------\n\n');
 fprintf('%s\n',hdr);
 k=1;
 for i=1:nRows

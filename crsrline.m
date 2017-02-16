@@ -1,6 +1,6 @@
 function crsrline(np,Ylim,button)
 
-% Draws the cursor lines
+% 绘制光标线
 
 % Copyright (c) 1995 Philipos C. Loizou
 %

@@ -63,7 +63,7 @@ if (S1 > S0) | strcmp(action,'out')==1
 	
 	fp = fopen(fname,'r');
 	if fp<=0
-	  disp('Could not open file in zoomi.m....');
+	  disp('在 zoomi.m中无法打开所选文件....');
 	  return;
 	end
 	
@@ -75,7 +75,7 @@ if (S1 > S0) | strcmp(action,'out')==1
 	[inp,cnt] = fread(fp,nSamples,ftp);
  	if cnt ~= nSamples,
 	  fclose(fp);
-	  errordlg('ERROR reading file ..','ERROR','on');
+	  errordlg('读取文件时出错...','ERROR','on');
 	  return;
 	end
 	fclose(fp);
@@ -230,7 +230,7 @@ if (S1 > S0) | strcmp(action,'out')==1
  
 
 else
-	errordlg('Invalid selection. Right mark is less than left mark','ERROR in zoom','on');
+	errordlg('无效的选择区域. 右侧标记短于左侧标记','放大时出错','on');
 
 end
 

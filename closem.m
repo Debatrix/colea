@@ -1,5 +1,6 @@
 function closem(type)
 
+% 鍏抽棴绐楀彛
 % Copyright (c) 1995 Philipos C. Loizou
 %
 

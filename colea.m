@@ -1,20 +1,14 @@
 function colea(infile,Srate1)
 
-% COLEA
-%  A software tool for speech analysis
-%
-% To run this program, just type 'colea' in the MATLAB window. This
-% will open a file dialog box from which you can select the file to open.
-%
-% You may also type: colea filename, where 'filename' is the
-% name of the speech file.
-
-% Copyright (c) 1998 by Philipos C. Loizou
-%
+% COLEA主程序
+% 程序入口 
+% 绘制程序主窗体
+% 允许命令行打开
 
 
 
-colordef none  % comment this line in MATLAB 4.x
+
+colordef none  % 在MATLAB 4.x中注释掉该行（早就没有4.x了）
 
 global hl hr doit
 global fed shW
@@ -36,7 +30,7 @@ global ovlpfilt SET_X_AXIS LD_LABELS
 
 
 
-
+%载入语音文件（窗口或命令）
 if (nargin < 1)
  [pth,fname] = dlgopen('open','*.ils;*.wav');
  if ((~isstr(fname)) | ~min(size(fname))), return; end  
@@ -44,15 +38,15 @@ if (nargin < 1)
 else
   filename=infile;
 end
-pos = get(0, 'screensize'); % get the screensize
+pos = get(0, 'screensize'); % 获取显示器尺寸
 sWi = pos(3);
 sHe = pos(4);
-
+%设置默认窗口大小
 WIDTH   =round(0.9375*sWi);
 HEIGHT  =round(0.43*sHe) ;
 LEFT    =round(0.025*sWi);
 BOTTOM  =round(sHe-HEIGHT-40);
-
+%载入默认设置
 LPCSpec = 1;            % if 0 display FFT, else LPC spectrum
 TIME=1;                 % if 0 display spectrogram, else time waveform
 WAV1=0;                 % If 1, then it is a .wav file with 8 bits/sample
@@ -83,27 +77,27 @@ SET_X_AXIS=0;
 ovlpfilt=0;
 LD_LABELS=0;
 TOP=0;
-
+%文件打开
 fp = fopen(filename,'r');
 
 if fp <=0
-	disp('ERROR! File not found..')
+	disp('错误！文件未找到..')
 	return;
 end
 
-ftype='short'; bpsa=2;    % bytes per sample
+ftype='short'; bpsa=2;    % 每个采样点的bytes
 ftype2='short'; bpsa2=1;
-
+%获取扩展名
 ind1=find(filename == '.');
 if length(ind1)>1, ind=ind1(length(ind1)); else, ind=ind1; end;
 ext = lower(filename(ind+1:length(filename))); 
 
 
 
-
+%获取文件头信息
 [HDRSIZE, xSrate, bpsa, ftype] =  gethdr(fp,ext);
 
-
+%读取音频数据
 if xSrate==0, return; 
 else Srate=xSrate; end;
 
@@ -112,55 +106,55 @@ if strcmp(ftype,'ascii')
 else
  x  = fread(fp,inf,ftype);
 end
-
+%x应该是采样点 Srate是采样率
 	
 
 
 fclose(fp); 
-
+%设置默认采样率
 if Srate<6000 | Srate>45000 & nargin<2
-h=warndlg('Sampling rate not in the range: 10,000 < F < 45,000 . Setting it to  10,000 Hz.','WARNING!');
-  disp('Warning! Sampling rate not in the range: 6,000 < F < 45,000');
-  disp('...Setting it to the default value of 10,000 Hz.');
+h=warndlg('采样率不在范围内: 10,000 < F < 45,000 . 请设置到  10,000 Hz.','警告!');
+  disp('警告! 采样率不在范围内: 6,000 < F < 45,000');
+  disp('...设置默认值为 10,000 Hz.');
   Srate=10000;
 end    
 
 
-
-x= x - mean(x);  %----------remove the DC bias----
+%消除直流分量
+x= x - mean(x);  
 
 if (nargin==2)
  Srate  = str2num(Srate1);
  if Srate<10000 | Srate>45000
-	error('Invalid sampling frequency specified: 10,000<F<45,000');
+	error('指定的采样频率无效: 10,000<F<45,000');
  end
 end
 
-MAX_AM=2048; % This allows 12-bit resolution
+MAX_AM=2048; % 这允许12位分辨率
 
 mx=max(x);
 agcsc=MAX_AM/mx;
 
 
-n_samples = length(x);
-n_Secs    = n_samples/Srate;
-Dur=10.0;   % Duration in msec of window
+n_samples = length(x);%采样点数
+n_Secs    = n_samples/Srate;%音频时长
+Dur=10.0;   % 时间窗（毫秒）
 S1=n_samples;
 S0=0;
 Be=S0;
 En=S1;
 OVRL=1;  % if 1 then hold off plots, else hold on plots in 'pllpc'
 
-fprintf('Samp.Freq: %d Hz,  num.samples: %d (%4.2f secs)\n',Srate,n_samples,n_Secs);
-
+fprintf('采样率: %d Hz,  采样点数: %d (%4.2f 秒)\n',Srate,n_samples,n_Secs);
+%绘制窗口
 fno =  figure('Units', 'Pixels', 'Position', [LEFT BOTTOM WIDTH HEIGHT],...
 	'WindowButtonDownFcn','mclick',...
 	'Resize','on','Name',filename,'NumberTitle','Off',...
 	'Menubar','None','WindowButtonMotionFcn','showpt',...
 	'KeyPressFcn','getkb','Color','k');
 		       
-%------------ deterime the dimensions of the axis ------------
-
+%------------ 确定坐标轴尺寸 ------------
+%绘制轴
 le=round(0.2*WIDTH);
 bo=round(0.174*HEIGHT);
 wi=round(0.773*WIDTH);
@@ -178,8 +172,8 @@ axes(cAxes);
 	xax=0:1000/Srate:(Et-1000/Srate);
 	
 	plot(xax,x,'y')
-	xlabel('Time (msecs)');
-	ylabel('Amplitude');
+	xlabel('时间 (msecs)');
+	ylabel('振幅');
 	set(gca,'Color','k'); set(gca,'Xcolor','w'); set(gca,'YColor','w');
 	%set(gca,'Units','points','FontSize',9);
 	if min(x)<-1000 | mx >1000
@@ -191,7 +185,7 @@ axes(cAxes);
    %set(gca,'Color','k');
    set(gca,'XColor','w');
    set(gca,'YColor','w');
-xywh = get(fno, 'Position');
+xywh = get(fno, 'Position'); %获得当前鼠标位置
 axi=AXISLOC;
 
 % Buttons.
@@ -202,44 +196,44 @@ high = 22;
 high=22;
 if 9*(22+8) > xywh(4), high=17; end;
 inc  = high + 8;
-%---------- Display the slider and the push-buttons-------------
+%---------- 显示滑动条与按钮-------------
 sli = uicontrol('Style','slider','min',0,'max',1000','Callback',...
 	'getslide','Position',[axi(1) axi(2)+axi(4)+2 axi(3) 12]);
+%getslide 波形图上方滑动条
 
 
-
-
+%zoomi  放大按钮和缩小按钮
 Zin = uicontrol('Style', 'PushButton', 'Callback','zoomi(''in'')', ...
-	 'HorizontalAlign','center', 'String', 'Zoom In',...
+	 'HorizontalAlign','center', 'String', '缩小',...
 	 'Position', [left top-high wide high]);
 
 top = top - inc;
 Zout = uicontrol('Style', 'PushButton', 'Callback','zoomi(''out'')', ...
-	 'HorizontalAlign','center', 'String', 'Zoom Out',...
+	 'HorizontalAlign','center', 'String', '放大',...
 	 'Position', [left top-high wide high]);
 if Srate>12000
   nLPC=14;
 else
- nLPC=12; % initialize LPC order
+ nLPC=12; % 初始化LPC阶数
 end
 top = top - inc-20;
 uicontrol('Style','Frame','Position',[left top-high-10 wide+5 high+30],...
 	'BackgroundColor','b');
  
 uicontrol('Style','text','Position',[left+wide/3 top 40 high-3],'BackGroundColor','b',...
-	'HorizontalAlignment','left','ForeGroundColor','w','String','Play');
+	'HorizontalAlignment','left','ForeGroundColor','w','String','播放');
 
 plUp = uicontrol('Style', 'PushButton', 'Callback', 'playf(''all'')', ...
-	  'HorizontalAlign','center', 'String', 'all',...
+	  'HorizontalAlign','center', 'String', '全部',...
 	  'Position', [left top-high wide/2 high]);
 
 uicontrol('Style', 'PushButton', 'Callback', 'playf(''sel'')', ...
-	  'HorizontalAlign','center', 'String', 'sel',...
+	  'HorizontalAlign','center', 'String', '显示全部',...
 	  'Position', [left+wide/2+5 top-high wide/2 high]);
-  
+%playf 播放按钮们
   
 %---Draw the squares in case its TWOFILES
-wwi=xywh(3); whe=xywh(4);
+wwi=xywh(3); whe=xywh(4);%获得鼠标位置
 tpc=uicontrol('Style','text','Position',[wwi-10 2*whe/3+10 10 10],'String',' ','BackGroundColor',[0 0 0]);
 boc=uicontrol('Style','text','Position',[wwi-10 whe/3-10 10 10],'String',' ','BackGroundColor',[0 0 0]);
 
@@ -252,55 +246,55 @@ frq=uicontrol('Style','text','Position',[10 10 wide+10 15],'BackGroundColor',[0 
 
 
 %
-%-------------------------MENUS---------------------------------
+%-------------------------MENUS---------------------------------卧槽这个翻译不下去了
 %
-ff=uimenu('Label','File');
-   uimenu(ff,'Label','&Load and stack','Callback','loadfile(''stack'')');
-   uimenu(ff,'Label','Load and &replace','Callback','loadfile(''replace'')');
-   uimenu(ff,'Label','&Save whole file','Callback','savefile(''whole'')','Separator','on');
-   uimenu(ff,'Label','Sa&ve selected region','Callback','savefile(''seg'')');
-   uimenu(ff,'Label','Insert file at cursor','CallBack','editool(''insfile'')','Separator','on');
-   uimenu(ff,'Label','File utility','Callback','filetool');
-   uimenu(ff,'Label','Print-Landscape','Callback','cprint(''landscape'',''printer'')','Separator','on');
-   uimenu(ff,'Label','Print-Portrait','Callback','cprint(''portrait'',''printer'')');
-   fprf=uimenu(ff,'Label','Print to file ...');
+ff=uimenu('Label','文件');
+   uimenu(ff,'Label','载入','Callback','loadfile(''stack'')');
+   uimenu(ff,'Label','载入并替代','Callback','loadfile(''replace'')');
+   uimenu(ff,'Label','保存整个文件','Callback','savefile(''whole'')','Separator','on');
+   uimenu(ff,'Label','保存选中的区域','Callback','savefile(''seg'')');
+   uimenu(ff,'Label','在光标处插入文件','CallBack','editool(''insfile'')','Separator','on');
+   uimenu(ff,'Label','文件应用','Callback','filetool');
+   uimenu(ff,'Label','绘制图形','Callback','cprint(''landscape'',''printer'')','Separator','on');
+   uimenu(ff,'Label','绘制模型','Callback','cprint(''portrait'',''printer'')');
+   fprf=uimenu(ff,'Label','绘制到文件 ...');
 	uimenu(fprf,'Label','Postscript','Callback','cprint(''landscape'',''eps'')');
 	uimenu(fprf,'Label','Windows metafile','Callback','cprint(''landscape'',''meta'')');
 
 
-   uimenu(ff,'Label','Exit','CallBack','quitall','Separator','on');
+   uimenu(ff,'Label','退出','CallBack','quitall','Separator','on');
 
-fed=uimenu('Label','Edit');
-    uimenu(fed,'Label','Cut','CallBack','editool(''cut'')');
-    uimenu(fed,'Label','Copy','CallBack','editool(''copy'')');
-    uimenu(fed,'Label','Paste','CallBack','editool(''paste'')');
-    uimenu(fed,'Label','Zero segment','CallBack','modify(''zero'')','Separator','on');
-    fm2=uimenu(fed,'Label','Amplify/Attenuate segment');        
+fed=uimenu('Label','编辑');
+    uimenu(fed,'Label','剪切','CallBack','editool(''cut'')');
+    uimenu(fed,'Label','复制','CallBack','editool(''copy'')');
+    uimenu(fed,'Label','粘贴','CallBack','editool(''paste'')');
+    uimenu(fed,'Label','零段','CallBack','modify(''zero'')','Separator','on');
+    fm2=uimenu(fed,'Label','放大/衰减段');        
 	uimenu(fm2,'Label','X2','CallBack','modify(''multi2'')');       
 	uimenu(fm2,'Label','X0.5','CallBack','modify(''multi05'')');
-     uimenu(fed,'Label','Insert silence at cursor','CallBack','iadsil');
+     uimenu(fed,'Label','在光标处插入静音段','CallBack','iadsil');
 
     
     
 
-fd=uimenu('Label','Display');
-	uimenu(fd,'Label','Time Waveform','Callback','setdisp(''time'')');
-       fd0= uimenu(fd,'Label','Spectrogram');
+fd=uimenu('Label','视图');
+	uimenu(fd,'Label','时间波形','Callback','setdisp(''time'')');
+       fd0= uimenu(fd,'Label','语谱图');
 	uimenu(fd0,'Callback','setdisp(''spec'',''clr'')',...
-	    'Label','Color');
+	    'Label','颜色');
 	uimenu(fd0,'Callback','setdisp(''spec'',''noclr'')',...
-	    'Label','Gray Scale');
+	    'Label','灰度');
 	uimenu(fd0,'Callback','setdisp(''spec'',''4khz'')',...
 	    'Label','0-4 kHz');
 	uimenu(fd0,'Callback','setdisp(''spec'',''5khz'')',...
 	    'Label','0-5 kHz');
 	uimenu(fd0,'Callback','setdisp(''spec'',''full'')',...
-	    'Label','Full Range: 0-fs/2');
-	fd01=uimenu(fd0,'Label','Preferences');
-	    preUp=uimenu(fd01,'Label','Preemphasis','Checked','on',...
+	    'Label','满标度: 0-fs/2');
+	fd01=uimenu(fd0,'Label','首选项');
+	    preUp=uimenu(fd01,'Label','预加重','Checked','on',...
 		   'Callback','prefer(''preemp'')');
-	    fd02=uimenu(fd01,'Label','Window Size');
-		defUp=uimenu(fd02,'Label','Default','Checked','on',...
+	    fd02=uimenu(fd01,'Label','窗长');
+		defUp=uimenu(fd02,'Label','默认','Checked','on',...
 		   'Callback','prefer(''win_default'')');
 		w64Up=uimenu(fd02,'Label','64 pts','Checked','off',...
 		   'Callback','prefer(''win_64'')');
@@ -311,53 +305,53 @@ fd=uimenu('Label','Display');
 		w512Up=uimenu(fd02,'Label','512 pts','Checked','off',...
 		   'Callback','prefer(''win_512'')');
 
-	   fd03=uimenu(fd01,'Label','Update frame size');
-		uimenu(fd03,'Label','Default','Callback','prefer(''upd_default'')');
+	   fd03=uimenu(fd01,'Label','更新帧大小');
+		uimenu(fd03,'Label','默认','Callback','prefer(''upd_default'')');
 		uimenu(fd03,'Label','8 pts','Callback','prefer(''upd_8'')');
 		uimenu(fd03,'Label','16 pts','Callback','prefer(''upd_16'')');
 		uimenu(fd03,'Label','32 pts','Callback','prefer(''upd_32'')');
 		uimenu(fd03,'Label','64 pts','Callback','prefer(''upd_64'')');
 	
-	 fd04=uimenu(fd01,'Label','Formant enhancement');
-		uimenu(fd04,'Label','Default','Callback','prefer(''enh_default'')');
+	 fd04=uimenu(fd01,'Label','共振峰增强');
+		uimenu(fd04,'Label','默认','Callback','prefer(''enh_default'')');
 		uimenu(fd04,'Label','0.3','Callback','prefer(''enh_3'')');
 		uimenu(fd04,'Label','0.4','Callback','prefer(''enh_4'')');
 		uimenu(fd04,'Label','0.5','Callback','prefer(''enh_5'')');
 		uimenu(fd04,'Label','0.6','Callback','prefer(''enh_6'')');
 
 	
-	uimenu(fd,'Label','Single Window','Callback','setdisp(''single'')');
+	uimenu(fd,'Label','单窗口','Callback','setdisp(''single'')');
    
    
-	uimenu(fd,'Label','Energy Plot','Callback','engy');
-	fdf0=uimenu(fd,'Label','F0 contour');
-	     uimenu(fdf0,'Label','Autocorrelation approach','Callback','estf0(''autocor'')');
-	     uimenu(fdf0,'Label','Cepstrum approach','Callback','estf0(''cepstrum'')');
-		uimenu(fd,'Label','Formant track','Callback','ftrack(''plot'')');
-	uimenu(fd,'Label','Power Spectral Density','Callback','estpsd');
-	fd2=uimenu(fd,'Label','Preferences');
-	    crsUp=uimenu(fd2,'Label','  Show Cursor Lines','Checked','on',...
+	uimenu(fd,'Label','能量图','Callback','engy');
+	fdf0=uimenu(fd,'Label','F0 绘制');
+	     uimenu(fdf0,'Label','自相关分析','Callback','estf0(''autocor'')');
+	     uimenu(fdf0,'Label','倒谱分析','Callback','estf0(''cepstrum'')');
+		uimenu(fd,'Label','共振峰轨迹','Callback','ftrack(''plot'')');
+	uimenu(fd,'Label','功率谱密度','Callback','estpsd');
+	fd2=uimenu(fd,'Label','首选项');
+	    crsUp=uimenu(fd2,'Label','  显示光标线','Checked','on',...
 		   'Callback','prefer(''crs'')');
 	    
 
 	
 		
-fv1=uimenu('Label','Record','CallBack','getrec');
-fm1=uimenu('Label','Tools');
+fv1=uimenu('Label','记录','CallBack','getrec');
+fm1=uimenu('Label','工具');
     
                         
-    uimenu(fm1,'Label','Add Gaussian noise..','CallBack','isnr(''gaussian'')');
-    uimenu(fm1,'Label','Add noise from file..','CallBack','isnr(''spec'')');
-    fm3=uimenu(fm1,'Label','Convert to SCN noise','Callback','modify(''scn'')'); 
-    uimenu(fm1,'Label','Filter Tool','Callback','filtool','Separator','on');
-    uimenu(fm1,'Label','Sine wave generator','Callback','sintool');
-    uimenu(fm1,'Label','Label tool','Callback','labtool'); 
-    uimenu(fm1,'Label','Comparison tool','Callback','distool');
-    uimenu(fm1,'Label','Volume control','Callback','voltool');
+    uimenu(fm1,'Label','添加高斯噪声..','CallBack','isnr(''gaussian'')');
+    uimenu(fm1,'Label','从文件添加噪声..','CallBack','isnr(''spec'')');
+    fm3=uimenu(fm1,'Label','转换为 SCN 噪声','Callback','modify(''scn'')'); 
+    uimenu(fm1,'Label','过滤器','Callback','filtool','Separator','on');
+    uimenu(fm1,'Label','正弦波发生器','Callback','sintool');
+    uimenu(fm1,'Label','标签工具','Callback','labtool'); 
+    uimenu(fm1,'Label','比较工具','Callback','distool');
+    uimenu(fm1,'Label','音量控制','Callback','voltool');
 
-uimenu('Label','Help','Callback','helpf(''colea'')');
-
-%-----------Initialize handles to cursor lines ------------
+uimenu('Label','帮助','Callback','helpf(''colea'')');
+%至少到这里都是在绘制控件
+%----------- 初始化光标线句柄 ------------
 
 np=3; Ylim=get(gca,'YLim');
 hl=line('Xdata',[np np],'Ydata',Ylim,'Linestyle','-',...

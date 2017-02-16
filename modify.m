@@ -101,7 +101,7 @@ if (S1 > S0)
 	   se=norm(x,2)^2/nSamples; %signal energy
 	   SNR=str2num(get(snrOp,'String'));
 	   if  isempty(SNR)
-		errordlg('ERROR in SNR value','ERROR','on');
+		errordlg('SNR值错误','错误','on');
 		if TOP==1
 		 filename2=oldfile; fclose(fpmod2); rld=1;
 		else
@@ -112,7 +112,7 @@ if (S1 > S0)
 	   nsc=se/(10^(SNR/10));
 	   y=sqrt(nsc)*randn(nSamples,1);
 	   ne=norm(y,2)^2/nSamples;  
-	   fprintf('Estimated SNR=%f\n',10*log10(se/ne));
+	   fprintf('估算SNR=%f\n',10*log10(se/ne));
 	   x = x+y;   mx=max(x);
  	   inp(hdr2+S0:hdr2+S1)=x+mn*ones(S1-S0+1,1);
 
@@ -122,7 +122,7 @@ if (S1 > S0)
 	   se=norm(x,2)^2/nSamples; %signal energy
 	   SNR=str2num(get(snrOp,'String'));
 	   if  isempty(SNR)
-		errordlg('ERROR in SNR value','ERROR','on');
+		errordlg('错误 in SNR value','错误','on');
 		if TOP==1
 		 filename2=oldfile; fclose(fpmod2); rld=1;
 		else
@@ -158,14 +158,14 @@ if (S1 > S0)
               else
                  filename=oldfile; fclose(fpmod); singldisp=1;
               end
-              errordlg('Not enough samples in the noise file.','ERROR','on');
+              errordlg('噪音文件中没有足够的样本点.','错误','on');
               return;
 
            end
 	    ny=norm(y,2)^2/nSamples;
 	    y=sqrt(nsc/ny)*y;
 	    ne=norm(y,2)^2/nSamples; 
-	    fprintf('Estimated SNR=%f\n',10*log10(se/ne));
+	    fprintf('估算SNR=%f\n',10*log10(se/ne));
 	    x = x+y;   mx=max(x);
  	   inp(hdr2+S0:hdr2+S1)=x+mn*ones(S1-S0+1,1);
 	end
@@ -196,7 +196,7 @@ end
 	
 else
 	disp(' ');
-	disp('ERROR! Invalid selection. Right mark is less than left mark..');
+	disp('错误!无效选择. 右标签小于左标签.');
 end
 
 

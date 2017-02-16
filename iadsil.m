@@ -15,10 +15,10 @@ ypos=(sHe-80)/2;
 
 if isempty(adsFig)
   adsFig=figure('Units','Pixels','Position',[xpos ypos 200 80],'MenuBar','None','Name',...
-	'Adding silence','NumberTitle','Off');
+	'ÃÌº”æ≤“Ù∂Œ','NumberTitle','Off');
 	adsOp=uicontrol('Style','edit','String','100','Position',[70 20 60 20],...
 	'Callback','editool(''addsil'')');
-	txt='Enter value in msec:';
+	txt=' ‰»Îæ≤“Ù∂Œ≥§∂»£®∫¡√Î£©£©:';
 	uicontrol('Style','Text','String',txt,'Position',[10 50 160 20],...
 	'BackgroundColor',[0 0 0],'ForeGroundColor','y');
 else

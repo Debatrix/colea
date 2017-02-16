@@ -9,7 +9,7 @@ function modhder(fpin,fpout,ext,nsamples,sfreq)
 
 st=fseek(fpin,0,-1);
 if st<0
- error('Error in saving header');
+ error('文件头保存错误');
 end
 
 if strcmp(ext,'ils') 	 %---- ILS --- 
@@ -67,7 +67,7 @@ elseif strcmp(ext,'wav') % -- WAV files
 	fwrite(fpout,nsam,'int32');
 	
 else
-	fprintf('\ERROR!nUknown extension: %s\n in file modhder.m',ext);
+	fprintf('错误!\未知扩展名: %s\n 在文件modhder.m',ext);
 end  
 
 fclose(fpin);

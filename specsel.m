@@ -1,5 +1,7 @@
 function specsel
 
+% 鎺у埗绐椾綋鍑芥暟
+% 璁剧疆LPC/FFT
 % Copyright (c) 1995 Philipos C. Loizou
 %
 

@@ -48,7 +48,7 @@ end
 fp = fopen(fname,'r');
 
 if fp <=0
-	disp('ERROR! File not found..')
+	disp('错误！文件未找到..')
 	return;
 end
 
@@ -64,7 +64,7 @@ meen=mean(x);
 x= x - meen; %----------remove the DC bias---
 
 
-nmF='Formant Tracks';
+nmF='共振峰追踪';
 
 
 if isempty(ftrFig) 
@@ -115,8 +115,8 @@ if strcmp(action,'save')  %--- save F1,F2,F3 in an ASCII file
 	  fprintf(fpout,'%6.2f %7.3f %7.3f %7.3f\n',time(i),formants(1,i),formants(2,i),...
 	 	formants(3,i));
 	end
-	msg=sprintf('Formant values were saved in the ASCII file ''%s'' ',lower(formName));
-	errordlg(msg,'Saving file','on');
+	msg=sprintf('共振峰的值将被保存为ASCII文件 ''%s'' ',lower(formName));
+	errordlg(msg,'保存文件','on');
 	fclose(fpout);
 
 elseif strcmp(action,'plot') %--- Plot Formant contour  -----------
@@ -130,8 +130,8 @@ hold off
 
 plot(xax,formants(1,:),'y',xax,formants(2,:),'r',xax,formants(3,:),'m');
   
-ylabel('Freq. (Hz)');
-xlabel('Time (msec)');
+ylabel('频率. (Hz)');
+xlabel('时间 (msec)');
 set(gca,'Xlim',[1 Et]);
 
 %----------- Create the 'close' button'-----------------------
@@ -148,10 +148,10 @@ high = 22;
 inc  = high + 8;
 
 uicontrol('Style', 'PushB', 'Callback', 'closem(''ftr'')', ...
-          'HorizontalAlign','center', 'String', 'Close', ...
+          'HorizontalAlign','center', 'String', '关闭', ...
           'Position', [left top-high wide high]);  
 
-uimenu('Label','Save Formants','Callback','saveparm(''formnts'')');
+uimenu('Label','保存格式','Callback','saveparm(''formnts'')');
 clsedFrm=0;
 end
 

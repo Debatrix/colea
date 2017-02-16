@@ -19,7 +19,7 @@ onebyte=WAV1;
 	   		if S1>S0
 	     		   n_samples=S1-S0;
 	  		 else
-	     		   errordlg('Invalid selection','ERROR in play','on');
+	     		   errordlg('无效选择','播放错误','on');
 	    		   return;
 	   		 end
 	   		bes=S0;
@@ -43,17 +43,17 @@ onebyte=WAV1;
 	fp = fopen(fname,'r');
 
 	if fp <=0
-	  disp('ERROR! File not found..')
+	  disp('错误！文件未找到..')
 	  return;
 	end
 
 
 	st = fseek(fp,offSet,'bof');
-	if st<0, disp('FAILURE in reading'); return; end;
+	if st<0, disp('读取失败'); return; end;
         x=zeros(1,n_samples);
 	[x,cnt] = fread(fp,n_samples,ftp);
 	if cnt ~= n_samples,
-	  disp('ERROR in reading in playf.m');
+	  disp('读取playf.m错误');
 	end
 	    
 	fclose(fp);
@@ -61,7 +61,7 @@ onebyte=WAV1;
 	fp = fopen(filename,'r');
 
 	if fp <=0
-	  disp('ERROR! File not found..')
+	  disp('错误！文件未找到..')
 	  return;
 	end
 
@@ -69,7 +69,7 @@ onebyte=WAV1;
 	   if S1>S0
 	     n_samples=S1-S0;
 	   else
-	     errordlg('Invalid selection','ERROR in play','on');
+	     errordlg('无效选择','播放错误','on');
 	     fclose(fp);
 	     return;
 	   end

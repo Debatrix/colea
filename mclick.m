@@ -1,6 +1,6 @@
 function mclick
 
-% Detect mouse click, and act appropriately
+%  检测鼠标行为并进行适当操作
 %
 
 % Copyright (c) 1995 by Philipos C. Loizou
@@ -40,7 +40,7 @@ typ = get(fno,'SelectionType');   % get mouse button (normal= left,
 FigXY  = get(fno,'Position');
 
 %
-% The offset Be is added to account for zoomed displays
+% 偏移量 Be 为了缩放而被加入账户？
 %
 if TWOFILES==1
   if TOP==1
@@ -71,7 +71,7 @@ else
   stime = Sample*1000/Srate;
 end
 
-%---- Check to see if cursor is within window box -------
+%---- 检查光标线是否在显示区域内  -------
 
 IN_WINDOW=0;
 if TWOFILES==1 & TOP==1
@@ -98,7 +98,7 @@ if  IN_WINDOW == 1
      left=FigXY(1)+10;
 
     
-  %---------------- Draw the cursor lines-------------------
+  %---------------- 绘制光标线 -------------------
    
    if SHOW_CRS==1
      if TWOFILES==0, axes(cAxes); end
@@ -126,7 +126,8 @@ if  IN_WINDOW == 1
     	 Ylim=get(gca,'YLim');
 	end
     
-     if (strcmp(typ,'normal')==1) % ==== Left button was pushed ===
+    % ==== 左键 ===
+     if (strcmp(typ,'normal')==1) 
 	if TWOFILES==1
 	  if TOP==1
 	    if  doit1==1, posi(1,2)=En2; end;
@@ -136,9 +137,10 @@ if  IN_WINDOW == 1
 	    S1=posi(2,2); posi(2,1)=Sample;
 	  end
 	end
-	crsrline(np,Ylim,'left');  % Draw the cursor line
+	crsrline(np,Ylim,'left');  % 调用crsrline绘制光标线
 
-     elseif (strcmp(typ,'alt')==1) %===== Right Button ======
+    %===== 右键======
+     elseif (strcmp(typ,'alt')==1) 
 	if TWOFILES==1
 	  if TOP==1
 	    if  doit1==1,  posi(1,1)=Be2; end;
@@ -152,10 +154,11 @@ if  IN_WINDOW == 1
 	
      end   
 
-  end%------------------end of IF show cursor lines----- 
+  end
+  %------------------结束光标线绘制------------ 
  
-	%-----------plot the sample number and/or freq -----
-	set(smp,'String',tStr,'ForegroundColor','w','BackgroundColor',[0 0 0]);
+%-----------绘制样本点数与频率 -----
+set(smp,'String',tStr,'ForegroundColor','w','BackgroundColor',[0 0 0]);
 
      if (TIME==0)
      	set(frq,'String',fStr,'ForegroundColor','w','BackgroundColor',[0 0 0]);

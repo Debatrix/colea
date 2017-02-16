@@ -54,7 +54,7 @@ xwi= round((x(2)-x(1))*fac);
 
 lbaUp(iaCnt)=uicontrol('Style','edit','Position',[xpos 5 xwi 20 ],...
 	'BackGroundColor','y','HorizontalAlignment',...
-	'center','String','text','Callback','labtext');
+	'center','String','文本','Callback','labtext');
 
 
 
@@ -125,7 +125,7 @@ elseif strcmp(action,'load') %-------------- Load a label file -----------
 	x(1)=endp(1)*1000/Srate;
 	x(2)=endp(2)*1000/Srate;
 	if x(2) > n_Secs*1000
-	  fprintf('WARNING! A label was found out of range.\n');
+	  fprintf('警告! 发现一个标签超出范围.\n');
 	  break;
 	end;
   	xpos = round(Xoffset+x(1)*fac);  % coordinate in pixels
@@ -241,7 +241,7 @@ elseif strcmp(action,'loadzm') %-------- Draw the labels in a zoomed display ---
     
     
  	if isempty(iaCnt)
-	  errordlg('No labels were created for saving.','ERROR','on');
+	  errordlg('没有添加的标签.','错误','on');
 	  return;
 	end
   	[pth,fname] = dlgopen('save','*.phn;*.txt');
@@ -265,7 +265,7 @@ elseif strcmp(action,'loadzm') %-------- Draw the labels in a zoomed display ---
  elseif strcmp(action,'savef') %-------------- save a label file -----------
 
  	if isempty(iaCnt)
-	  errordlg('No labels were created for saving.','ERROR','on');
+	  errordlg('没有添加的标签.','错误','on');
 	  return;
 	end
  
@@ -296,7 +296,7 @@ elseif strcmp(action,'loadzm') %-------- Draw the labels in a zoomed display ---
    end	
   else
    lbaUp=[]; lbVals=[];
-   errordlg('There is no label to delete','ERROR','on');
+   errordlg('没有可删除的标签','错误','on');
    return;
   end
  
@@ -308,7 +308,7 @@ elseif strcmp(action,'loadzm') %-------- Draw the labels in a zoomed display ---
   
    jnko=get(gcf,'Userdata');
    if isempty(jnko)
-	 errordlg('There are no labels to clear','ERROR','on');
+	 errordlg('没有可删除的标签','错误','on');
     else
 	for i=1:length(jnko)
 		valid=0;

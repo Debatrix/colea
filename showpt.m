@@ -1,7 +1,8 @@
 function showpt
 
-% Detect mouse click, and act appropriately
-%
+%     主窗体响应函数 获取光标位置
+%     确定单文件模式与双文件模式
+%     在主窗体显示时间频率等
 
 % Copyright (c) 1995 by Philipos C. Loizou
 %
@@ -17,7 +18,7 @@ global Srate2 n_Secs2 tpc boc  frq
 global upFreq upFreq2 
 
 
-xv = get(fno,'CurrentPoint');  % get cursor coordinates in pixels
+xv = get(fno,'CurrentPoint');  % 获取光标位置（像素）
 xp = xv(1);
 yp = xv(2);
 

@@ -12,4 +12,4 @@ else
   set(sliB,'Value',0');
 
 end
-
+end

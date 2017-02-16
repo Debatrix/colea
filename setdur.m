@@ -1,5 +1,7 @@
 function setdur
 
+% 控制窗体函数
+% 设置时间长度/采样点数量
 % Copyright (c) 1995 Philipos C. Loizou
 %
 

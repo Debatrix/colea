@@ -6,7 +6,7 @@ function getrec
 fp= fopen('sndcard.cfg','r');
 
 if fp<0
-  errordlg('Could not find souncard config file: sndcard.cfg.  If this file does not exist, then create it and put the name of the record utility program','GETREC');
+  errordlg('找不到声卡配置文件：sndcard.cfg。如果此文件不存在，则它将被创建并记录应用程序的名称','GETREC');
 else
  
  snd = fscanf(fp,'%s');
@@ -16,7 +16,7 @@ else
     exe=['!' snd];
     eval(exe); 
  else
-  str=sprintf('Could not find record utility: %s',snd);
+  str=sprintf('未找到记录功能: %s',snd);
   errordlg(str,'GETREC');
  end
 

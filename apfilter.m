@@ -17,7 +17,7 @@ if strcmp(action,'view') % =============== VIEW FILTER RESPONSE ==============
 	  [b,a]=butter(nuLPF,f);
 	  [h,fr]=freqz(b,a,512,Srate);
 	  plot(fr,10*log10(abs(h)));
-	  xlabel('Freq. (Hz)'); ylabel('dB');
+	  xlabel('频率. (Hz)'); ylabel('dB');
    elseif strcmp(type,'HPF')
 
 	  figure(10);
@@ -25,20 +25,20 @@ if strcmp(action,'view') % =============== VIEW FILTER RESPONSE ==============
 	  [b,a]=butter(nuHPF,f,'high');
 	  [h,fr]=freqz(b,a,512,Srate);
 	  plot(fr,10*log10(abs(h)));
-	  xlabel('Freq. (Hz)'); ylabel('dB');
+	  xlabel('频率. (Hz)'); ylabel('dB');
    else
 	   figure(10);
 	   w=[2*fc1BPF/Srate 2*fc2BPF/Srate];
 	   [b,a]=butter(nuBPF,w);
 	   [h,fr]=freqz(b,a,512,Srate);
 	   plot(fr,10*log10(abs(h)));
-	   xlabel('Freq. (Hz)'); ylabel('dB');
+	   xlabel('频率. (Hz)'); ylabel('dB');
    end
 
 else % ======================== APPLY FILTER============================
 
 if En < Be  % --- Check to see if the segment selected is valid -----
-  errordlg('Invalid segment selected: left mark is greater than right','ERROR in Filter Tool','on');
+  errordlg('选定的段无效：左标记大于右标记','过滤器错误','on');
   return;
 end
 
@@ -46,7 +46,7 @@ end
 fp = fopen(filename,'r');
 
 if fp <=0
-	disp('ERROR! File not found..')
+	disp('错误！文件未找到..')
 	return;
 end
 

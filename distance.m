@@ -69,8 +69,8 @@ if strcmp(type,'cep') | strcmp(type,'wcep') % ========== cepstrum ==========
 	seg(2:N+1)=cy; seg(lenx-N+1:lenx)=flipud(cy);
 	mag=fft(seg); 
 	subplot(2,1,2),plot(freq,real(mag(1:lenx/2)));
-	set(curFig,'Name','Cepstrum ');
-	ylabel('Magnitude (dB)');
+	set(curFig,'Name','倒谱 ');
+	ylabel('强度 (dB)');
 	
       end
 
@@ -84,10 +84,10 @@ elseif strcmp(type,'snr') % ========== SNR ==============
    if DISP==1, 
 	figure(curFig);
 	subplot(2,1,1),plot(x); title(['SNR= ', sprintf('%f',dst)]);
-	ylabel('Amplitude');
+	ylabel('振幅');
 	subplot(2,1,2),plot(y);
 	set(curFig,'Name','SNR'); 
-	ylabel('Amplitude'); xlabel('Sample');
+	ylabel('振幅'); xlabel('采样');
    end
 else % ============== LPC-based measures ===========================
 
@@ -102,9 +102,9 @@ else % ============== LPC-based measures ===========================
 	[h1,f]=freqz([1],ax,512,Srate);
 	[h2,f]=freqz([1],ay,512,Srate2);
 	subplot(2,1,1),plot(f,20*log10(abs(h1))); 
-	ylabel('Magnitude (dB)');
+	ylabel('强度 (dB)');
 	subplot(2,1,2),plot(f,20*log10(abs(h2))); 
-	ylabel('Magnitude (dB)'); xlabel ('Frequency (Hz)');
+	ylabel('强度 (dB)'); xlabel ('频率 (Hz)');
 	set(curFig,'Name','LPC-based measure'); 
    end
 
@@ -244,22 +244,22 @@ else % ============== LPC-based measures ===========================
 	magn=20*log10(abs(h1));
    	subplot(3,1,1),plot(f,magn);
    	axis([0 centKlatt(nCh) min(magn)-1 max(magn)+1]);
-	ylabel('Magnitude (dB)');
+	ylabel('强度 (dB)');
 	title(['WSM= ', sprintf('%f',dst)]);
    	subplot(3,1,2),plot(centKlatt,FilterBanks_x);
 	axis([0 centKlatt(nCh) mn-1 mx+1]);
-	ylabel('Magnitude (dB)');
+	ylabel('强度 (dB)');
 	subplot(3,1,3)
 	plot(centKlatt,FilterBanks_y);
 	axis([0 centKlatt(nCh) mn-1 mx+1]);
 	%plot(centKlatt(1:14),sl_x(1:14),'r-');
-	ylabel('Magnitude (dB)');
-	xlabel('Frequency (Hz)');
+	ylabel('强度 (dB)');
+	xlabel('频率 (Hz)');
  	set(curFig,'Name','Klatt');
      end  
 
    else
-     fprintf('ERROR! Unknown option in distance computation.\n');
+     fprintf('误差！距离计算中的未知选择.\n');
   end
 
 

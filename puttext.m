@@ -1,6 +1,8 @@
 function puttext
 
 
+% 响应LPC窗体鼠标点击 
+% 在控制窗体输出光标位置
 % Copyright (c) 1995 Philipos C. Loizou
 %
 

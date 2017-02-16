@@ -1,5 +1,7 @@
 function setlpc
 
+% 鎺у埗绐椾綋鍑芥暟
+% 璁剧疆LPC闃舵暟
 % Copyright (c) 1995 Philipos C. Loizou
 %
 

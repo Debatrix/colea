@@ -1,5 +1,7 @@
 function setfft
 
+%控制窗体函数
+%设置fft大小
 % Copyright (c) 1995 Philipos C. Loizou
 %
 

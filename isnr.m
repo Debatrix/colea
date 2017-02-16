@@ -30,7 +30,7 @@ if isempty(snrFig) | invalid==1
 	snrOp=uicontrol('Style','edit','String','10','Position',[70 20 60 20],...
 	'Callback','modify(''noise'')');
 
-	txt='Enter SNR value in dB: ';
+	txt=' ‰»Î SNR ÷µ£®dB£©: ';
 	uicontrol('Style','Text','String',txt,'Position',[10 50 160 20],...
 	'BackgroundColor',[0 0 0],'ForeGroundColor','y');
 else

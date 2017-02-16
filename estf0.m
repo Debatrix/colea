@@ -42,7 +42,7 @@ end
 fp = fopen(fname,'r');
 
 if fp <=0
-	disp('ERROR! File not found..')
+	disp('错误！文件未找到..')
 	return;
 end
 
@@ -70,7 +70,7 @@ meen=mean(x);
 x= x - meen; %----------remove the DC bias---
 
 
-nmF='F0 Contour Plot';
+nmF='F0 图';
 
 
 if isempty(eFig) 
@@ -96,7 +96,7 @@ nFrames=floor(n_samples/updRate)-1;
 % --- Do some error checking in the length of the region selected ---------
 %
 if nFrames<1
-  errordlg('Region selected was too small..','ERROR in pitch estimation','on');
+  errordlg('选择区域过小..','基音周期估算错误','on');
   delete(eFig);
   eFig=[];
   return;
@@ -138,7 +138,7 @@ end
 
 if m==1, avgF0=0; else, avgF0=avgF0/(m-1); end;
 
-str= sprintf('Average F0=%5.2f Hz',avgF0);
+str= sprintf('平均基频：%5.2f Hz',avgF0);
 
 set(eFig,'Name',str);
 
@@ -146,7 +146,7 @@ set(eFig,'Name',str);
 %
 if strcmp(action,'save')
 
-  [pth,f0name] = dlgopen('save',['*.pit']);
+  [pth,f0name] = dlgopen('保存',['*.pit']);
   if ((~isstr(f0name)) | ~min(size(f0name))), return; end	
   fname1=[pth,f0name];
   fpout=fopen(fname1,'w');
@@ -176,7 +176,7 @@ else
 end
 
 ylabel('Hz');
-xlabel('Time (msecs)');
+xlabel('时间 (msecs)');
 
 
 
@@ -194,11 +194,11 @@ high = 22;
 inc  = high + 8;
 
 uicontrol('Style', 'PushB', 'Callback', 'closem(''efig'')', ...
-          'HorizontalAlign','center', 'String', 'Close', ...
+          'HorizontalAlign','center', 'String', '关闭', ...
           'Position', [left top-high wide high]);  
 
 if crM==1 
  if strcmp(type,'cepstrum'), str='estf0(''cepstrum'',''save'')';
  else str='estf0(''autoc'',''save'')'; end;
- uimenu('Label','Save pitch values','Callback',str);
+ uimenu('Label','保存基频值','Callback',str);
 end

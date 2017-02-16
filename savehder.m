@@ -8,7 +8,7 @@ function savehder(fpin,fpout,ext,nsamples)
 
 st=fseek(fpin,0,-1);
 if st<0
- error('Error in saving header');
+ error('保存标题时出错');
 end
 
 if strcmp(ext,'ils') 	 %---- ILS --- 

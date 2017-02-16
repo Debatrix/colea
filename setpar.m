@@ -1,5 +1,7 @@
 function setpar(type)
 
+  % LPC绐椾綋鍑芥暟
+  % 璁剧疆鍙傛暟
 % Copyright (c) 1995 Philipos C. Loizou
 %
 

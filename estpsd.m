@@ -33,7 +33,7 @@ end
 fp = fopen(fname,'r');
 
 if fp <=0
-	disp('ERROR! File not found..')
+	disp('´íÎó£¡ÎÄ¼þÎ´ÕÒµ½..')
 	return;
 end
 

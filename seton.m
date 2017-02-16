@@ -1,5 +1,7 @@
 function seton(type)
 
+% 控制窗体函数
+% 允许重复显示
 % Copyright (c) 1995 Philipos C. Loizou
 %
 
