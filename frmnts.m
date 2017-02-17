@@ -1,6 +1,6 @@
 function [F1,F2, F3]=frmnts(a,srat)
 
-% The formants are computed by solving for the roots of the LPC polynomial 
+% 通过求解LPC多项式的根来计算共振峰
 %
 
 % Copyright (c) 1998 by Philipos C. Loizou

@@ -26,7 +26,20 @@ colea_anl
     绘制光标线
 |--- design.m
 |--- distance.m
+    #功能#
+    DISTANCE - 距离计算y =距离（x，y，N，类型，选项）
+    该函数计算向量x和y之间的距离。
+    支持以下距离度量：
+    cep - 倒谱
+    wcep - 加权倒谱（通过斜坡）
+    snr - 信噪比
+    IS - Itakura-Saito Itakura距离 DTW？
+    LR - 似然比
+    LLR - 对数似然比
+    WLR - 加权似然比
+    KLATT - 加权斜率距离度量（Klatt's）
 |--- distool.m
+    创建比较工具窗口
 |--- dlgopen.m
     文件打开/保存窗口
     function [p,f] = dlgopen(cmd,ext)
@@ -37,12 +50,18 @@ colea_anl
 |--- drawctls.m
     绘制/更新控制窗体
 |--- editool.m
+    编辑工具
+    剪切 粘贴 复制  插入
 |--- endpoint.m
 |--- engy.m
     #功能#
     能量强度曲线绘制    
 |--- estf0.m
+    绘制基频曲线
 |--- estpsd.m
+    计算功率谱密度并显示
+    调用了内置的psd函数
+    建议修改为PWELCH
 |--- filetool.m
 |--- filtdesi.m
 |--- filtool.m
@@ -50,7 +69,11 @@ colea_anl
 |--- formants.m
 |--- formpe.m
 |--- frmnts.m
+    #功能#
+    通过求解LPC多项式的根来计算共振峰
 |--- ftrack.m
+    #功能#
+    计算共振峰并显示
 |--- getcontr.m
 |--- getf0.m
 |--- gethdr.m
@@ -66,12 +89,14 @@ colea_anl
 |--- getrec.m
     录音 但是是废物
 |--- getslide.m
+    滑动条
 |--- getvec.m
 |--- getvol.m
 |--- had.ils
 |--- helpf.m
     各种帮助
 |--- iadsil.m
+    在光标位置加入静音段窗口
 |--- ilpc.m
     #功能#
     LPC分析
@@ -85,8 +110,9 @@ colea_anl
 |--- label.m
 |--- labtext.m
 |--- labtool.m
-|--- LIST
 |--- loadfile.m
+    载入文件
+    涉及单文件载入和双文件载入
 |--- lpcset.m
 |--- manual.pdf
 |--- mapfun.m
@@ -94,10 +120,10 @@ colea_anl
     处理鼠标点击事件
 |--- mel.m
 |--- metric.m
-|--- mod1.frm
-|--- mod1.wav
 |--- modhder.m
 |--- modify.m
+    波形编辑
+    振幅调整
 |--- pitch.m
     #功能#
     使用倒谱法估计基音周期
@@ -111,9 +137,9 @@ colea_anl
     绘制/更新LPC谱窗体
     #功能# 
     LPC FFT运算的很多东西都在这个文件里
-    @待看
 |--- preemp.m
 |--- prefer.m
+    各类首选项
 |--- prnt.m
 |--- prnt2.m
     LPC窗体菜单函数
@@ -126,15 +152,14 @@ colea_anl
     在控制窗体输出光标位置
 |--- quitall.m
 |--- raw2ils.m
-|--- README.TXT
 |--- savechan.m
 |--- savefile.m
 |--- savehder.m
 |--- savelpc.m
     保存LPC数据
 |--- saveparm.m
-|--- sentence.phn
-|--- sentence.wav
+    保存共振峰数据 调用了ftrack.m
+    无用
 |--- setchan.m
 |--- setdisp.m
     主程序窗体函数 视图
@@ -166,6 +191,7 @@ colea_anl
 |--- sintool.m
 |--- smspspec.m
 |--- sndcard.cfg
+    声卡配置 无用
 |--- specsel.m
     控制窗体函数
     设置LPC/FFT

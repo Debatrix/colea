@@ -77,7 +77,7 @@ else
 	set(ftrFig,'Name',nmF);
 end
 
-%----Set the LPC order depending on sampling rate ------
+%----根据采样率设置LPC阶数 ------
 
 if sr>12000
  Ncoeffs=16;
@@ -85,7 +85,7 @@ else
  Ncoeffs=14;
 end
 
-durat=20; 		 	% -- Use a 20 msec segment
+durat=20; 		 	% -- 每帧时长 20 msec
 fRate=floor(durat*sr/1000);  
 nFrames=floor(n_samples/fRate);
 window=hamming(fRate);
