@@ -1,18 +1,18 @@
 function [a,rx] = ilpc(x,p) 
-  % #¹¦ÄÜ#
-    % LPC·ÖÎö
+  % #åŠŸèƒ½#
+    % LPCåˆ†æ
 
- E = zeros(p+1,1);	% ÄÜÁ¿ÏòÁ¿
+ E = zeros(p+1,1);	% èƒ½é‡å‘é‡
  alpha=zeros(p,p);
  
 
- R = autoc(x,p);        % ¼ÆËã×ÔÏà¹ØĞòÁĞR£¨i£©
+ R = autoc(x,p);        % è®¡ç®—è‡ªç›¸å…³åºåˆ—Rï¼ˆiï¼‰
  rx=R;
 
- E(1)=R(1);		% ĞÅºÅx(n)µÄÄÜÁ¿
+ E(1)=R(1);		% ä¿¡å·x(n)çš„èƒ½é‡
  sumaR=0;
 
-% ========= ¿ªÊ¼µİ¹é ======== 
+% ========= å¼€å§‹é€’å½’ ======== 
  for i=1:p  
 
    if i>1
@@ -22,7 +22,7 @@ function [a,rx] = ilpc(x,p)
    ki=-(R(i+1) + sumaR)/E(i);
    
 
-   if abs(ki) >= 1, fprintf('¾¯¸æ! ²»ÎÈ¶¨µÄ LPC ¹ıÂËÆ÷..\n\n'); end;
+   if abs(ki) >= 1, fprintf('è­¦å‘Š! ä¸ç¨³å®šçš„ LPC è¿‡æ»¤å™¨..\n\n'); end;
 
    alpha(i,i)=ki;
 
@@ -33,11 +33,11 @@ function [a,rx] = ilpc(x,p)
    E(i+1) = (1 - ki*ki)*E(i);
    
  end  
- % ========= ½áÊøµİ¹é =========
+ % ========= ç»“æŸé€’å½’ =========
 
 
 
-a = [1; alpha(:,p)];		  % ÏßĞÔÔ¤²âÏµÊıLPC
+a = [1; alpha(:,p)];		  % çº¿æ€§é¢„æµ‹ç³»æ•°LPC
 
 %Ep = E(p+1);           % --- residual error -- Ep = R(1) + R(2:p+1)*a 
   

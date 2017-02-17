@@ -8,7 +8,7 @@ function savehder(fpin,fpout,ext,nsamples)
 
 st=fseek(fpin,0,-1);
 if st<0
- error('±£´æ±êÌâÊ±³ö´í');
+ error('ä¿å­˜æ ‡é¢˜æ—¶å‡ºé”™');
 end
 
 if strcmp(ext,'ils') 	 %---- ILS --- 

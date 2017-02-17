@@ -69,8 +69,8 @@ if strcmp(type,'cep') | strcmp(type,'wcep') % ========== cepstrum ==========
 	seg(2:N+1)=cy; seg(lenx-N+1:lenx)=flipud(cy);
 	mag=fft(seg); 
 	subplot(2,1,2),plot(freq,real(mag(1:lenx/2)));
-	set(curFig,'Name','倒谱 ');
-	ylabel('强度 (dB)');
+	set(curFig,'Name','鍊掕氨 ');
+	ylabel('寮哄害 (dB)');
 	
       end
 
@@ -84,10 +84,10 @@ elseif strcmp(type,'snr') % ========== SNR ==============
    if DISP==1, 
 	figure(curFig);
 	subplot(2,1,1),plot(x); title(['SNR= ', sprintf('%f',dst)]);
-	ylabel('振幅');
+	ylabel('鎸箙');
 	subplot(2,1,2),plot(y);
 	set(curFig,'Name','SNR'); 
-	ylabel('振幅'); xlabel('采样');
+	ylabel('鎸箙'); xlabel('閲囨牱');
    end
 else % ============== LPC-based measures ===========================
 
@@ -102,9 +102,9 @@ else % ============== LPC-based measures ===========================
 	[h1,f]=freqz([1],ax,512,Srate);
 	[h2,f]=freqz([1],ay,512,Srate2);
 	subplot(2,1,1),plot(f,20*log10(abs(h1))); 
-	ylabel('强度 (dB)');
+	ylabel('寮哄害 (dB)');
 	subplot(2,1,2),plot(f,20*log10(abs(h2))); 
-	ylabel('强度 (dB)'); xlabel ('频率 (Hz)');
+	ylabel('寮哄害 (dB)'); xlabel ('棰戠巼 (Hz)');
 	set(curFig,'Name','LPC-based measure'); 
    end
 
@@ -244,22 +244,22 @@ else % ============== LPC-based measures ===========================
 	magn=20*log10(abs(h1));
    	subplot(3,1,1),plot(f,magn);
    	axis([0 centKlatt(nCh) min(magn)-1 max(magn)+1]);
-	ylabel('强度 (dB)');
+	ylabel('寮哄害 (dB)');
 	title(['WSM= ', sprintf('%f',dst)]);
    	subplot(3,1,2),plot(centKlatt,FilterBanks_x);
 	axis([0 centKlatt(nCh) mn-1 mx+1]);
-	ylabel('强度 (dB)');
+	ylabel('寮哄害 (dB)');
 	subplot(3,1,3)
 	plot(centKlatt,FilterBanks_y);
 	axis([0 centKlatt(nCh) mn-1 mx+1]);
 	%plot(centKlatt(1:14),sl_x(1:14),'r-');
-	ylabel('强度 (dB)');
-	xlabel('频率 (Hz)');
+	ylabel('寮哄害 (dB)');
+	xlabel('棰戠巼 (Hz)');
  	set(curFig,'Name','Klatt');
      end  
 
    else
-     fprintf('误差！距离计算中的未知选择.\n');
+     fprintf('璇樊锛佽窛绂昏绠椾腑鐨勬湭鐭ラ�夋嫨.\n');
   end
 
 

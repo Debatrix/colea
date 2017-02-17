@@ -54,7 +54,7 @@ xwi= round((x(2)-x(1))*fac);
 
 lbaUp(iaCnt)=uicontrol('Style','edit','Position',[xpos 5 xwi 20 ],...
 	'BackGroundColor','y','HorizontalAlignment',...
-	'center','String','ÎÄ±¾','Callback','labtext');
+	'center','String','æ–‡æœ¬','Callback','labtext');
 
 
 
@@ -125,7 +125,7 @@ elseif strcmp(action,'load') %-------------- Load a label file -----------
 	x(1)=endp(1)*1000/Srate;
 	x(2)=endp(2)*1000/Srate;
 	if x(2) > n_Secs*1000
-	  fprintf('¾¯¸æ! ·¢ÏÖÒ»¸ö±êÇ©³¬³ö·¶Î§.\n');
+	  fprintf('è­¦å‘Š! å‘ç°ä¸€ä¸ªæ ‡ç­¾è¶…å‡ºèŒƒå›´.\n');
 	  break;
 	end;
   	xpos = round(Xoffset+x(1)*fac);  % coordinate in pixels
@@ -241,7 +241,7 @@ elseif strcmp(action,'loadzm') %-------- Draw the labels in a zoomed display ---
     
     
  	if isempty(iaCnt)
-	  errordlg('Ã»ÓĞÌí¼ÓµÄ±êÇ©.','´íÎó','on');
+	  errordlg('æ²¡æœ‰æ·»åŠ çš„æ ‡ç­¾.','é”™è¯¯','on');
 	  return;
 	end
   	[pth,fname] = dlgopen('save','*.phn;*.txt');
@@ -265,7 +265,7 @@ elseif strcmp(action,'loadzm') %-------- Draw the labels in a zoomed display ---
  elseif strcmp(action,'savef') %-------------- save a label file -----------
 
  	if isempty(iaCnt)
-	  errordlg('Ã»ÓĞÌí¼ÓµÄ±êÇ©.','´íÎó','on');
+	  errordlg('æ²¡æœ‰æ·»åŠ çš„æ ‡ç­¾.','é”™è¯¯','on');
 	  return;
 	end
  
@@ -296,7 +296,7 @@ elseif strcmp(action,'loadzm') %-------- Draw the labels in a zoomed display ---
    end	
   else
    lbaUp=[]; lbVals=[];
-   errordlg('Ã»ÓĞ¿ÉÉ¾³ıµÄ±êÇ©','´íÎó','on');
+   errordlg('æ²¡æœ‰å¯åˆ é™¤çš„æ ‡ç­¾','é”™è¯¯','on');
    return;
   end
  
@@ -308,7 +308,7 @@ elseif strcmp(action,'loadzm') %-------- Draw the labels in a zoomed display ---
   
    jnko=get(gcf,'Userdata');
    if isempty(jnko)
-	 errordlg('Ã»ÓĞ¿ÉÉ¾³ıµÄ±êÇ©','´íÎó','on');
+	 errordlg('æ²¡æœ‰å¯åˆ é™¤çš„æ ‡ç­¾','é”™è¯¯','on');
     else
 	for i=1:length(jnko)
 		valid=0;

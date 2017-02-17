@@ -13,7 +13,7 @@ global cutvec modChange bpsa bpsa2 ftype ftype2 adsOp fedun
 zm=0;
 
 if isempty(cutvec) & strcmp(action,'paste')==1
-	errordlg('Ã»ÓĞÕ³ÌùÄÚÈİ','ERROR','on');
+	errordlg('æ²¡æœ‰ç²˜è´´å†…å®¹','ERROR','on');
 	return;
 end
 
@@ -92,7 +92,7 @@ if (S1 > S0) | (strcmp(action,'paste')==1)
 	if strcmp(action,'cut') % ========== CUT ==============
 	  NsamNew=inpNS-nSamples+1;
 	  if NsamNew<5
-		errordlg('Ã»ÓĞ±»Ñ¡ÖĞµÄÇøÓò','´íÎó','on');
+		errordlg('æ²¡æœ‰è¢«é€‰ä¸­çš„åŒºåŸŸ','é”™è¯¯','on');
 		edinp=inp;
 		zm=0;
 	  else
@@ -109,7 +109,7 @@ if (S1 > S0) | (strcmp(action,'paste')==1)
 	  modChange=1;	
 	  lastS0=S0;
 	  if TWOFILES==1, lastTOP=TOP; end;
-	 fedun=uimenu(fed,'Label','³·ÏúÉÏÒ»´Î¼ôÇĞ','Callback','editool(''paste'',''special'')',...
+	 fedun=uimenu(fed,'Label','æ’¤é”€ä¸Šä¸€æ¬¡å‰ªåˆ‡','Callback','editool(''paste'',''special'')',...
 		'Separator','on');       
 
 	elseif strcmp(action,'copy') % ========== COPY============
@@ -134,15 +134,15 @@ if (S1 > S0) | (strcmp(action,'paste')==1)
 	  modChange=1;
 	  if TWOFILES==1 & nargin==1
 	   if abs(Srate-Srate2)>200  | strcmp(ftype,ftype2)~=1
-	    warn=sprintf('ÕâÁ½¸ö²¨ĞÎÓĞ²»Í¬µÄÊı¾İÀàĞÍ (e.g., ²ÉÑùÂÊ, ±ÈÌØÂÊ).');
-	    warndlg(warn,'Õ³Ìù¾¯¸æ');
+	    warn=sprintf('è¿™ä¸¤ä¸ªæ³¢å½¢æœ‰ä¸åŒçš„æ•°æ®ç±»å‹ (e.g., é‡‡æ ·ç‡, æ¯”ç‰¹ç‡).');
+	    warndlg(warn,'ç²˜è´´è­¦å‘Š');
 	   end
 	  end	
 
       elseif strcmp(action,'addsil') % ========ADD SILENCE  ==========
 	  
 	  nmsec=str2num(get(adsOp,'String'));
-	  if nmsec<0, errordlg('±ØĞë´óÓÚ0ºÁÃë.','´íÎó','on'); 
+	  if nmsec<0, errordlg('å¿…é¡»å¤§äº0æ¯«ç§’.','é”™è¯¯','on'); 
 		edinp=inp;
 		zm=0;
 	  else
@@ -186,8 +186,8 @@ if (S1 > S0) | (strcmp(action,'paste')==1)
 	  zm=1;
 	  modChange=1;
 	  if srat ~= sfreq
-	    warn=sprintf('²åÈë²¨ĞÎµÄ²ÉÑùÂÊ²»Ò»ÖÂ.');
-	    warndlg(warn,'²åÈë¾¯¸æ');
+	    warn=sprintf('æ’å…¥æ³¢å½¢çš„é‡‡æ ·ç‡ä¸ä¸€è‡´.');
+	    warndlg(warn,'æ’å…¥è­¦å‘Š');
 	  end
   
   elseif strcmp(action,'upsample') % ========== UPSAMPLE ==========
@@ -207,8 +207,8 @@ if (S1 > S0) | (strcmp(action,'paste')==1)
 	  modChange=1;
 	  if TWOFILES==1
 	   if abs(Srate-Srate2)>200  | strcmp(ftype,ftype2)~=1
-	    warn=sprintf('ÕâÁ½¸ö²¨ĞÎÓĞ²»Í¬µÄÊı¾İÀàĞÍ (e.g., ²ÉÑùÂÊ, ±ÈÌØÂÊ).');
-	    warndlg(warn,'Õ³Ìù¾¯¸æ');
+	    warn=sprintf('è¿™ä¸¤ä¸ªæ³¢å½¢æœ‰ä¸åŒçš„æ•°æ®ç±»å‹ (e.g., é‡‡æ ·ç‡, æ¯”ç‰¹ç‡).');
+	    warndlg(warn,'ç²˜è´´è­¦å‘Š');
 	   end
 	  end	
 
@@ -243,6 +243,6 @@ end
  
 	
 else	
-	errordlg('ÎŞĞ§µÄÑ¡Ôñ£¡ÓÒ±ê¼ÇĞ¡ÓÚ×ó±ê¼Ç.','´íÎó','on');
+	errordlg('æ— æ•ˆçš„é€‰æ‹©ï¼å³æ ‡è®°å°äºå·¦æ ‡è®°.','é”™è¯¯','on');
 end
 

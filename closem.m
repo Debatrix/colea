@@ -1,6 +1,6 @@
 function closem(type)
 
-% 鍏抽棴绐楀彛
+% 关闭窗口
 % Copyright (c) 1995 Philipos C. Loizou
 %
 

@@ -1,7 +1,7 @@
 function setovr(type)
 
-  % LPC绐椾綋鍑芥暟
-  % 璁剧疆鍙傛暟
+  % LPC缁愭ぞ缍嬮崙鑺ユ殶
+  % 鐠佸墽鐤嗛崣鍌涙殶
 % Copyright (c) 1995 Philipos C. Loizou
 %
 

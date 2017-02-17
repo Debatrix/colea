@@ -40,7 +40,7 @@ end
 fp = fopen(fname,'r');
 
 if fp <=0
-	disp('´íÎó! ÎÄ¼þÎ´ÕÒµ½..')
+	disp('é”™è¯¯! æ–‡ä»¶æœªæ‰¾åˆ°..')
 	return;
 end
 
@@ -57,7 +57,7 @@ meen=mean(x);
 x= x - meen; %----------remove the DC bias---
 
 
-nmF='ÄÜÁ¿Í¼';
+nmF='èƒ½é‡å›¾';
 
 
 if (isempty(eFig))	
@@ -105,5 +105,5 @@ ylabel('dB');
 %ylabel('#zc');
 subplot(2,1,2),plot(x);
 set(gca,'Xlim',[0 n_samples-1]);
-ylabel('Õñ·ù.');
-xlabel('²ÉÑù');
+ylabel('æŒ¯å¹….');
+xlabel('é‡‡æ ·');

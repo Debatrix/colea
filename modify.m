@@ -101,7 +101,7 @@ if (S1 > S0)
 	   se=norm(x,2)^2/nSamples; %signal energy
 	   SNR=str2num(get(snrOp,'String'));
 	   if  isempty(SNR)
-		errordlg('SNRÖµ´íÎó','´íÎó','on');
+		errordlg('SNRå€¼é”™è¯¯','é”™è¯¯','on');
 		if TOP==1
 		 filename2=oldfile; fclose(fpmod2); rld=1;
 		else
@@ -112,7 +112,7 @@ if (S1 > S0)
 	   nsc=se/(10^(SNR/10));
 	   y=sqrt(nsc)*randn(nSamples,1);
 	   ne=norm(y,2)^2/nSamples;  
-	   fprintf('¹ÀËãSNR=%f\n',10*log10(se/ne));
+	   fprintf('ä¼°ç®—SNR=%f\n',10*log10(se/ne));
 	   x = x+y;   mx=max(x);
  	   inp(hdr2+S0:hdr2+S1)=x+mn*ones(S1-S0+1,1);
 
@@ -122,7 +122,7 @@ if (S1 > S0)
 	   se=norm(x,2)^2/nSamples; %signal energy
 	   SNR=str2num(get(snrOp,'String'));
 	   if  isempty(SNR)
-		errordlg('´íÎó in SNR value','´íÎó','on');
+		errordlg('é”™è¯¯ in SNR value','é”™è¯¯','on');
 		if TOP==1
 		 filename2=oldfile; fclose(fpmod2); rld=1;
 		else
@@ -158,14 +158,14 @@ if (S1 > S0)
               else
                  filename=oldfile; fclose(fpmod); singldisp=1;
               end
-              errordlg('ÔëÒôÎÄ¼şÖĞÃ»ÓĞ×ã¹»µÄÑù±¾µã.','´íÎó','on');
+              errordlg('å™ªéŸ³æ–‡ä»¶ä¸­æ²¡æœ‰è¶³å¤Ÿçš„æ ·æœ¬ç‚¹.','é”™è¯¯','on');
               return;
 
            end
 	    ny=norm(y,2)^2/nSamples;
 	    y=sqrt(nsc/ny)*y;
 	    ne=norm(y,2)^2/nSamples; 
-	    fprintf('¹ÀËãSNR=%f\n',10*log10(se/ne));
+	    fprintf('ä¼°ç®—SNR=%f\n',10*log10(se/ne));
 	    x = x+y;   mx=max(x);
  	   inp(hdr2+S0:hdr2+S1)=x+mn*ones(S1-S0+1,1);
 	end
@@ -196,7 +196,7 @@ end
 	
 else
 	disp(' ');
-	disp('´íÎó!ÎŞĞ§Ñ¡Ôñ. ÓÒ±êÇ©Ğ¡ÓÚ×ó±êÇ©.');
+	disp('é”™è¯¯!æ— æ•ˆé€‰æ‹©. å³æ ‡ç­¾å°äºå·¦æ ‡ç­¾.');
 end
 
 

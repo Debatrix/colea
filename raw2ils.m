@@ -20,8 +20,8 @@ end
 fp=fopen(filename,'r');
 
 if fp<0
- fprintf('错误! 无法找到文件: %s\n',filename);
- fprintf('...正在跳过文件\n');
+ fprintf('閿欒! 鏃犳硶鎵惧埌鏂囦欢: %s\n',filename);
+ fprintf('...姝ｅ湪璺宠繃鏂囦欢\n');
  return;
 end
 

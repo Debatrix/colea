@@ -6,7 +6,7 @@ function getrec
 fp= fopen('sndcard.cfg','r');
 
 if fp<0
-  errordlg('ÕÒ²»µ½Éù¿¨ÅäÖÃÎÄ¼þ£ºsndcard.cfg¡£Èç¹û´ËÎÄ¼þ²»´æÔÚ£¬ÔòËü½«±»´´½¨²¢¼ÇÂ¼Ó¦ÓÃ³ÌÐòµÄÃû³Æ','GETREC');
+  errordlg('æ‰¾ä¸åˆ°å£°å¡é…ç½®æ–‡ä»¶ï¼šsndcard.cfgã€‚å¦‚æžœæ­¤æ–‡ä»¶ä¸å­˜åœ¨ï¼Œåˆ™å®ƒå°†è¢«åˆ›å»ºå¹¶è®°å½•åº”ç”¨ç¨‹åºçš„åç§°','GETREC');
 else
  
  snd = fscanf(fp,'%s');
@@ -16,7 +16,7 @@ else
     exe=['!' snd];
     eval(exe); 
  else
-  str=sprintf('Î´ÕÒµ½¼ÇÂ¼¹¦ÄÜ: %s',snd);
+  str=sprintf('æœªæ‰¾åˆ°è®°å½•åŠŸèƒ½: %s',snd);
   errordlg(str,'GETREC');
  end
 

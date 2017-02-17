@@ -1,6 +1,6 @@
 function pllpc(t0)
 
-% »æÖÆ/¸üĞÂLPCÆ×´°Ìå
+% ç»˜åˆ¶/æ›´æ–°LPCè°±çª—ä½“
 % Copyright (c) 1995 by Philipos C. Loizou
 %
 
@@ -21,7 +21,7 @@ global oha ore opy opn ope
 
 fftSize=512;
 
-clr='ymcrgbw';  % ÑÕÉ«¶¨Òådefine all  colors 'y'=yellow, 'm'=magenta ,etc
+clr='ymcrgbw';  % é¢œè‰²å®šä¹‰define all  colors 'y'=yellow, 'm'=magenta ,etc
 chr='ox*+';
 lns='-:-.--';
 
@@ -56,7 +56,7 @@ if isempty(plt_type), plt_type='line'; end;
 	
 	fp = fopen(fname,'r');
 	if fp<=0
-	  error('ÎŞ·¨´ò¿ªÊäÈëµÄÎÄ¼ş');
+	  error('æ— æ³•æ‰“å¼€è¾“å…¥çš„æ–‡ä»¶');
 	end
 	
 
@@ -68,18 +68,18 @@ if isempty(plt_type), plt_type='line'; end;
 	if ncount<nSamples, nSamples=ncount;  
 	end;
 	if nSamples<20, 
-	  fprintf('\n»­LPCÆ×Ê±³öÏÖ´íÎó. ´°¿Ú¹ıĞ¡..\n\n');
+	  fprintf('\nç”»LPCè°±æ—¶å‡ºç°é”™è¯¯. çª—å£è¿‡å°..\n\n');
 	  fclose(fp); return;
 	end
 	
 	fclose(fp);
    
-%----------- Ïû³ıÖ±Á÷·ÖÁ¿ ------------
+%----------- æ¶ˆé™¤ç›´æµåˆ†é‡ ------------
 meen=mean(inp);
 inp=inp-meen;
 
 
-%---- ¶ÔĞÅºÅµÈ¼¶½øĞĞ´íÎó¼ì²é ---
+%---- å¯¹ä¿¡å·ç­‰çº§è¿›è¡Œé”™è¯¯æ£€æŸ¥ ---
 %---- Do some error checking on the signal level ---
 if norm(inp,2) < 1.0e-7
   if meen < 1.0e-3
@@ -108,7 +108,7 @@ else
 
 end
 
-%---- »æÖÆ¿ØÖÆ´°Ìå ------------
+%---- ç»˜åˆ¶æ§åˆ¶çª—ä½“ ------------
 if isempty(ctlFig) 
  drawctls;
 end
@@ -116,12 +116,12 @@ end
 
 
 
-% --¼ì²éÖ¡Êı´óÓÚ¸µÀïÒ¶±ä»»²ÉÑùÊı
+% --æ£€æŸ¥å¸§æ•°å¤§äºå‚…é‡Œå¶å˜æ¢é‡‡æ ·æ•°
 
 if FFT_SET == 1 
     fftSize= pFFT;
     if nSamples>fftSize
-      errordlg('Ö¡Êı´óÓÚ¸µÀïÒ¶±ä»»²ÉÑùÊı','WARNING','on');
+      errordlg('å¸§æ•°å¤§äºå‚…é‡Œå¶å˜æ¢é‡‡æ ·æ•°','WARNING','on');
     end
 else
 
@@ -140,7 +140,7 @@ end
 fft2=fftSize/2;
 
 
-%----------------- »æÖÆLPCÆµÆ×Í¼ ----------------
+%----------------- ç»˜åˆ¶LPCé¢‘è°±å›¾ ----------------
 if (LPCSpec == 1)   
      inpLP=inp;
      if lpcParam(2)==1  % use 1-st order pre-emphasis filter
@@ -239,7 +239,7 @@ end
      set(gca,'Ycolor','w');
 
  %
- %------- find the peaks in spectrum and display their values  ---------------
+ %------- å¯»æ‰¾å…±æŒ¯å³°å¹¶æ˜¾ç¤ºæ•°å€¼ ---------------
  % 
  if LPCSpec==1
     len=length(dBMag); db2=zeros(len,1); db3=zeros(len,1);
@@ -272,11 +272,11 @@ end
       x_max=sratef/2; 
       if SET_X_AXIS==1, if F_MAX< x_max, x_max=F_MAX; end; end;
       axis([0 x_max ymin2 ymax2+3])
-      xlabel('ÆµÂÊ(Hz)');
+      xlabel('é¢‘ç‡(Hz)');
     end
 
     set(gca,'LineStyleOrder',sclr);
-    h=ylabel('Ç¿¶È (dB)');  set(h,'FontSize',9);
+    h=ylabel('å¼ºåº¦ (dB)');  set(h,'FontSize',9);
 
     set(gca,'FontSize',9); 
     
@@ -300,52 +300,52 @@ inc  = high + 8;
 %--------Set up the Print and Save Menu --------------
 
 
- prM=uimenu('Label','´òÓ¡');
-     uimenu(prM,'Label','PortraitÄ£ĞÍ','Callback','prnt2(''portr'')');
-     uimenu(prM,'Label','LandscapeÍ¼ĞÎ','Callback','prnt2(''landsc'')');
- prM2= uimenu('Label','±£´æ');
+ prM=uimenu('Label','æ‰“å°');
+     uimenu(prM,'Label','Portraitæ¨¡å‹','Callback','prnt2(''portr'')');
+     uimenu(prM,'Label','Landscapeå›¾å½¢','Callback','prnt2(''landsc'')');
+ prM2= uimenu('Label','ä¿å­˜');
        uimenu(prM2,'Label','Black/White Postscript','Callback','prnt2(''bwps'')');
        uimenu(prM2,'Label','Color Postscript','Callback','prnt2(''ceps'')');
-       uimenu(prM2,'Label','Î»Ó³Ïó','Callback','prnt2(''bmp'')');
-       uimenu(prM2,'Label','WindowsÍ¼ÔªÎÄ¼ş','Callback','prnt2(''wmf'')');
-       uimenu(prM2,'Label','¼ôÌù°å','Callback','prnt2(''clip'')');
+       uimenu(prM2,'Label','ä½æ˜ è±¡','Callback','prnt2(''bmp'')');
+       uimenu(prM2,'Label','Windowså›¾å…ƒæ–‡ä»¶','Callback','prnt2(''wmf'')');
+       uimenu(prM2,'Label','å‰ªè´´æ¿','Callback','prnt2(''clip'')');
 
-uil=uimenu('Label','±êÇ©');
-	uimenu(uil,'Label','Ìí¼ÓÎÄ±¾','Callback','itext(''add'')');
-	uimenu(uil,'Label','É¾³ıÎÄ±¾','Callback','itext(''del'')');
+uil=uimenu('Label','æ ‡ç­¾');
+	uimenu(uil,'Label','æ·»åŠ æ–‡æœ¬','Callback','itext(''add'')');
+	uimenu(uil,'Label','åˆ é™¤æ–‡æœ¬','Callback','itext(''del'')');
 
 
-optm=uimenu('Label','Ñ¡Ïî');
-    	uf=uimenu(optm,'Label','ÉèÖÃÆµÂÊ·¶Î§');
-		   uimenu(uf,'Label','Ä¬ÈÏ','Callback','setpar(''range_def'')');
+optm=uimenu('Label','é€‰é¡¹');
+    	uf=uimenu(optm,'Label','è®¾ç½®é¢‘ç‡èŒƒå›´');
+		   uimenu(uf,'Label','é»˜è®¤','Callback','setpar(''range_def'')');
 	 	   uimenu(uf,'Label','0-5 kHz','Callback','setpar(''range_5k'')');
 		   uimenu(uf,'Label','0-4 kHz','Callback','setpar(''range_4k'')');
 		   uimenu(uf,'Label','0-3.2 kHz','Callback','setpar(''range_32'')');
 
-		oplp=uimenu(optm,'Label','LPCÆ×·ÖÎö');
-	   owi=uimenu(oplp,'Label','´°¿Ú');
-		oha=uimenu(owi,'Label','ººÃ÷´°','Checked','on','Callback',...
+		oplp=uimenu(optm,'Label','LPCè°±åˆ†æ');
+	   owi=uimenu(oplp,'Label','çª—å£');
+		oha=uimenu(owi,'Label','æ±‰æ˜çª—','Checked','on','Callback',...
 			   'setovr(''LPhamming'')');
-		ore=uimenu(owi,'Label','¾ØĞÎ´°','Callback',...
+		ore=uimenu(owi,'Label','çŸ©å½¢çª—','Callback',...
 			   'setovr(''LPrect'')');
-	   opr=uimenu(oplp,'Label','Ô¤¼ÓÖØ');
-		opn=uimenu(opr,'Label','·ñ','Checked','on','Callback',...
+	   opr=uimenu(oplp,'Label','é¢„åŠ é‡');
+		opn=uimenu(opr,'Label','å¦','Checked','on','Callback',...
 			   'setovr(''LPnoPre'')');
-		opy=uimenu(opr,'Label','ÊÇ','Callback',...
+		opy=uimenu(opr,'Label','æ˜¯','Callback',...
 			   'setovr(''LPyesPre'')');
-		uimenu(oplp,'Label','ÔÚÎÄ¼şÖĞ´¢´æLPCÊı¾İ','Callback','savelpc');
+		uimenu(oplp,'Label','åœ¨æ–‡ä»¶ä¸­å‚¨å­˜LPCæ•°æ®','Callback','savelpc');
 
- 	opft=uimenu(optm,'Label','FFT·ÖÎö');
-		uimenu(opft,'Label','¾À²ìÆ×','Callback','setpar(''FFT_pick'')');
-	 	uimenu(opft,'Label','ÏßĞÔÆ×','Callback','setpar(''FFT_line'')');
-			ufs=uimenu(opft,'Label','FFT ·¶Î§');
-		   uimenu(ufs,'Label','Ä¬ÈÏ','Callback','setpar(''size_def'')');
+ 	opft=uimenu(optm,'Label','FFTåˆ†æ');
+		uimenu(opft,'Label','çº å¯Ÿè°±','Callback','setpar(''FFT_pick'')');
+	 	uimenu(opft,'Label','çº¿æ€§è°±','Callback','setpar(''FFT_line'')');
+			ufs=uimenu(opft,'Label','FFT èŒƒå›´');
+		   uimenu(ufs,'Label','é»˜è®¤','Callback','setpar(''size_def'')');
 		   uimenu(ufs,'Label','x2','Callback','setpar(''size_x2'')');
          uimenu(ufs,'Label','x4','Callback','setpar(''size_x4'')'); 
-         fowi=uimenu(opft,'Label','´°¿Ú');
-         foha=uimenu(fowi,'Label','ººÃ÷´°','Checked','on','Callback',...
+         fowi=uimenu(opft,'Label','çª—å£');
+         foha=uimenu(fowi,'Label','æ±‰æ˜çª—','Checked','on','Callback',...
 			   'setpar(''hamming'')');
-         fore=uimenu(fowi,'Label','¾ØĞÎ´°','Callback',...
+         fore=uimenu(fowi,'Label','çŸ©å½¢çª—','Callback',...
 			   'setpar(''rect'')');
 
 

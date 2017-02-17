@@ -1,6 +1,6 @@
 function drawctls
 
-%»æÖÆ/¸üĞÂ¿ØÖÆ´°Ìå
+%ç»˜åˆ¶/æ›´æ–°æ§åˆ¶çª—ä½“
 % Copyright (c) 1995 by Philipos C. Loizou
 %
 
@@ -13,7 +13,7 @@ global SpcUp
 global ovrUp
 global vchUp DurUp
 
-pos = get(0, 'screensize'); % »ñÈ¡ÆÁÄ»³ß´ç
+pos = get(0, 'screensize'); % è·å–å±å¹•å°ºå¯¸
 sWi = pos(3);
 sHe = pos(4);
 
@@ -25,7 +25,7 @@ wi_new=sWi-le-wi-10;
 
 if isempty(ctlFig)
 	ctlFig = figure('Units', 'pixels', 'Position', [le+wi 20 wi_new he],...
-	'Menubar','none','NumberTitle','off','Name','¿ØÖÆ','Color','k');	
+	'Menubar','none','NumberTitle','off','Name','æ§åˆ¶','Color','k');	
  
 end
 
@@ -41,7 +41,7 @@ inc  = high + 8;
 inct = 15;
 
 top=top-15;
-uicontrol('Style', 'Text','String','¹â±êÎ»ÖÃ:','Position', [left top wide+30 15],...
+uicontrol('Style', 'Text','String','å…‰æ ‡ä½ç½®:','Position', [left top wide+30 15],...
 	'BackgroundColor',[0 0 0],'ForegroundColor','y','HorizontalAlignment','left');
 
 tUp=uicontrol('Style', 'Text','String',' ','Position', [left+wide+30 top wide+20 15],...
@@ -53,18 +53,18 @@ uicontrol('Style', 'Text','String','Hz','Position', [left+2*wide+51 top wide 15]
 top=top-10;
 
 %
-%------------------- »æÖÆ¹²Õñ·å£¬Õñ·ù£¬ÄÜÁ¿ÎÄ±¾  ------------
+%------------------- ç»˜åˆ¶å…±æŒ¯å³°ï¼ŒæŒ¯å¹…ï¼Œèƒ½é‡æ–‡æœ¬  ------------
 %
 wide2=round((xywh(3)-50)/3);
 nleft2=left+wide2+14;
-uicontrol('Style', 'Text','String','¹²Õñ·å','Position', [left top-10 wide2+24 15],...
+uicontrol('Style', 'Text','String','å…±æŒ¯å³°','Position', [left top-10 wide2+24 15],...
 	'BackgroundColor','b','ForegroundColor','w','HorizontalAlignment','left');
 
 nleft=left+wide+20;
-uicontrol('Style', 'Text','String','Õñ·ù','Position', [nleft2+4 top-10 wide2+15 15],...
+uicontrol('Style', 'Text','String','æŒ¯å¹…','Position', [nleft2+4 top-10 wide2+15 15],...
 	'BackgroundColor','b','ForegroundColor','w','HorizontalAlignment','right');
 
-uicontrol('Style', 'Text','String','ÄÜÁ¿','Position', [nleft2+wide2+18 top-10 wide2+19 15],...
+uicontrol('Style', 'Text','String','èƒ½é‡','Position', [nleft2+wide2+18 top-10 wide2+19 15],...
 	'BackgroundColor','b','ForegroundColor','w','HorizontalAlignment','center');
 
 top=top-inc+5;
@@ -90,14 +90,14 @@ ipk3=uicontrol('Style', 'Text','String',' ','Position', [left top-10 wide2+18 15
 iapk3=uicontrol('Style', 'Text','String',' ','Position', [nleft2 top-10 wide2+15 15],...
 	'BackgroundColor',[0 0 0],'ForegroundColor','r','HorizontalAlignment','right');
 
-%-----------------------------»æÖÆ°´Å¥--------------------------------
+%-----------------------------ç»˜åˆ¶æŒ‰é’®--------------------------------
 nwide=wide+20; 
 left=5;
 top=top-inc; top2=top; 
 inc=(top-4*high)/4;
 inc=inc+high;
 lpcPopUp = uicontrol('Style', 'Popup', 'Callback', 'setlpc', ...
-          'HorizontalAlign','center', 'String', ['LPC ½×Êı | 8 | 10 | 12 | 14 | 16 | 18 | 20 | 22 | 24 | 28 | 32'],...
+          'HorizontalAlign','center', 'String', ['LPC é˜¶æ•° | 8 | 10 | 12 | 14 | 16 | 18 | 20 | 22 | 24 | 28 | 32'],...
           'Position', [left top-20 wide+30 high]);
        
        z=wi_new-2*left-2*(wide+30);
@@ -112,14 +112,14 @@ DurUp = uicontrol('Style', 'Popup', 'Callback', 'setdur', ...
 
 top=top-inc;
 ctFFT = uicontrol('Style', 'Popup', 'Callback','setfft', ...
-          'HorizontalAlign','left', 'String', ['FFT ´óĞ¡ | Default | 64 | 128 | 256 | 512 | 1024'],...
+          'HorizontalAlign','left', 'String', ['FFT å¤§å° | Default | 64 | 128 | 256 | 512 | 1024'],...
           'Position', [left top-20 wide+30 high]);  
 
 
 
 top=top-inc;
 SpcUp = uicontrol('Style', 'Popup', 'Callback','specsel', ...
-          'HorizontalAlign','left', 'String', ['ÆµÆ× | LPC | FFT'],...
+          'HorizontalAlign','left', 'String', ['é¢‘è°± | LPC | FFT'],...
           'Position', [left top-20 wide+30 high]);  
 
 

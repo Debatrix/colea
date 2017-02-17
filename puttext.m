@@ -1,8 +1,8 @@
 function puttext
 
 
-% ÏìÓ¦LPC´°ÌåÊó±êµã»÷ 
-% ÔÚ¿ØÖÆ´°ÌåÊä³ö¹â±êÎ»ÖÃ
+% å“åº”LPCçª—ä½“é¼ æ ‡ç‚¹å‡» 
+% åœ¨æŽ§åˆ¶çª—ä½“è¾“å‡ºå…‰æ ‡ä½ç½®
 % Copyright (c) 1995 Philipos C. Loizou
 %
 

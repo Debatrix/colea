@@ -1,9 +1,9 @@
 function rxx = autoc(x,p)
-    % #¹¦ÄÜ#
-    % ¼ÆËã×ÔÏà¹ØĞòÁĞR£¨i£©  compute the autocorrelation sequence R(i)
+    % #åŠŸèƒ½#
+    % è®¡ç®—è‡ªç›¸å…³åºåˆ—Rï¼ˆiï¼‰  compute the autocorrelation sequence R(i)
     % function rxx = autoc(x,p)
-    % x ¼Ó´°ºóµÄÑù±¾µã 
-    % p LPC½×Êı
+    % x åŠ çª—åçš„æ ·æœ¬ç‚¹ 
+    % p LPCé˜¶æ•°
 
 x=x(:);
 

@@ -1,6 +1,6 @@
 function savelpc
 
-% ±£´æLPCÊı¾İ
+% ä¿å­˜LPCæ•°æ®
 % Copyright (c) 1996 Philipos C. Loizou
 %
 

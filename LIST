@@ -103,6 +103,9 @@ colea_anl
 |--- playf.m
 |--- pllpc.m
     绘制/更新LPC谱窗体
+    #功能# 
+    LPC FFT运算的很多东西都在这个文件里
+    @待看
 |--- preemp.m
 |--- prefer.m
 |--- prnt.m

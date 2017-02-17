@@ -1,6 +1,6 @@
 function getkb
 
-%ÊäÈëqQÍË³ö
+%è¾“å…¥qQé€€å‡º
 %global fno
 
 chra=get(gcf,'CurrentCharacter');

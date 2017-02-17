@@ -1,7 +1,7 @@
 function adtext
 
-    % 标签窗体函数
-    % 在图形上添加标签
+    % 鏍囩绐椾綋鍑芥暟
+    % 鍦ㄥ浘褰笂娣诲姞鏍囩
 
 % Copyright (c) 1995 by Philipos C. Loizou
 %

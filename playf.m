@@ -19,7 +19,7 @@ onebyte=WAV1;
 	   		if S1>S0
 	     		   n_samples=S1-S0;
 	  		 else
-	     		   errordlg('ÎÞÐ§Ñ¡Ôñ','²¥·Å´íÎó','on');
+	     		   errordlg('æ— æ•ˆé€‰æ‹©','æ’­æ”¾é”™è¯¯','on');
 	    		   return;
 	   		 end
 	   		bes=S0;
@@ -43,17 +43,17 @@ onebyte=WAV1;
 	fp = fopen(fname,'r');
 
 	if fp <=0
-	  disp('´íÎó£¡ÎÄ¼þÎ´ÕÒµ½..')
+	  disp('é”™è¯¯ï¼æ–‡ä»¶æœªæ‰¾åˆ°..')
 	  return;
 	end
 
 
 	st = fseek(fp,offSet,'bof');
-	if st<0, disp('¶ÁÈ¡Ê§°Ü'); return; end;
+	if st<0, disp('è¯»å–å¤±è´¥'); return; end;
         x=zeros(1,n_samples);
 	[x,cnt] = fread(fp,n_samples,ftp);
 	if cnt ~= n_samples,
-	  disp('¶ÁÈ¡playf.m´íÎó');
+	  disp('è¯»å–playf.mé”™è¯¯');
 	end
 	    
 	fclose(fp);
@@ -61,7 +61,7 @@ onebyte=WAV1;
 	fp = fopen(filename,'r');
 
 	if fp <=0
-	  disp('´íÎó£¡ÎÄ¼þÎ´ÕÒµ½..')
+	  disp('é”™è¯¯ï¼æ–‡ä»¶æœªæ‰¾åˆ°..')
 	  return;
 	end
 
@@ -69,7 +69,7 @@ onebyte=WAV1;
 	   if S1>S0
 	     n_samples=S1-S0;
 	   else
-	     errordlg('ÎÞÐ§Ñ¡Ôñ','²¥·Å´íÎó','on');
+	     errordlg('æ— æ•ˆé€‰æ‹©','æ’­æ”¾é”™è¯¯','on');
 	     fclose(fp);
 	     return;
 	   end

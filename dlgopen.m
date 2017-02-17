@@ -1,6 +1,6 @@
 function [p,f] = dlgopen(cmd,ext)
 
-%文件打开/保存
+%鏂囦欢鎵撳紑/淇濆瓨
 % Copyright (c) 1998 by Philipos C. Loizou
 %
 
@@ -17,5 +17,5 @@ elseif (strcmp(cmd, 'save'))
   if ((~isstr(f)) | ~min(size(f))), return; end		% Cancel
  
 else
-  error([' 未知命令 ''', cmd, '''.']);
+  error([' 鏈煡鍛戒护 ''', cmd, '''.']);
 end

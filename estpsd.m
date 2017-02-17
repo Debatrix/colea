@@ -33,7 +33,7 @@ end
 fp = fopen(fname,'r');
 
 if fp <=0
-	disp('´íÎó£¡ÎÄ¼þÎ´ÕÒµ½..')
+	disp('é”™è¯¯ï¼æ–‡ä»¶æœªæ‰¾åˆ°..')
 	return;
 end
 

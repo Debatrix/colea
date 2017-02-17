@@ -14,7 +14,7 @@ if strcmp(type,'LPF')
 	  if f >0 & 2*f < Srate
 	    fcLPF=f;
 	  else
-	    errordlg('ÎŞĞ§µÄÆµÂÊÊäÈë..','¹ıÂËÆ÷¹¤¾ß´íÎó','on');    
+	    errordlg('æ— æ•ˆçš„é¢‘ç‡è¾“å…¥..','è¿‡æ»¤å™¨å·¥å…·é”™è¯¯','on');    
 	    return;
 	  end
 	  
@@ -24,7 +24,7 @@ if strcmp(type,'LPF')
 	  if f >0 & f< 30
 	    nuLPF=f;
 	  else
-	    errordlg('ÎŞĞ§ÊıµÄ¶àÏîÊ½ÏµÊıÊäÈë..','¹ıÂËÆ÷¹¤¾ß´íÎó','on');    
+	    errordlg('æ— æ•ˆæ•°çš„å¤šé¡¹å¼ç³»æ•°è¾“å…¥..','è¿‡æ»¤å™¨å·¥å…·é”™è¯¯','on');    
 	    return;
 	  end
 	end
@@ -38,7 +38,7 @@ elseif strcmp(type,'HPF') %----------- Get HPF parameters --------------------
 	  if f >0 & 2*f < Srate
 	    fcHPF=f;
 	  else
-	    errordlg('ÎŞĞ§µÄÆµÂÊÊäÈë..','¹ıÂËÆ÷¹¤¾ß´íÎó','on');    
+	    errordlg('æ— æ•ˆçš„é¢‘ç‡è¾“å…¥..','è¿‡æ»¤å™¨å·¥å…·é”™è¯¯','on');    
 	    return;
 	  end
 	  
@@ -48,7 +48,7 @@ elseif strcmp(type,'HPF') %----------- Get HPF parameters --------------------
 	  if f >0 & f< 30
 	    nuHPF=f;
 	  else
-	    errordlg('ÎŞĞ§ÊıµÄ¶àÏîÊ½ÏµÊıÊäÈë..','¹ıÂËÆ÷¹¤¾ß´íÎó','on');    
+	    errordlg('æ— æ•ˆæ•°çš„å¤šé¡¹å¼ç³»æ•°è¾“å…¥..','è¿‡æ»¤å™¨å·¥å…·é”™è¯¯','on');    
 	    return;
 	  end
 	end
@@ -61,7 +61,7 @@ else			%----------- Get BPF parameters--------------
 	  if f >0 & 2*f < Srate
 	    fc1BPF=f;
 	  else
-	    errordlg('ÎŞĞ§µÄÆµÂÊÊäÈë..','¹ıÂËÆ÷¹¤¾ß´íÎó','on');    
+	    errordlg('æ— æ•ˆçš„é¢‘ç‡è¾“å…¥..','è¿‡æ»¤å™¨å·¥å…·é”™è¯¯','on');    
 	    return;
 	  end
 	elseif strcmp(param1,'freq2') %--high freq
@@ -70,7 +70,7 @@ else			%----------- Get BPF parameters--------------
 	  if f >0 & 2*f < Srate
 	    fc2BPF=f;
 	  else
-	    errordlg('ÎŞĞ§µÄÆµÂÊÊäÈë..','¹ıÂËÆ÷¹¤¾ß´íÎó','on');    
+	    errordlg('æ— æ•ˆçš„é¢‘ç‡è¾“å…¥..','è¿‡æ»¤å™¨å·¥å…·é”™è¯¯','on');    
 	    return;
 	  end  
 	elseif strcmp(param1,'coeff')
@@ -79,13 +79,13 @@ else			%----------- Get BPF parameters--------------
 	  if f >0 & f< 30
 	    nuBPF=f;
 	  else
-	    errordlg('ÎŞĞ§ÊıµÄ¶àÏîÊ½ÏµÊıÊäÈë..','¹ıÂËÆ÷¹¤¾ß´íÎó','on');    
+	    errordlg('æ— æ•ˆæ•°çš„å¤šé¡¹å¼ç³»æ•°è¾“å…¥..','è¿‡æ»¤å™¨å·¥å…·é”™è¯¯','on');    
 	    return;
 	  end
 	end
 	%----- Check range in pass band ---------------
  	if fc1BPF>fc2BPF
-	  errordlg('µÍ½ØÖ¹ÆµÂÊ´óÓÚ¸ß½ØÖ¹ÆµÂÊ..','¹ıÂËÆ÷¹¤¾ß´íÎó','on');
+	  errordlg('ä½æˆªæ­¢é¢‘ç‡å¤§äºé«˜æˆªæ­¢é¢‘ç‡..','è¿‡æ»¤å™¨å·¥å…·é”™è¯¯','on');
 	else
  	  figure(filtFig);
 	end
