@@ -48,7 +48,7 @@ end
 fp = fopen(fname,'r');
 
 if fp <=0
-	disp('é”™è¯¯ï¼æ–‡ä»¶æœªæ‰¾åˆ°..')
+	disp('´íÎó£¡ÎÄ¼þÎ´ÕÒµ½..')
 	return;
 end
 
@@ -64,7 +64,7 @@ meen=mean(x);
 x= x - meen; %----------remove the DC bias---
 
 
-nmF='å…±æŒ¯å³°è¿½è¸ª';
+nmF='¹²Õñ·å×·×Ù';
 
 
 if isempty(ftrFig) 
@@ -115,8 +115,8 @@ if strcmp(action,'save')  %--- save F1,F2,F3 in an ASCII file
 	  fprintf(fpout,'%6.2f %7.3f %7.3f %7.3f\n',time(i),formants(1,i),formants(2,i),...
 	 	formants(3,i));
 	end
-	msg=sprintf('å…±æŒ¯å³°çš„å€¼å°†è¢«ä¿å­˜ä¸ºASCIIæ–‡ä»¶ ''%s'' ',lower(formName));
-	errordlg(msg,'ä¿å­˜æ–‡ä»¶','on');
+	msg=sprintf('¹²Õñ·åµÄÖµ½«±»±£´æÎªASCIIÎÄ¼þ ''%s'' ',lower(formName));
+	errordlg(msg,'±£´æÎÄ¼þ','on');
 	fclose(fpout);
 
 elseif strcmp(action,'plot') %--- Plot Formant contour  -----------
@@ -130,8 +130,8 @@ hold off
 
 plot(xax,formants(1,:),'y',xax,formants(2,:),'r',xax,formants(3,:),'m');
   
-ylabel('é¢‘çŽ‡. (Hz)');
-xlabel('æ—¶é—´ (msec)');
+ylabel('ÆµÂÊ. (Hz)');
+xlabel('Ê±¼ä (msec)');
 set(gca,'Xlim',[1 Et]);
 
 %----------- Create the 'close' button'-----------------------
@@ -148,10 +148,10 @@ high = 22;
 inc  = high + 8;
 
 uicontrol('Style', 'PushB', 'Callback', 'closem(''ftr'')', ...
-          'HorizontalAlign','center', 'String', 'å…³é—­', ...
+          'HorizontalAlign','center', 'String', '¹Ø±Õ', ...
           'Position', [left top-high wide high]);  
 
-uimenu('Label','ä¿å­˜æ ¼å¼','Callback','saveparm(''formnts'')');
+uimenu('Label','±£´æ¸ñÊ½','Callback','saveparm(''formnts'')');
 clsedFrm=0;
 end
 

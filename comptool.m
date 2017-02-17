@@ -12,7 +12,7 @@ global AnCmp NCmp CURS N_comp W_comp
 
 
 if TWOFILES==0
-   errordlg('éœ€è¦ä¸¤ä¸ªæ–‡ä»¶è¿›è¡Œæ¯”è¾ƒ.','é”™è¯¯','on');
+   errordlg('ĞèÒªÁ½¸öÎÄ¼ş½øĞĞ±È½Ï.','´íÎó','on');
    return;
 end
 
@@ -53,7 +53,7 @@ BOTTOM  =20;
 	     fp = fopen(fname,'r');
 
 	     if fp <=0
-		disp('é”™è¯¯! æ–‡ä»¶æœªæ‰¾åˆ°..')
+		disp('´íÎó! ÎÄ¼şÎ´ÕÒµ½..')
 		return;
 	     end
 
@@ -65,7 +65,7 @@ BOTTOM  =20;
 	     fp2 = fopen(filename2,'r');
 
 	     if fp2 <=0
-		disp('é”™è¯¯! æ–‡ä»¶æœªæ‰¾åˆ°..')
+		disp('´íÎó! ÎÄ¼şÎ´ÕÒµ½..')
 		return;
 	     end
 	     offSet = S0*bpsa+HDRSIZE2;
@@ -81,7 +81,7 @@ BOTTOM  =20;
 	    fp = fopen(filename,'r');
 	     n_samples=En-Be;
 	     if fp <=0
-		disp('é”™è¯¯! æ–‡ä»¶æœªæ‰¾åˆ°..')
+		disp('´íÎó! ÎÄ¼şÎ´ÕÒµ½..')
 		return;
 	     end
 	     offSet = Be*bpsa+HDRSIZE;
@@ -93,7 +93,7 @@ BOTTOM  =20;
 	    fp2 = fopen(filename2,'r');
 
 	     if fp2 <=0
-		disp('é”™è¯¯! æ–‡ä»¶æœªæ‰¾åˆ°..')
+		disp('´íÎó! ÎÄ¼şÎ´ÕÒµ½..')
 		return;
 	     end
 	     st = fseek(fp2,offSet,'bof');
@@ -148,10 +148,10 @@ end
 
 subplot(2,1,1),plot(distor);
 axis([1 nFrames min(distor) max(distor)]);
-xlabel('å¸§');
+xlabel('Ö¡');
 subplot(2,1,2),plot(x);
 axis([0 n_samples min(x)-50 max(x)+50]);
-xlabel('é‡‡æ ·');
+xlabel('²ÉÑù');
 %----------- Create the 'close' button'
 xywh = get(anFig, 'Position');
 
@@ -163,7 +163,7 @@ high = 22;
 inc  = high + 8;
 
 uicontrol('Style', 'PushB', 'Callback', 'closem(''an'')', ...
-          'HorizontalAlign','center', 'String', 'å…³é—­', ...
+          'HorizontalAlign','center', 'String', '¹Ø±Õ', ...
           'Position', [left top-high wide high]);   
 
 end

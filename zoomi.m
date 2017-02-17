@@ -63,7 +63,7 @@ if (S1 > S0) | strcmp(action,'out')==1
 	
 	fp = fopen(fname,'r');
 	if fp<=0
-	  disp('åœ¨ zoomi.mä¸­æ— æ³•æ‰“å¼€æ‰€é€‰æ–‡ä»¶....');
+	  disp('ÔÚ zoomi.mÖĞÎŞ·¨´ò¿ªËùÑ¡ÎÄ¼ş....');
 	  return;
 	end
 	
@@ -75,7 +75,7 @@ if (S1 > S0) | strcmp(action,'out')==1
 	[inp,cnt] = fread(fp,nSamples,ftp);
  	if cnt ~= nSamples,
 	  fclose(fp);
-	  errordlg('è¯»å–æ–‡ä»¶æ—¶å‡ºé”™...','ERROR','on');
+	  errordlg('¶ÁÈ¡ÎÄ¼şÊ±³ö´í...','ERROR','on');
 	  return;
 	end
 	fclose(fp);
@@ -230,7 +230,7 @@ if (S1 > S0) | strcmp(action,'out')==1
  
 
 else
-	errordlg('æ— æ•ˆçš„é€‰æ‹©åŒºåŸŸ. å³ä¾§æ ‡è®°çŸ­äºå·¦ä¾§æ ‡è®°','æ”¾å¤§æ—¶å‡ºé”™','on');
+	errordlg('ÎŞĞ§µÄÑ¡ÔñÇøÓò. ÓÒ²à±ê¼Ç¶ÌÓÚ×ó²à±ê¼Ç','·Å´óÊ±³ö´í','on');
 
 end
 

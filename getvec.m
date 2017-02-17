@@ -22,7 +22,7 @@ global ftype ftype2 S0 S1 En Be En2 Be2
 	
 	fp = fopen(fname,'r');
 	if fp<=0
-	  error('无法打开文件..');
+	  error('鏃犳硶鎵撳紑鏂囦欢..');
 	end
 		
 

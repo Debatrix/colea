@@ -42,7 +42,7 @@ end
 fp = fopen(fname,'r');
 
 if fp <=0
-	disp('é”™è¯¯ï¼æ–‡ä»¶æœªæ‰¾åˆ°..')
+	disp('´íÎó£¡ÎÄ¼þÎ´ÕÒµ½..')
 	return;
 end
 
@@ -70,7 +70,7 @@ meen=mean(x);
 x= x - meen; %----------remove the DC bias---
 
 
-nmF='F0 å›¾';
+nmF='F0 Í¼';
 
 
 if isempty(eFig) 
@@ -96,7 +96,7 @@ nFrames=floor(n_samples/updRate)-1;
 % --- Do some error checking in the length of the region selected ---------
 %
 if nFrames<1
-  errordlg('é€‰æ‹©åŒºåŸŸè¿‡å°..','åŸºéŸ³å‘¨æœŸä¼°ç®—é”™è¯¯','on');
+  errordlg('Ñ¡ÔñÇøÓò¹ýÐ¡..','»ùÒôÖÜÆÚ¹ÀËã´íÎó','on');
   delete(eFig);
   eFig=[];
   return;
@@ -136,9 +136,9 @@ k=k+updRate;
 end
 
 
-if m==1, avgF0=0; else, avgF0=avgF0/(m-1); end;
+if m==1, avgF0=0; else avgF0=avgF0/(m-1); end;
 
-str= sprintf('å¹³å‡åŸºé¢‘ï¼š%5.2f Hz',avgF0);
+str= sprintf('Æ½¾ù»ùÆµ£º%5.2f Hz',avgF0);
 
 set(eFig,'Name',str);
 
@@ -146,7 +146,7 @@ set(eFig,'Name',str);
 %
 if strcmp(action,'save')
 
-  [pth,f0name] = dlgopen('ä¿å­˜',['*.pit']);
+  [pth,f0name] = dlgopen('±£´æ',['*.pit']);
   if ((~isstr(f0name)) | ~min(size(f0name))), return; end	
   fname1=[pth,f0name];
   fpout=fopen(fname1,'w');
@@ -176,7 +176,7 @@ else
 end
 
 ylabel('Hz');
-xlabel('æ—¶é—´ (msecs)');
+xlabel('Ê±¼ä (msecs)');
 
 
 
@@ -194,11 +194,11 @@ high = 22;
 inc  = high + 8;
 
 uicontrol('Style', 'PushB', 'Callback', 'closem(''efig'')', ...
-          'HorizontalAlign','center', 'String', 'å…³é—­', ...
+          'HorizontalAlign','center', 'String', '¹Ø±Õ', ...
           'Position', [left top-high wide high]);  
 
 if crM==1 
  if strcmp(type,'cepstrum'), str='estf0(''cepstrum'',''save'')';
  else str='estf0(''autoc'',''save'')'; end;
- uimenu('Label','ä¿å­˜åŸºé¢‘å€¼','Callback',str);
+ uimenu('Label','±£´æ»ùÆµÖµ','Callback',str);
 end

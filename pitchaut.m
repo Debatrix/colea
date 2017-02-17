@@ -1,6 +1,6 @@
 function [f0] = pitchaut(len,sr,xin)
 
-% Pitch estimation using the autocorrelation method
+% 利用自相关法估计基音周期
 
 % Copyright (c) 1995 Philipos C. Loizou
 %
@@ -12,6 +12,7 @@ global bf0 af0
 xin=filter(bf0,af0,xin);  % LPF at 900 Hz
 
 %-----------find the clipping level, CL -----------
+%-----------找到剪辑级别l, CL -----------
 
 i13=len/3;
 maxi1=max(abs(xin(1:i13)));
@@ -22,6 +23,7 @@ maxi2=max(abs(xin(i23:len)));
 if maxi1>maxi2, CL=0.68*maxi2; else CL= 0.68*maxi1; end;
 
 %----------Center clip waveform, and compute the autocorrelation  -----------------------
+%----------中心剪辑波形，并计算自相关  -----------------------
 
 clip=zeros(len,1);
 ind1=find(xin>=CL);
@@ -37,6 +39,7 @@ m=len;
 
 
 %-------Find the max autocorrelation in the range 60 <= f <= 320 Hz ------------
+% -------在60≤f≤320 Hz找到最大自相关范围 ------------
 %
 LF=floor(sr/320); 
 HF=floor(sr/60);
@@ -49,12 +52,13 @@ f0=sr/imax;
 
 
 %------------ Check max RR against V/UV threshold ----------------------------
+% ------------检查最大RR对V / UV阈值----------------------------
 silence=0.4*engy;
 
 
 if (rmax > silence)  & (f0 > 60) & (f0 <=320)
  f0=sr/imax;
-else % -- its unvoiced segment ---------
+else % -- 无语音段 ---------
  f0=0;
 end
 

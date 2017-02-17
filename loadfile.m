@@ -28,7 +28,7 @@ if strcmp(action,'replace') % ============ Replace existing file ===============
 	filename=fname2; 
 	fp2 = fopen(filename,'r');
  	if fp2 <=0
-		disp('é”™è¯¯ï¼æ–‡ä»¶æœªæ‰¾åˆ°..')
+		disp('´íÎó£¡ÎÄ¼şÎ´ÕÒµ½..')
 		return;
  	end
 
@@ -53,8 +53,8 @@ if strcmp(action,'replace') % ============ Replace existing file ===============
 	 Srate=srat;
 
         if Srate<6000 | Srate>45000
-  	    disp('è­¦å‘Šï¼é‡‡æ ·ç‡ä¸åœ¨èŒƒå›´å†…: 6,000 < F < 45,000');
-  	    disp('...å°†è¢«è®¾ç½®ä¸ºé»˜è®¤å€¼ 10,000 Hz.');
+  	    disp('¾¯¸æ£¡²ÉÑùÂÊ²»ÔÚ·¶Î§ÄÚ: 6,000 < F < 45,000');
+  	    disp('...½«±»ÉèÖÃÎªÄ¬ÈÏÖµ 10,000 Hz.');
   	    Srate=10000;
 	end 
 
@@ -82,10 +82,10 @@ if strcmp(action,'replace') % ============ Replace existing file ===============
 	S0=0;
 	Be=S0;
 	En=S1;
-	fprintf('é‡‡æ ·ç‡: %d Hz,  é‡‡æ ·ç‚¹æ•°: %d (%4.2f secs)\n',Srate,n_samples,n_Secs);
+	fprintf('²ÉÑùÂÊ: %d Hz,  ²ÉÑùµãÊı: %d (%4.2f secs)\n',Srate,n_samples,n_Secs);
 	
 	if TWOFILES==1
-	  nm=sprintf('é¡¶: %s --- åº•: %s',lower(filename2),lower(fname));
+	  nm=sprintf('¶¥: %s --- µ×: %s',lower(filename2),lower(fname));
 	  set(fno,'Name',nm);
 	  TOP=0;
 	  doit1=0;
@@ -111,7 +111,7 @@ else  %=======================Stack the two files on two windows================
  filename2=fname2;
  fp2 = fopen(filename2,'r');
  if fp2 <=0
-	disp('é”™è¯¯ï¼æ–‡ä»¶æœªæ‰¾åˆ°..')
+	disp('´íÎó£¡ÎÄ¼şÎ´ÕÒµ½..')
 	return;
  end
 
@@ -131,8 +131,8 @@ else  %=======================Stack the two files on two windows================
  
  if Srate2<6000 | Srate2>45000
   disp(sprintf('\a')); % beep
-  disp('è­¦å‘Šï¼é‡‡æ ·ç‡ä¸åœ¨èŒƒå›´å†…: 6,000 < F < 45,000');
-  disp('...å°†è¢«è®¾ç½®ä¸ºé»˜è®¤å€¼ 10,000 Hz.');
+  disp('¾¯¸æ£¡²ÉÑùÂÊ²»ÔÚ·¶Î§ÄÚ: 6,000 < F < 45,000');
+  disp('...½«±»ÉèÖÃÎªÄ¬ÈÏÖµ 10,000 Hz.');
   Srate2=10000;
 end   
 %----------remove the DC bias----
@@ -151,8 +151,8 @@ Be2=0;
 En2=n_samples2;
 
 
-fprintf('TOP FILE:  é‡‡æ ·ç‡: %d Hz,  é‡‡æ ·ç‚¹æ•°: %d (%4.2f secs)\n',Srate2,n_samples2,n_Secs2);
-fprintf('BOTTOM FILE: é‡‡æ ·ç‡: %d Hz,  é‡‡æ ·ç‚¹æ•°: %d (%4.2f secs)\n',Srate,n_Secs*Srate,n_Secs);
+fprintf('TOP FILE:  ²ÉÑùÂÊ: %d Hz,  ²ÉÑùµãÊı: %d (%4.2f secs)\n',Srate2,n_samples2,n_Secs2);
+fprintf('BOTTOM FILE: ²ÉÑùÂÊ: %d Hz,  ²ÉÑùµãÊı: %d (%4.2f secs)\n',Srate,n_Secs*Srate,n_Secs);
 
 if TWOFILES==1
  TOP=1;
@@ -221,6 +221,6 @@ else
 end
 
 if strcmp(action,'stack')
- nm=sprintf('é¡¶: %s --- åº•: %s',lower(fname),filename);
+ nm=sprintf('¶¥: %s --- µ×: %s',lower(fname),filename);
  set(fno,'Name',nm);
 end

@@ -1,7 +1,7 @@
 function prnt2(orientation)
 
-% LPC绐椾綋鑿滃崟鍑芥暟
-% 淇濆瓨杈撳嚭鍚勭涓滆タ
+% LPC窗体菜单函数
+% 保存输出各种东西
 
 global fFig
 

@@ -1,6 +1,6 @@
 function mclick
 
-%  æ£€æµ‹é¼ æ ‡è¡Œä¸ºå¹¶è¿›è¡Œé€‚å½“æ“ä½œ
+%  ¼ì²âÊó±êĞĞÎª²¢½øĞĞÊÊµ±²Ù×÷
 %
 
 % Copyright (c) 1995 by Philipos C. Loizou
@@ -40,7 +40,7 @@ typ = get(fno,'SelectionType');   % get mouse button (normal= left,
 FigXY  = get(fno,'Position');
 
 %
-% åç§»é‡ Be ä¸ºäº†ç¼©æ”¾è€Œè¢«åŠ å…¥è´¦æˆ·ï¼Ÿ
+% Æ«ÒÆÁ¿ Be ÎªÁËËõ·Å¶ø±»¼ÓÈëÕË»§£¿
 %
 if TWOFILES==1
   if TOP==1
@@ -71,7 +71,7 @@ else
   stime = Sample*1000/Srate;
 end
 
-%---- æ£€æŸ¥å…‰æ ‡çº¿æ˜¯å¦åœ¨æ˜¾ç¤ºåŒºåŸŸå†…  -------
+%---- ¼ì²é¹â±êÏßÊÇ·ñÔÚÏÔÊ¾ÇøÓòÄÚ  -------
 
 IN_WINDOW=0;
 if TWOFILES==1 & TOP==1
@@ -98,7 +98,7 @@ if  IN_WINDOW == 1
      left=FigXY(1)+10;
 
     
-  %---------------- ç»˜åˆ¶å…‰æ ‡çº¿ -------------------
+  %---------------- »æÖÆ¹â±êÏß -------------------
    
    if SHOW_CRS==1
      if TWOFILES==0, axes(cAxes); end
@@ -126,7 +126,7 @@ if  IN_WINDOW == 1
     	 Ylim=get(gca,'YLim');
 	end
     
-    % ==== å·¦é”® ===
+    % ==== ×ó¼ü ===
      if (strcmp(typ,'normal')==1) 
 	if TWOFILES==1
 	  if TOP==1
@@ -137,9 +137,9 @@ if  IN_WINDOW == 1
 	    S1=posi(2,2); posi(2,1)=Sample;
 	  end
 	end
-	crsrline(np,Ylim,'left');  % è°ƒç”¨crsrlineç»˜åˆ¶å…‰æ ‡çº¿
+	crsrline(np,Ylim,'left');  % µ÷ÓÃcrsrline»æÖÆ¹â±êÏß
 
-    %===== å³é”®======
+    %===== ÓÒ¼ü======
      elseif (strcmp(typ,'alt')==1) 
 	if TWOFILES==1
 	  if TOP==1
@@ -155,9 +155,9 @@ if  IN_WINDOW == 1
      end   
 
   end
-  %------------------ç»“æŸå…‰æ ‡çº¿ç»˜åˆ¶------------ 
+  %------------------½áÊø¹â±êÏß»æÖÆ------------ 
  
-%-----------ç»˜åˆ¶æ ·æœ¬ç‚¹æ•°ä¸é¢‘ç‡ -----
+%-----------»æÖÆÑù±¾µãÊıÓëÆµÂÊ -----
 set(smp,'String',tStr,'ForegroundColor','w','BackgroundColor',[0 0 0]);
 
      if (TIME==0)

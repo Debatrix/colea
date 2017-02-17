@@ -72,8 +72,8 @@ filtB=zeros(numch,nOrd+1);
 	 [h,f]=freqz(b,a,512,sfreq);
 	 semilogx(f,10*log10(abs(h)));
 	 axis([90 FS -50 5]);
-	 xlabel('频率 (Hz)');
-	 ylabel('强度(dB)');
+	 xlabel('棰戠巼 (Hz)');
+	 ylabel('寮哄害(dB)');
 	 hold on
 	end
   end

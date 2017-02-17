@@ -6,7 +6,7 @@ function [out] = swapbyte(infile,hdrs)
 %
 
 fp=fopen(infile,'r');
-if fp<0, error('åœ¨ swapbyte.m ä¸­æ— æ³•æ‰“å¼€æ–‡ä»¶');
+if fp<0, error('ÔÚ swapbyte.m ÖÐÎÞ·¨´ò¿ªÎÄ¼þ');
 end
 
 fseek(fp,hdrs,'bof'); % ..... skip hdrs bytes in header 

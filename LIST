@@ -39,6 +39,8 @@ colea_anl
 |--- editool.m
 |--- endpoint.m
 |--- engy.m
+    #功能#
+    能量强度曲线绘制    
 |--- estf0.m
 |--- estpsd.m
 |--- filetool.m
@@ -97,9 +99,13 @@ colea_anl
 |--- modhder.m
 |--- modify.m
 |--- pitch.m
+    #功能#
+    使用倒谱法估计基音周期
 |--- pitch2.m
 |--- pitch3.m
 |--- pitchaut.m
+    #功能#
+    利用自相关法估计基音周期
 |--- playf.m
 |--- pllpc.m
     绘制/更新LPC谱窗体
@@ -131,6 +137,8 @@ colea_anl
 |--- sentence.wav
 |--- setchan.m
 |--- setdisp.m
+    主程序窗体函数 视图
+    时间图与频谱图设置
 |--- setdur.m
     控制窗体函数
     设置时间长度/采样点数量
@@ -162,10 +170,14 @@ colea_anl
     控制窗体函数
     设置LPC/FFT
 |--- spectrg.m
+    #功能#
+    频谱分析
 |--- swapbyte.m
 |--- volopt.m
 |--- voltool.m
 |--- zoomi.m
+    主程序窗体
+    波形图缩放与频谱图绘制缩放
 
 [global]
 bpsa 采样位数

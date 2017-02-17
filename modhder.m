@@ -9,7 +9,7 @@ function modhder(fpin,fpout,ext,nsamples,sfreq)
 
 st=fseek(fpin,0,-1);
 if st<0
- error('æ–‡ä»¶å¤´ä¿å­˜é”™è¯¯');
+ error('ÎÄ¼þÍ·±£´æ´íÎó');
 end
 
 if strcmp(ext,'ils') 	 %---- ILS --- 
@@ -67,7 +67,7 @@ elseif strcmp(ext,'wav') % -- WAV files
 	fwrite(fpout,nsam,'int32');
 	
 else
-	fprintf('é”™è¯¯!\æœªçŸ¥æ‰©å±•å: %s\n åœ¨æ–‡ä»¶modhder.m',ext);
+	fprintf('´íÎó!\Î´ÖªÀ©Õ¹Ãû: %s\n ÔÚÎÄ¼þmodhder.m',ext);
 end  
 
 fclose(fpin);

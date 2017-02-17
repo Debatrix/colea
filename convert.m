@@ -13,7 +13,7 @@ xpos=(pos(3)-wi)/2;
 
 	cnvFig = figure('Units', 'pixels', 'Position', [xpos ypos wi he],...
 	'Menubar','none','NumberTitle','off','Name',...
-	'æ–‡ä»¶è½¬æ¢å·¥å…·');
+	'ÎÄ¼ş×ª»»¹¤¾ß');
 
 
 if isempty(HDRSIZE)
@@ -28,19 +28,19 @@ inc=30;
 lft=dp;
 wit=65;
 
-quest='æ˜¯å¦è¦å°†æ–‡ä»¶è½¬æ¢ä¸º .ILS æ ¼å¼ ?';
+quest='ÊÇ·ñÒª½«ÎÄ¼ş×ª»»Îª .ILS ¸ñÊ½ ?';
 
 uicontrol('Style','Text','String',quest,'Position',[10 top wi-10 27],'BackgroundColor',...
 	 [0 0 0],'ForeGroundColor','y');
 
 top=top-inc;
-uicontrol('Style','Text','String','æ–‡ä»¶å¤´å¤§å° (bytes)','Position',[12 top 75 27],'BackgroundColor',...
+uicontrol('Style','Text','String','ÎÄ¼şÍ·´óĞ¡ (bytes)','Position',[12 top 75 27],'BackgroundColor',...
 	 [0 0 0],'ForeGroundColor','r');
 
 hdrHnd=uicontrol('Style','edit','String',int2str(HDRSIZE),'Position',[12+75 top 50 20],...
 	'Callback','convtool(''header'')','BackgroundColor',[1 1 1]);
 
-uicontrol('Style','Text','String','é‡‡æ ·ç‡ (Hz)','Position',[20+12+2*wit top wit 27],'BackgroundColor',...
+uicontrol('Style','Text','String','²ÉÑùÂÊ (Hz)','Position',[20+12+2*wit top wit 27],'BackgroundColor',...
 	 [0 0 0],'ForeGroundColor','r');
 
 sfHnd=uicontrol('Style','edit','String',int2str(Srate),'Position',[lft+12+3*wit top 50 20],...
@@ -51,12 +51,12 @@ sfHnd=uicontrol('Style','edit','String',int2str(Srate),'Position',[lft+12+3*wit 
 wit2=wit+15;
 lft=round(0.5*(wi-2*wit2-10));
 top=top-inc-20;
-uicontrol('Style','pushb','String','æ˜¯','Position',[lft top wit+15 20],...
+uicontrol('Style','pushb','String','ÊÇ','Position',[lft top wit+15 20],...
 	'Callback','convtool(''yes'')');
 
 % ----- start now a new column of buttons
 
 lft=lft+wit2+10;
 
-uicontrol('Style','pushb','String','å¦','Position',[lft top wit+15 20],...
+uicontrol('Style','pushb','String','·ñ','Position',[lft top wit+15 20],...
 	'Callback','convtool(''no'')');

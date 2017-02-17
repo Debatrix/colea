@@ -1,7 +1,7 @@
 function setdur
 
-% æŽ§åˆ¶çª—ä½“å‡½æ•°
-% è®¾ç½®æ—¶é—´é•¿åº¦/é‡‡æ ·ç‚¹æ•°é‡
+% ¿ØÖÆ´°Ìåº¯Êý
+% ÉèÖÃÊ±¼ä³¤¶È/²ÉÑùµãÊýÁ¿
 % Copyright (c) 1995 Philipos C. Loizou
 %
 

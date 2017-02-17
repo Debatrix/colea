@@ -1,6 +1,6 @@
 function itext(action)
 
-% æ·»åŠ æˆ–åˆ é™¤æ–‡æœ¬
+% Ìí¼Ó»òÉ¾³ýÎÄ±¾
 % Copyright (c) 1995 by Philipos C. Loizou
 %
 
@@ -11,9 +11,9 @@ if strcmp(action,'add')==1
 if isempty(tf)
   tf=figure('Units','Pixels','Position',[300 300 200 90],'MenuBar','None','Name',...
 	'Text Window','NumberTitle','Off');
-	txtc=uicontrol('Style','edit','String','æ–‡æœ¬','Position',[20 40 160 20],...
+	txtc=uicontrol('Style','edit','String','ÎÄ±¾','Position',[20 40 160 20],...
 	'Callback','adtext');
-	uicontrol('Style','Push','String','å…³é—­','Position',[80 10 50 20],...
+	uicontrol('Style','Push','String','¹Ø±Õ','Position',[80 10 50 20],...
 	'Callback','closem(''tf'')');
 else
  figure(tf); 
@@ -28,7 +28,7 @@ i = find(h1 == ht);
   if  i == 1
     delete(ht);
   else
-    disp('é”™è¯¯! æ²¡æœ‰å¾…åˆ é™¤çš„æ–‡æœ¬.');
+    disp('´íÎó! Ã»ÓÐ´ýÉ¾³ýµÄÎÄ±¾.');
   end
 
 end

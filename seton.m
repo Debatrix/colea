@@ -1,7 +1,7 @@
 function seton(type)
 
-% 鎺у埗绐椾綋鍑芥暟
-% 鍏佽閲嶅鏄剧ず
+% 控制窗体函数
+% 允许重复显示
 % Copyright (c) 1995 Philipos C. Loizou
 %
 

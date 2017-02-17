@@ -1,6 +1,6 @@
 function savelpc
 
-% 保存LPC数据
+% 淇濆瓨LPC鏁版嵁
 % Copyright (c) 1996 Philipos C. Loizou
 %
 

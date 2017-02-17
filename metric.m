@@ -5,7 +5,7 @@ hdr='     iy    ih   ey    eh    er    ae    uh    ah    au    ou    ay    oo   
 
 fp = fopen('fb1.dat','r');
 if (fp<=0)
-	error('æ— æ³•è¯»å–è¾“å…¥æ–‡ä»¶');
+	error('ÎÞ·¨¶ÁÈ¡ÊäÈëÎÄ¼þ');
 end
 
 nRows=13;
@@ -16,7 +16,7 @@ for i=1:nRows
 	if cn==12
 		A(i,:)=y';
 	else
-	 error('æ–‡ä»¶è¯»å–é”™è¯¯');
+	 error('ÎÄ¼þ¶ÁÈ¡´íÎó');
 	end
 end
 
@@ -59,7 +59,7 @@ end
 
 
 %----Use the first 3 channels --------------
-fprintf('\n-------------ä»…ä½¿ç”¨å¼€å§‹çš„3ä¸ªå£°é“ ----------\n\n');
+fprintf('\n-------------½öÊ¹ÓÃ¿ªÊ¼µÄ3¸öÉùµÀ ----------\n\n');
 fprintf('%s\n',hdr);
 k=1;
 for i=1:nRows
@@ -110,7 +110,7 @@ end
 
 return
 %---Use the last 3 channels ----------------------------
-fprintf('\n-------------ä»…ä½¿ç”¨å¼€å§‹çš„3ä¸ªå£°é“----------\n\n');
+fprintf('\n-------------½öÊ¹ÓÃ¿ªÊ¼µÄ3¸öÉùµÀ----------\n\n');
 fprintf('%s\n',hdr);
 k=1;
 for i=1:nRows

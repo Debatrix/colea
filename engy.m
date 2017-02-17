@@ -40,7 +40,7 @@ end
 fp = fopen(fname,'r');
 
 if fp <=0
-	disp('é”™è¯¯! æ–‡ä»¶æœªæ‰¾åˆ°..')
+	disp('´íÎó! ÎÄ¼þÎ´ÕÒµ½..')
 	return;
 end
 
@@ -57,9 +57,9 @@ meen=mean(x);
 x= x - meen; %----------remove the DC bias---
 
 
-nmF='èƒ½é‡å›¾';
+nmF='ÄÜÁ¿Í¼';
 
-
+%´´½¨/¸ü¸ÄÄÜÁ¿ÇúÏßÍ¼´°Ìå
 if (isempty(eFig))	
 	eFig =  figure('Units', 'Pixels', 'Position', [LEFT BOTTOM WIDTH HEIGHT],...
 	'Pointer','crosshair',...
@@ -71,10 +71,10 @@ else
 end
 
 
+%·ÖÖ¡
+fRate=round(Srate/rate);  %--- Ã¿Ò»Ö¡µÄ²ÉÑùµãÊý
 
-fRate=round(Srate/rate);  %--- Number of  samples in each frame
-
-nFrames=floor(n_samples/fRate);
+nFrames=floor(n_samples/fRate);%Ö¡Êý
 	
 
 zcnt=zeros(1,nFrames);
@@ -86,7 +86,7 @@ for t=1:nFrames
 		zc=0;
 		x2=zeros(fRate,1);
 	        x2(1:fRate-1)=yin(2:fRate);
-	        zc=length(find((yin>0 & x2<0) | (yin<0 & x2>0))); %-- Zero Crossings	      
+	        zc=length(find((yin>0 & x2<0) | (yin<0 & x2>0))); %-- ¹ýÁãÂÊ	      
 	        zcnt(t)=zc;
 		%f0=pitch(yin);
 		%pit(t)=f0;
@@ -105,5 +105,5 @@ ylabel('dB');
 %ylabel('#zc');
 subplot(2,1,2),plot(x);
 set(gca,'Xlim',[0 n_samples-1]);
-ylabel('æŒ¯å¹….');
-xlabel('é‡‡æ ·');
+ylabel('Õñ·ù.');
+xlabel('²ÉÑù');

@@ -1,14 +1,14 @@
 function colea(infile,Srate1)
 
-% COLEAä¸»ç¨‹åº
-% ç¨‹åºå…¥å£ 
-% ç»˜åˆ¶ç¨‹åºä¸»çª—ä½“
-% å…è®¸å‘½ä»¤è¡Œæ‰“å¼€
+% COLEAÖ÷³ÌĞò
+% ³ÌĞòÈë¿Ú 
+% »æÖÆ³ÌĞòÖ÷´°Ìå
+% ÔÊĞíÃüÁîĞĞ´ò¿ª
 
 
 
 
-colordef none  % åœ¨MATLAB 4.xä¸­æ³¨é‡Šæ‰è¯¥è¡Œï¼ˆæ—©å°±æ²¡æœ‰4.xäº†ï¼‰
+colordef none  % ÔÚMATLAB 4.xÖĞ×¢ÊÍµô¸ÃĞĞ£¨Ôç¾ÍÃ»ÓĞ4.xÁË£©
 
 global hl hr doit
 global fed shW
@@ -30,7 +30,7 @@ global ovlpfilt SET_X_AXIS LD_LABELS
 
 
 
-%è½½å…¥è¯­éŸ³æ–‡ä»¶ï¼ˆçª—å£æˆ–å‘½ä»¤ï¼‰
+%ÔØÈëÓïÒôÎÄ¼ş£¨´°¿Ú»òÃüÁî£©
 if (nargin < 1)
  [pth,fname] = dlgopen('open','*.ils;*.wav');
  if ((~isstr(fname)) | ~min(size(fname))), return; end  
@@ -38,15 +38,15 @@ if (nargin < 1)
 else
   filename=infile;
 end
-pos = get(0, 'screensize'); % è·å–æ˜¾ç¤ºå™¨å°ºå¯¸
+pos = get(0, 'screensize'); % »ñÈ¡ÏÔÊ¾Æ÷³ß´ç
 sWi = pos(3);
 sHe = pos(4);
-%è®¾ç½®é»˜è®¤çª—å£å¤§å°
+%ÉèÖÃÄ¬ÈÏ´°¿Ú´óĞ¡
 WIDTH   =round(0.9375*sWi);
 HEIGHT  =round(0.43*sHe) ;
 LEFT    =round(0.025*sWi);
 BOTTOM  =round(sHe-HEIGHT-40);
-%è½½å…¥é»˜è®¤è®¾ç½®
+%ÔØÈëÄ¬ÈÏÉèÖÃ
 LPCSpec = 1;            % if 0 display FFT, else LPC spectrum
 TIME=1;                 % if 0 display spectrogram, else time waveform
 WAV1=0;                 % If 1, then it is a .wav file with 8 bits/sample
@@ -77,27 +77,27 @@ SET_X_AXIS=0;
 ovlpfilt=0;
 LD_LABELS=0;
 TOP=0;
-%æ–‡ä»¶æ‰“å¼€
+%ÎÄ¼ş´ò¿ª
 fp = fopen(filename,'r');
 
 if fp <=0
-	disp('é”™è¯¯ï¼æ–‡ä»¶æœªæ‰¾åˆ°..')
+	disp('´íÎó£¡ÎÄ¼şÎ´ÕÒµ½..')
 	return;
 end
 
-ftype='short'; bpsa=2;    % æ¯ä¸ªé‡‡æ ·ç‚¹çš„bytes
+ftype='short'; bpsa=2;    % Ã¿¸ö²ÉÑùµãµÄbytes
 ftype2='short'; bpsa2=1;
-%è·å–æ‰©å±•å
+%»ñÈ¡À©Õ¹Ãû
 ind1=find(filename == '.');
 if length(ind1)>1, ind=ind1(length(ind1)); else, ind=ind1; end;
 ext = lower(filename(ind+1:length(filename))); 
 
 
 
-%è·å–æ–‡ä»¶å¤´ä¿¡æ¯
+%»ñÈ¡ÎÄ¼şÍ·ĞÅÏ¢
 [HDRSIZE, xSrate, bpsa, ftype] =  gethdr(fp,ext);
 
-%è¯»å–éŸ³é¢‘æ•°æ®
+%¶ÁÈ¡ÒôÆµÊı¾İ
 if xSrate==0, return; 
 else Srate=xSrate; end;
 
@@ -106,55 +106,55 @@ if strcmp(ftype,'ascii')
 else
  x  = fread(fp,inf,ftype);
 end
-%xåº”è¯¥æ˜¯é‡‡æ ·ç‚¹ Srateæ˜¯é‡‡æ ·ç‡
+%xÓ¦¸ÃÊÇ²ÉÑùµã SrateÊÇ²ÉÑùÂÊ
 	
 
 
 fclose(fp); 
-%è®¾ç½®é»˜è®¤é‡‡æ ·ç‡
+%ÉèÖÃÄ¬ÈÏ²ÉÑùÂÊ
 if Srate<6000 | Srate>45000 & nargin<2
-h=warndlg('é‡‡æ ·ç‡ä¸åœ¨èŒƒå›´å†…: 10,000 < F < 45,000 . è¯·è®¾ç½®åˆ°  10,000 Hz.','è­¦å‘Š!');
-  disp('è­¦å‘Š! é‡‡æ ·ç‡ä¸åœ¨èŒƒå›´å†…: 6,000 < F < 45,000');
-  disp('...è®¾ç½®é»˜è®¤å€¼ä¸º 10,000 Hz.');
+h=warndlg('²ÉÑùÂÊ²»ÔÚ·¶Î§ÄÚ: 10,000 < F < 45,000 . ÇëÉèÖÃµ½  10,000 Hz.','¾¯¸æ!');
+  disp('¾¯¸æ! ²ÉÑùÂÊ²»ÔÚ·¶Î§ÄÚ: 6,000 < F < 45,000');
+  disp('...ÉèÖÃÄ¬ÈÏÖµÎª 10,000 Hz.');
   Srate=10000;
 end    
 
 
-%æ¶ˆé™¤ç›´æµåˆ†é‡
+%Ïû³ıÖ±Á÷·ÖÁ¿
 x= x - mean(x);  
 
 if (nargin==2)
  Srate  = str2num(Srate1);
  if Srate<10000 | Srate>45000
-	error('æŒ‡å®šçš„é‡‡æ ·é¢‘ç‡æ— æ•ˆ: 10,000<F<45,000');
+	error('Ö¸¶¨µÄ²ÉÑùÆµÂÊÎŞĞ§: 10,000<F<45,000');
  end
 end
 
-MAX_AM=2048; % è¿™å…è®¸12ä½åˆ†è¾¨ç‡
+MAX_AM=2048; % ÕâÔÊĞí12Î»·Ö±æÂÊ
 
 mx=max(x);
 agcsc=MAX_AM/mx;
 
 
-n_samples = length(x);%é‡‡æ ·ç‚¹æ•°
-n_Secs    = n_samples/Srate;%éŸ³é¢‘æ—¶é•¿
-Dur=10.0;   % æ—¶é—´çª—ï¼ˆæ¯«ç§’ï¼‰
+n_samples = length(x);%²ÉÑùµãÊı
+n_Secs    = n_samples/Srate;%ÒôÆµÊ±³¤
+Dur=10.0;   % Ê±¼ä´°£¨ºÁÃë£©
 S1=n_samples;
 S0=0;
 Be=S0;
 En=S1;
 OVRL=1;  % if 1 then hold off plots, else hold on plots in 'pllpc'
 
-fprintf('é‡‡æ ·ç‡: %d Hz,  é‡‡æ ·ç‚¹æ•°: %d (%4.2f ç§’)\n',Srate,n_samples,n_Secs);
-%ç»˜åˆ¶çª—å£
+fprintf('²ÉÑùÂÊ: %d Hz,  ²ÉÑùµãÊı: %d (%4.2f Ãë)\n',Srate,n_samples,n_Secs);
+%»æÖÆ´°¿Ú
 fno =  figure('Units', 'Pixels', 'Position', [LEFT BOTTOM WIDTH HEIGHT],...
 	'WindowButtonDownFcn','mclick',...
 	'Resize','on','Name',filename,'NumberTitle','Off',...
 	'Menubar','None','WindowButtonMotionFcn','showpt',...
 	'KeyPressFcn','getkb','Color','k');
 		       
-%------------ ç¡®å®šåæ ‡è½´å°ºå¯¸ ------------
-%ç»˜åˆ¶è½´
+%------------ È·¶¨×ø±êÖá³ß´ç ------------
+%»æÖÆÖá
 le=round(0.2*WIDTH);
 bo=round(0.174*HEIGHT);
 wi=round(0.773*WIDTH);
@@ -172,8 +172,8 @@ axes(cAxes);
 	xax=0:1000/Srate:(Et-1000/Srate);
 	
 	plot(xax,x,'y')
-	xlabel('æ—¶é—´ (msecs)');
-	ylabel('æŒ¯å¹…');
+	xlabel('Ê±¼ä (msecs)');
+	ylabel('Õñ·ù');
 	set(gca,'Color','k'); set(gca,'Xcolor','w'); set(gca,'YColor','w');
 	%set(gca,'Units','points','FontSize',9);
 	if min(x)<-1000 | mx >1000
@@ -185,7 +185,7 @@ axes(cAxes);
    %set(gca,'Color','k');
    set(gca,'XColor','w');
    set(gca,'YColor','w');
-xywh = get(fno, 'Position'); %è·å¾—å½“å‰é¼ æ ‡ä½ç½®
+xywh = get(fno, 'Position'); %»ñµÃµ±Ç°Êó±êÎ»ÖÃ
 axi=AXISLOC;
 
 % Buttons.
@@ -196,44 +196,44 @@ high = 22;
 high=22;
 if 9*(22+8) > xywh(4), high=17; end;
 inc  = high + 8;
-%---------- æ˜¾ç¤ºæ»‘åŠ¨æ¡ä¸æŒ‰é’®-------------
+%---------- ÏÔÊ¾»¬¶¯ÌõÓë°´Å¥-------------
 sli = uicontrol('Style','slider','min',0,'max',1000','Callback',...
 	'getslide','Position',[axi(1) axi(2)+axi(4)+2 axi(3) 12]);
-%getslide æ³¢å½¢å›¾ä¸Šæ–¹æ»‘åŠ¨æ¡
+%getslide ²¨ĞÎÍ¼ÉÏ·½»¬¶¯Ìõ
 
 
-%zoomi  æ”¾å¤§æŒ‰é’®å’Œç¼©å°æŒ‰é’®
+%zoomi  ·Å´ó°´Å¥ºÍËõĞ¡°´Å¥
 Zin = uicontrol('Style', 'PushButton', 'Callback','zoomi(''in'')', ...
-	 'HorizontalAlign','center', 'String', 'ç¼©å°',...
+	 'HorizontalAlign','center', 'String', 'ËõĞ¡',...
 	 'Position', [left top-high wide high]);
 
 top = top - inc;
 Zout = uicontrol('Style', 'PushButton', 'Callback','zoomi(''out'')', ...
-	 'HorizontalAlign','center', 'String', 'æ”¾å¤§',...
+	 'HorizontalAlign','center', 'String', '·Å´ó',...
 	 'Position', [left top-high wide high]);
 if Srate>12000
   nLPC=14;
 else
- nLPC=12; % åˆå§‹åŒ–LPCé˜¶æ•°
+ nLPC=12; % ³õÊ¼»¯LPC½×Êı
 end
 top = top - inc-20;
 uicontrol('Style','Frame','Position',[left top-high-10 wide+5 high+30],...
 	'BackgroundColor','b');
  
 uicontrol('Style','text','Position',[left+wide/3 top 40 high-3],'BackGroundColor','b',...
-	'HorizontalAlignment','left','ForeGroundColor','w','String','æ’­æ”¾');
+	'HorizontalAlignment','left','ForeGroundColor','w','String','²¥·Å');
 
 plUp = uicontrol('Style', 'PushButton', 'Callback', 'playf(''all'')', ...
-	  'HorizontalAlign','center', 'String', 'å…¨éƒ¨',...
+	  'HorizontalAlign','center', 'String', 'È«²¿',...
 	  'Position', [left top-high wide/2 high]);
 
 uicontrol('Style', 'PushButton', 'Callback', 'playf(''sel'')', ...
-	  'HorizontalAlign','center', 'String', 'æ˜¾ç¤ºå…¨éƒ¨',...
+	  'HorizontalAlign','center', 'String', 'ÏÔÊ¾È«²¿',...
 	  'Position', [left+wide/2+5 top-high wide/2 high]);
-%playf æ’­æ”¾æŒ‰é’®ä»¬
+%playf ²¥·Å°´Å¥ÃÇ
   
 %---Draw the squares in case its TWOFILES
-wwi=xywh(3); whe=xywh(4);%è·å¾—é¼ æ ‡ä½ç½®
+wwi=xywh(3); whe=xywh(4);%»ñµÃÊó±êÎ»ÖÃ
 tpc=uicontrol('Style','text','Position',[wwi-10 2*whe/3+10 10 10],'String',' ','BackGroundColor',[0 0 0]);
 boc=uicontrol('Style','text','Position',[wwi-10 whe/3-10 10 10],'String',' ','BackGroundColor',[0 0 0]);
 
@@ -246,55 +246,55 @@ frq=uicontrol('Style','text','Position',[10 10 wide+10 15],'BackGroundColor',[0 
 
 
 %
-%-------------------------MENUS---------------------------------å§æ§½è¿™ä¸ªç¿»è¯‘ä¸ä¸‹å»äº†
+%-------------------------MENUS---------------------------------ÎÔ²ÛÕâ¸ö·­Òë²»ÏÂÈ¥ÁË
 %
-ff=uimenu('Label','æ–‡ä»¶');
-   uimenu(ff,'Label','è½½å…¥','Callback','loadfile(''stack'')');
-   uimenu(ff,'Label','è½½å…¥å¹¶æ›¿ä»£','Callback','loadfile(''replace'')');
-   uimenu(ff,'Label','ä¿å­˜æ•´ä¸ªæ–‡ä»¶','Callback','savefile(''whole'')','Separator','on');
-   uimenu(ff,'Label','ä¿å­˜é€‰ä¸­çš„åŒºåŸŸ','Callback','savefile(''seg'')');
-   uimenu(ff,'Label','åœ¨å…‰æ ‡å¤„æ’å…¥æ–‡ä»¶','CallBack','editool(''insfile'')','Separator','on');
-   uimenu(ff,'Label','æ–‡ä»¶åº”ç”¨','Callback','filetool');
-   uimenu(ff,'Label','ç»˜åˆ¶å›¾å½¢','Callback','cprint(''landscape'',''printer'')','Separator','on');
-   uimenu(ff,'Label','ç»˜åˆ¶æ¨¡å‹','Callback','cprint(''portrait'',''printer'')');
-   fprf=uimenu(ff,'Label','ç»˜åˆ¶åˆ°æ–‡ä»¶ ...');
+ff=uimenu('Label','ÎÄ¼ş');
+   uimenu(ff,'Label','ÔØÈë','Callback','loadfile(''stack'')');
+   uimenu(ff,'Label','ÔØÈë²¢Ìæ´ú','Callback','loadfile(''replace'')');
+   uimenu(ff,'Label','±£´æÕû¸öÎÄ¼ş','Callback','savefile(''whole'')','Separator','on');
+   uimenu(ff,'Label','±£´æÑ¡ÖĞµÄÇøÓò','Callback','savefile(''seg'')');
+   uimenu(ff,'Label','ÔÚ¹â±ê´¦²åÈëÎÄ¼ş','CallBack','editool(''insfile'')','Separator','on');
+   uimenu(ff,'Label','ÎÄ¼şÓ¦ÓÃ','Callback','filetool');
+   uimenu(ff,'Label','»æÖÆÍ¼ĞÎ','Callback','cprint(''landscape'',''printer'')','Separator','on');
+   uimenu(ff,'Label','»æÖÆÄ£ĞÍ','Callback','cprint(''portrait'',''printer'')');
+   fprf=uimenu(ff,'Label','»æÖÆµ½ÎÄ¼ş ...');
 	uimenu(fprf,'Label','Postscript','Callback','cprint(''landscape'',''eps'')');
 	uimenu(fprf,'Label','Windows metafile','Callback','cprint(''landscape'',''meta'')');
 
 
-   uimenu(ff,'Label','é€€å‡º','CallBack','quitall','Separator','on');
+   uimenu(ff,'Label','ÍË³ö','CallBack','quitall','Separator','on');
 
-fed=uimenu('Label','ç¼–è¾‘');
-    uimenu(fed,'Label','å‰ªåˆ‡','CallBack','editool(''cut'')');
-    uimenu(fed,'Label','å¤åˆ¶','CallBack','editool(''copy'')');
-    uimenu(fed,'Label','ç²˜è´´','CallBack','editool(''paste'')');
-    uimenu(fed,'Label','é›¶æ®µ','CallBack','modify(''zero'')','Separator','on');
-    fm2=uimenu(fed,'Label','æ”¾å¤§/è¡°å‡æ®µ');        
+fed=uimenu('Label','±à¼­');
+    uimenu(fed,'Label','¼ôÇĞ','CallBack','editool(''cut'')');
+    uimenu(fed,'Label','¸´ÖÆ','CallBack','editool(''copy'')');
+    uimenu(fed,'Label','Õ³Ìù','CallBack','editool(''paste'')');
+    uimenu(fed,'Label','Áã¶Î','CallBack','modify(''zero'')','Separator','on');
+    fm2=uimenu(fed,'Label','·Å´ó/Ë¥¼õ¶Î');        
 	uimenu(fm2,'Label','X2','CallBack','modify(''multi2'')');       
 	uimenu(fm2,'Label','X0.5','CallBack','modify(''multi05'')');
-     uimenu(fed,'Label','åœ¨å…‰æ ‡å¤„æ’å…¥é™éŸ³æ®µ','CallBack','iadsil');
+     uimenu(fed,'Label','ÔÚ¹â±ê´¦²åÈë¾²Òô¶Î','CallBack','iadsil');
 
     
     
 
-fd=uimenu('Label','è§†å›¾');
-	uimenu(fd,'Label','æ—¶é—´æ³¢å½¢','Callback','setdisp(''time'')');
-       fd0= uimenu(fd,'Label','è¯­è°±å›¾');
+fd=uimenu('Label','ÊÓÍ¼');
+	uimenu(fd,'Label','Ê±¼ä²¨ĞÎ','Callback','setdisp(''time'')');
+       fd0= uimenu(fd,'Label','ÓïÆ×Í¼');
 	uimenu(fd0,'Callback','setdisp(''spec'',''clr'')',...
-	    'Label','é¢œè‰²');
+	    'Label','ÑÕÉ«');
 	uimenu(fd0,'Callback','setdisp(''spec'',''noclr'')',...
-	    'Label','ç°åº¦');
+	    'Label','»Ò¶È');
 	uimenu(fd0,'Callback','setdisp(''spec'',''4khz'')',...
 	    'Label','0-4 kHz');
 	uimenu(fd0,'Callback','setdisp(''spec'',''5khz'')',...
 	    'Label','0-5 kHz');
 	uimenu(fd0,'Callback','setdisp(''spec'',''full'')',...
-	    'Label','æ»¡æ ‡åº¦: 0-fs/2');
-	fd01=uimenu(fd0,'Label','é¦–é€‰é¡¹');
-	    preUp=uimenu(fd01,'Label','é¢„åŠ é‡','Checked','on',...
+	    'Label','Âú±ê¶È: 0-fs/2');
+	fd01=uimenu(fd0,'Label','Ê×Ñ¡Ïî');
+	    preUp=uimenu(fd01,'Label','Ô¤¼ÓÖØ','Checked','on',...
 		   'Callback','prefer(''preemp'')');
-	    fd02=uimenu(fd01,'Label','çª—é•¿');
-		defUp=uimenu(fd02,'Label','é»˜è®¤','Checked','on',...
+	    fd02=uimenu(fd01,'Label','´°³¤');
+		defUp=uimenu(fd02,'Label','Ä¬ÈÏ','Checked','on',...
 		   'Callback','prefer(''win_default'')');
 		w64Up=uimenu(fd02,'Label','64 pts','Checked','off',...
 		   'Callback','prefer(''win_64'')');
@@ -305,53 +305,53 @@ fd=uimenu('Label','è§†å›¾');
 		w512Up=uimenu(fd02,'Label','512 pts','Checked','off',...
 		   'Callback','prefer(''win_512'')');
 
-	   fd03=uimenu(fd01,'Label','æ›´æ–°å¸§å¤§å°');
-		uimenu(fd03,'Label','é»˜è®¤','Callback','prefer(''upd_default'')');
+	   fd03=uimenu(fd01,'Label','¸üĞÂÖ¡´óĞ¡');
+		uimenu(fd03,'Label','Ä¬ÈÏ','Callback','prefer(''upd_default'')');
 		uimenu(fd03,'Label','8 pts','Callback','prefer(''upd_8'')');
 		uimenu(fd03,'Label','16 pts','Callback','prefer(''upd_16'')');
 		uimenu(fd03,'Label','32 pts','Callback','prefer(''upd_32'')');
 		uimenu(fd03,'Label','64 pts','Callback','prefer(''upd_64'')');
 	
-	 fd04=uimenu(fd01,'Label','å…±æŒ¯å³°å¢å¼º');
-		uimenu(fd04,'Label','é»˜è®¤','Callback','prefer(''enh_default'')');
+	 fd04=uimenu(fd01,'Label','¹²Õñ·åÔöÇ¿');
+		uimenu(fd04,'Label','Ä¬ÈÏ','Callback','prefer(''enh_default'')');
 		uimenu(fd04,'Label','0.3','Callback','prefer(''enh_3'')');
 		uimenu(fd04,'Label','0.4','Callback','prefer(''enh_4'')');
 		uimenu(fd04,'Label','0.5','Callback','prefer(''enh_5'')');
 		uimenu(fd04,'Label','0.6','Callback','prefer(''enh_6'')');
 
 	
-	uimenu(fd,'Label','å•çª—å£','Callback','setdisp(''single'')');
+	uimenu(fd,'Label','µ¥´°¿Ú','Callback','setdisp(''single'')');
    
    
-	uimenu(fd,'Label','èƒ½é‡å›¾','Callback','engy');
-	fdf0=uimenu(fd,'Label','F0 ç»˜åˆ¶');
-	     uimenu(fdf0,'Label','è‡ªç›¸å…³åˆ†æ','Callback','estf0(''autocor'')');
-	     uimenu(fdf0,'Label','å€’è°±åˆ†æ','Callback','estf0(''cepstrum'')');
-		uimenu(fd,'Label','å…±æŒ¯å³°è½¨è¿¹','Callback','ftrack(''plot'')');
-	uimenu(fd,'Label','åŠŸç‡è°±å¯†åº¦','Callback','estpsd');
-	fd2=uimenu(fd,'Label','é¦–é€‰é¡¹');
-	    crsUp=uimenu(fd2,'Label','  æ˜¾ç¤ºå…‰æ ‡çº¿','Checked','on',...
+	uimenu(fd,'Label','ÄÜÁ¿Í¼','Callback','engy');
+	fdf0=uimenu(fd,'Label','F0 »æÖÆ');
+	     uimenu(fdf0,'Label','×ÔÏà¹Ø·ÖÎö','Callback','estf0(''autocor'')');
+	     uimenu(fdf0,'Label','µ¹Æ×·ÖÎö','Callback','estf0(''cepstrum'')');
+		uimenu(fd,'Label','¹²Õñ·å¹ì¼£','Callback','ftrack(''plot'')');
+	uimenu(fd,'Label','¹¦ÂÊÆ×ÃÜ¶È','Callback','estpsd');
+	fd2=uimenu(fd,'Label','Ê×Ñ¡Ïî');
+	    crsUp=uimenu(fd2,'Label','  ÏÔÊ¾¹â±êÏß','Checked','on',...
 		   'Callback','prefer(''crs'')');
 	    
 
 	
 		
-fv1=uimenu('Label','è®°å½•','CallBack','getrec');
-fm1=uimenu('Label','å·¥å…·');
+%fv1=uimenu('Label','¼ÇÂ¼','CallBack','getrec');
+fm1=uimenu('Label','¹¤¾ß');
     
                         
-    uimenu(fm1,'Label','æ·»åŠ é«˜æ–¯å™ªå£°..','CallBack','isnr(''gaussian'')');
-    uimenu(fm1,'Label','ä»æ–‡ä»¶æ·»åŠ å™ªå£°..','CallBack','isnr(''spec'')');
-    fm3=uimenu(fm1,'Label','è½¬æ¢ä¸º SCN å™ªå£°','Callback','modify(''scn'')'); 
-    uimenu(fm1,'Label','è¿‡æ»¤å™¨','Callback','filtool','Separator','on');
-    uimenu(fm1,'Label','æ­£å¼¦æ³¢å‘ç”Ÿå™¨','Callback','sintool');
-    uimenu(fm1,'Label','æ ‡ç­¾å·¥å…·','Callback','labtool'); 
-    uimenu(fm1,'Label','æ¯”è¾ƒå·¥å…·','Callback','distool');
-    uimenu(fm1,'Label','éŸ³é‡æ§åˆ¶','Callback','voltool');
+    uimenu(fm1,'Label','Ìí¼Ó¸ßË¹ÔëÉù..','CallBack','isnr(''gaussian'')');
+    uimenu(fm1,'Label','´ÓÎÄ¼şÌí¼ÓÔëÉù..','CallBack','isnr(''spec'')');
+    fm3=uimenu(fm1,'Label','×ª»»Îª SCN ÔëÉù','Callback','modify(''scn'')'); 
+    uimenu(fm1,'Label','¹ıÂËÆ÷','Callback','filtool','Separator','on');
+    uimenu(fm1,'Label','ÕıÏÒ²¨·¢ÉúÆ÷','Callback','sintool');
+    uimenu(fm1,'Label','±êÇ©¹¤¾ß','Callback','labtool'); 
+    uimenu(fm1,'Label','±È½Ï¹¤¾ß','Callback','distool');
+    uimenu(fm1,'Label','ÒôÁ¿¿ØÖÆ','Callback','voltool');
 
-uimenu('Label','å¸®åŠ©','Callback','helpf(''colea'')');
-%è‡³å°‘åˆ°è¿™é‡Œéƒ½æ˜¯åœ¨ç»˜åˆ¶æ§ä»¶
-%----------- åˆå§‹åŒ–å…‰æ ‡çº¿å¥æŸ„ ------------
+%uimenu('Label','°ïÖú','Callback','helpf(''colea'')');
+%ÖÁÉÙµ½ÕâÀï¶¼ÊÇÔÚ»æÖÆ¿Ø¼ş
+%----------- ³õÊ¼»¯¹â±êÏß¾ä±ú ------------
 
 np=3; Ylim=get(gca,'YLim');
 hl=line('Xdata',[np np],'Ydata',Ylim,'Linestyle','-',...

@@ -1,6 +1,6 @@
 function crsrline(np,Ylim,button)
 
-% ç»˜åˆ¶å…‰æ ‡çº¿
+% »æÖÆ¹â±êÏß
 
 % Copyright (c) 1995 Philipos C. Loizou
 %

@@ -1,5 +1,5 @@
 function [HDRSIZE, Srate1, bps, filet] =  gethdr(fp,ext)
-%è·å–éŸ³é¢‘æ–‡ä»¶å¤´ç­‰ä¿¡æ¯ è¿”å›éŸ³é¢‘æ–‡ä»¶å¤´å¤§å° éŸ³é¢‘é•¿åº¦ é‡‡æ ·ä½æ•°
+%»ñÈ¡ÒôÆµÎÄ¼şÍ·µÈĞÅÏ¢ ·µ»ØÒôÆµÎÄ¼şÍ·´óĞ¡ ÒôÆµ³¤¶È ²ÉÑùÎ»Êı
 
 bps=2; filet='short';  % bytes per samples
 
@@ -7,7 +7,7 @@ if strcmp(ext,'ils') %---- ILS ---
 	HDRSIZE=512;   % Header size in bytes
 	[xx, cnt] = fread(fp,HDRSIZE/2,'short');
 	if cnt < HDRSIZE/2
-	  fprintf('æ–‡ä»¶è¯»å–é”™è¯¯ %s (å¯èƒ½ä¸ºç©ºæ–‡ä»¶)\n',filename);
+	  fprintf('ÎÄ¼ş¶ÁÈ¡´íÎó %s (¿ÉÄÜÎª¿ÕÎÄ¼ş)\n',filename);
 	  return;
 	end
    Srate1 = xx(62); 
@@ -27,18 +27,18 @@ elseif strcmp(ext,'adc')  %-- old TIMIT format----
 				 % xx(2)= version
 				 % xx(3)= number of channels 
 	if xx(2)>10 | xx(3)>3
-	  error('è¯»å–TIMITå¤´é”™è¯¯..');
+	  error('¶ÁÈ¡TIMITÍ·´íÎó..');
 	end
 	HDRSIZE=xx(1)*2; % header size in bytes 
 	if HDRSIZE<0 | HDRSIZE>20
-	   error('è¯»å–TIMITå¤´é”™è¯¯..');
+	   error('¶ÁÈ¡TIMITÍ·´íÎó..');
 	end
 	srt=fread(fp,1,'short'); % sampling period in 1/4 microsecs
 	nsam=fread(fp,1,'int32'); % number of samples
 	if srt>0
 	  Srate1=4*10^6/srt; 
 	else
-	 error('è¯»å–TIMITå¤´é”™è¯¯..');
+	 error('¶ÁÈ¡TIMITÍ·´íÎó..');
 	end
    
  
@@ -49,7 +49,7 @@ elseif strcmp(ext,'adc')  %-- old TIMIT format----
         fseek(fp,0,'bof');
         nist=fscanf(fp,'%s',1);
         if strcmp(nist(1:4),'NIST') ==0
-          error('æ–‡ä»¶å¤´è¯»å–é”™è¯¯, ä¸æ˜¯ MS Windows WAV æˆ– TIMIT æ–‡ä»¶ ..');
+          error('ÎÄ¼şÍ·¶ÁÈ¡´íÎó, ²»ÊÇ MS Windows WAV »ò TIMIT ÎÄ¼ş ..');
           return;
         end 
         
@@ -84,7 +84,7 @@ elseif strcmp(ext,'adc')  %-- old TIMIT format----
            if strcmp('fact',setstr(xx)')==1, nsam=fread(fp,3,'int32'); end;
               
          else
-           fprintf('é”™è¯¯! ä¸æ˜¯æœ‰æ•ˆçš„wavæ–‡ä»¶. æ•°æ®ç¼ºå¤±.\n');
+           fprintf('´íÎó! ²»ÊÇÓĞĞ§µÄwavÎÄ¼ş. Êı¾İÈ±Ê§.\n');
         end
         nsam=fread(fp,1,'int32'); % Number of samples in bytes
         HDRSIZE=ftell(fp);
@@ -99,7 +99,7 @@ elseif strcmp(ext,'voc') %-------- Creative Lab's VOC files-------
 	xx=fread(fp,20,'char');
 	vf=setstr(xx');
 	if strcmp(vf(1:19),'Creative Voice File')==0
-	  disp('é”™è¯¯! ä¸æ˜¯æ­£ç¡®çš„VOCæ–‡ä»¶');
+	  disp('´íÎó! ²»ÊÇÕıÈ·µÄVOCÎÄ¼ş');
 	  return;
 	end
 	xoff=fread(fp,1,'short');
@@ -112,18 +112,18 @@ elseif strcmp(ext,'voc') %-------- Creative Lab's VOC files-------
 	  tconst=fread(fp,1,'uchar');
 	  Srate1=10^6/(256-tconst);
 	  pck=fread(fp,1,'uchar');
-	  if pck ~=0, disp('è­¦å‘Š! è¯­éŸ³æ•°æ®ä¸æ˜¯8ä½æ ·æœ¬æ ¼å¼'); end;
+	  if pck ~=0, disp('¾¯¸æ! ÓïÒôÊı¾İ²»ÊÇ8Î»Ñù±¾¸ñÊ½'); end;
 	  fread(fp,1,'uchar');
 	else
 	  Srate1=11125;
-	  disp('è­¦å‘Š! ä¸æ˜¯å£°éŸ³æ–‡ä»¶.');
+	  disp('¾¯¸æ! ²»ÊÇÉùÒôÎÄ¼ş.');
 	end
 	HDRSIZE=ftell(fp);
 	WAV=1; bps=1; filet='char';
 else
 	
 	
-   fprintf('é”™è¯¯! æœªçŸ¥æ‰©å±•å..\n');
+   fprintf('´íÎó! Î´ÖªÀ©Õ¹Ãû..\n');
     Srate1=0;   
 	 convert; % convert file format
     

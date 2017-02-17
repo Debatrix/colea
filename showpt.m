@@ -1,8 +1,8 @@
 function showpt
 
-%     主窗体响应函数 获取光标位置
-%     确定单文件模式与双文件模式
-%     在主窗体显示时间频率等
+%     ��������Ӧ���� ��ȡ���λ��
+%     ȷ�����ļ�ģʽ��˫�ļ�ģʽ
+%     ����������ʾʱ��Ƶ�ʵ�
 
 % Copyright (c) 1995 by Philipos C. Loizou
 %
@@ -18,7 +18,7 @@ global Srate2 n_Secs2 tpc boc  frq
 global upFreq upFreq2 
 
 
-xv = get(fno,'CurrentPoint');  % 获取光标位置（像素）
+xv = get(fno,'CurrentPoint');  % ��ȡ���λ�ã����أ�
 xp = xv(1);
 yp = xv(2);
 

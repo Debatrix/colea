@@ -15,10 +15,10 @@ ypos=(sHe-80)/2;
 
 if isempty(adsFig)
   adsFig=figure('Units','Pixels','Position',[xpos ypos 200 80],'MenuBar','None','Name',...
-	'æ·»åŠ é™éŸ³æ®µ','NumberTitle','Off');
+	'Ìí¼Ó¾²Òô¶Î','NumberTitle','Off');
 	adsOp=uicontrol('Style','edit','String','100','Position',[70 20 60 20],...
 	'Callback','editool(''addsil'')');
-	txt='è¾“å…¥é™éŸ³æ®µé•¿åº¦ï¼ˆæ¯«ç§’ï¼‰ï¼‰:';
+	txt='ÊäÈë¾²Òô¶Î³¤¶È£¨ºÁÃë£©£©:';
 	uicontrol('Style','Text','String',txt,'Position',[10 50 160 20],...
 	'BackgroundColor',[0 0 0],'ForeGroundColor','y');
 else

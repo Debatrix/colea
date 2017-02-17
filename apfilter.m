@@ -17,7 +17,7 @@ if strcmp(action,'view') % =============== VIEW FILTER RESPONSE ==============
 	  [b,a]=butter(nuLPF,f);
 	  [h,fr]=freqz(b,a,512,Srate);
 	  plot(fr,10*log10(abs(h)));
-	  xlabel('é¢‘çŽ‡. (Hz)'); ylabel('dB');
+	  xlabel('ÆµÂÊ. (Hz)'); ylabel('dB');
    elseif strcmp(type,'HPF')
 
 	  figure(10);
@@ -25,20 +25,20 @@ if strcmp(action,'view') % =============== VIEW FILTER RESPONSE ==============
 	  [b,a]=butter(nuHPF,f,'high');
 	  [h,fr]=freqz(b,a,512,Srate);
 	  plot(fr,10*log10(abs(h)));
-	  xlabel('é¢‘çŽ‡. (Hz)'); ylabel('dB');
+	  xlabel('ÆµÂÊ. (Hz)'); ylabel('dB');
    else
 	   figure(10);
 	   w=[2*fc1BPF/Srate 2*fc2BPF/Srate];
 	   [b,a]=butter(nuBPF,w);
 	   [h,fr]=freqz(b,a,512,Srate);
 	   plot(fr,10*log10(abs(h)));
-	   xlabel('é¢‘çŽ‡. (Hz)'); ylabel('dB');
+	   xlabel('ÆµÂÊ. (Hz)'); ylabel('dB');
    end
 
 else % ======================== APPLY FILTER============================
 
 if En < Be  % --- Check to see if the segment selected is valid -----
-  errordlg('é€‰å®šçš„æ®µæ— æ•ˆï¼šå·¦æ ‡è®°å¤§äºŽå³æ ‡è®°','è¿‡æ»¤å™¨é”™è¯¯','on');
+  errordlg('Ñ¡¶¨µÄ¶ÎÎÞÐ§£º×ó±ê¼Ç´óÓÚÓÒ±ê¼Ç','¹ýÂËÆ÷´íÎó','on');
   return;
 end
 
@@ -46,7 +46,7 @@ end
 fp = fopen(filename,'r');
 
 if fp <=0
-	disp('é”™è¯¯ï¼æ–‡ä»¶æœªæ‰¾åˆ°..')
+	disp('´íÎó£¡ÎÄ¼þÎ´ÕÒµ½..')
 	return;
 end
 
