@@ -29,3 +29,7 @@ COMMENTS
 ========
 Send any comments, suggestions or bugs to: loizou@ualr.edu
 http://giles.ualr.edu/asd/speech/
+
+*****************************************************************
+	CAN NOT READ THIS CODE!
+*****************************************************************
