@@ -86,7 +86,7 @@ if (S1 > S0)
 	   x=x-mean(x); mx=0.5*max(x);
 	   inp(hdr2+S0:hdr2+S1)=0.5*x+mn*ones(S1-S0+1,1);
 	
-	elseif strcmp(action,'scn') % ==== Signal Correlated Noise ===
+	elseif strcmp(action,'scn') % ==== –≈∫≈œ‡πÿ‘Î…˘Signal Correlated Noise ===
 	   
 	   mpy=zeros(1,nSamples);
 	   ns=rand(1,nSamples)-0.5;

@@ -343,7 +343,7 @@ fm1=uimenu('Label','工具');
     uimenu(fm1,'Label','添加高斯噪声..','CallBack','isnr(''gaussian'')');
     uimenu(fm1,'Label','从文件添加噪声..','CallBack','isnr(''spec'')');
     fm3=uimenu(fm1,'Label','转换为 SCN 噪声','Callback','modify(''scn'')'); 
-    uimenu(fm1,'Label','过滤器','Callback','filtool','Separator','on');
+    uimenu(fm1,'Label','滤波器','Callback','filtool','Separator','on');
     uimenu(fm1,'Label','正弦波发生器','Callback','sintool');
     uimenu(fm1,'Label','标签工具','Callback','labtool'); 
     uimenu(fm1,'Label','比较工具','Callback','distool');

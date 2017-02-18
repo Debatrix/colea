@@ -1,225 +1,281 @@
 colea_anl
 |--- adtext.m
-    æ ‡ç­¾çª—ä½“å‡½æ•°
-    åœ¨å›¾å½¢ä¸Šæ·»åŠ æ ‡ç­¾
+    ±êÇ©´°Ìåº¯Êý
+    ÔÚÍ¼ÐÎÉÏÌí¼Ó±êÇ©
 |--- apfilter.m
+    #¹¦ÄÜ#
+    ÂË²¨Æ÷²é¿´/Ó¦ÓÃ
 |--- autoc.m
-    #åŠŸèƒ½#
-    è®¡ç®—è‡ªç›¸å…³åºåˆ—Rï¼ˆiï¼‰  compute the autocorrelation sequence R(i)
+    #¹¦ÄÜ#
+    ¼ÆËã×ÔÏà¹ØÐòÁÐR£¨i£©  compute the autocorrelation sequence R(i)
     function rxx = autoc(x,p)
-    x åŠ çª—åŽçš„æ ·æœ¬ç‚¹ 
-    p LPCé˜¶æ•°
+    x ¼Ó´°ºóµÄÑù±¾µã 
+    p LPC½×Êý
 |--- centfreq.m
+    #Î´ÒýÓÃ#
+    »®·ÖÆµ¶ÎµÄ
 |--- closem.m
-    å…³é—­çª—å£
+    ¹Ø±Õ´°¿Ú
 |--- colea.m
-    ç¨‹åºå…¥å£ 
-    ç»˜åˆ¶ç¨‹åºä¸»çª—ä½“
-    å…è®¸å‘½ä»¤è¡Œæ‰“å¼€
+    ³ÌÐòÈë¿Ú 
+    »æÖÆ³ÌÐòÖ÷´°Ìå
+    ÔÊÐíÃüÁîÐÐ´ò¿ª
 |--- colorig.m
+    #Î´ÒýÓÃ#
 |--- comptool.m
+    ±È½Ï¹¤¾ß´°Ìå
 |--- contents.m
+    #Î´ÒýÓÃ#
 |--- convert.m
+    ÎÄ¼þ×ª»»¹¤¾ß
+    ±£´æÎªILS¸ñÊ½
 |--- convtool.m
+    ÎÄ¼þ×ª»»¹¤¾ß
+    ²ÉÑùµÈ±ä»»µÄ±£´æ
 |--- cprint.m
+    »æÍ¼
+    ±£´æÏÔÊ¾µÄÓïÍ¼
 |--- crsrline.m
-    ç»˜åˆ¶å…‰æ ‡çº¿
+    »æÖÆ¹â±êÏß
 |--- design.m
+    #Î´ÒýÓÃ
 |--- distance.m
-    #åŠŸèƒ½#
-    DISTANCE - è·ç¦»è®¡ç®—y =è·ç¦»ï¼ˆxï¼Œyï¼ŒNï¼Œç±»åž‹ï¼Œé€‰é¡¹ï¼‰
-    è¯¥å‡½æ•°è®¡ç®—å‘é‡xå’Œyä¹‹é—´çš„è·ç¦»ã€‚
-    æ”¯æŒä»¥ä¸‹è·ç¦»åº¦é‡ï¼š
-    cep - å€’è°±
-    wcep - åŠ æƒå€’è°±ï¼ˆé€šè¿‡æ–œå¡ï¼‰
-    snr - ä¿¡å™ªæ¯”
-    IS - Itakura-Saito Itakuraè·ç¦» DTWï¼Ÿ
-    LR - ä¼¼ç„¶æ¯”
-    LLR - å¯¹æ•°ä¼¼ç„¶æ¯”
-    WLR - åŠ æƒä¼¼ç„¶æ¯”
-    KLATT - åŠ æƒæ–œçŽ‡è·ç¦»åº¦é‡ï¼ˆKlatt'sï¼‰
+    #¹¦ÄÜ#
+    #ËÆºõºÜÓÐÓÃ#
+    DISTANCE - ¾àÀë¼ÆËãy =¾àÀë£¨x£¬y£¬N£¬ÀàÐÍ£¬Ñ¡Ïî£©
+    ¸Ãº¯Êý¼ÆËãÏòÁ¿xºÍyÖ®¼äµÄ¾àÀë¡£
+    Ö§³ÖÒÔÏÂ¾àÀë¶ÈÁ¿£º
+    cep - µ¹Æ×
+    wcep - ¼ÓÈ¨µ¹Æ×£¨Í¨¹ýÐ±ÆÂ£©
+    snr - ÐÅÔë±È
+    IS - Itakura-Saito Itakura¾àÀë DTW£¿
+    LR - ËÆÈ»±È
+    LLR - ¶ÔÊýËÆÈ»±È
+    WLR - ¼ÓÈ¨ËÆÈ»±È
+    KLATT - ¼ÓÈ¨Ð±ÂÊ¾àÀë¶ÈÁ¿£¨Klatt's£©
 |--- distool.m
-    åˆ›å»ºæ¯”è¾ƒå·¥å…·çª—å£
+    ´´½¨±È½Ï¹¤¾ß´°¿Ú
 |--- dlgopen.m
-    æ–‡ä»¶æ‰“å¼€/ä¿å­˜çª—å£
+    ÎÄ¼þ´ò¿ª/±£´æ´°¿Ú
     function [p,f] = dlgopen(cmd,ext)
-        cmd å‘½ä»¤ç±»åž‹ åªå…è®¸'open'å’Œâ€˜saveâ€™
-        ext è®¸å¯çš„æ–‡ä»¶ç±»åž‹
-        p æ–‡ä»¶è·¯å¾„å
-        f æ–‡ä»¶å
+        cmd ÃüÁîÀàÐÍ Ö»ÔÊÐí'open'ºÍ¡®save¡¯
+        ext Ðí¿ÉµÄÎÄ¼þÀàÐÍ
+        p ÎÄ¼þÂ·¾¶Ãû
+        f ÎÄ¼þÃû
 |--- drawctls.m
-    ç»˜åˆ¶/æ›´æ–°æŽ§åˆ¶çª—ä½“
+    »æÖÆ/¸üÐÂ¿ØÖÆ´°Ìå
 |--- editool.m
-    ç¼–è¾‘å·¥å…·
-    å‰ªåˆ‡ ç²˜è´´ å¤åˆ¶  æ’å…¥
+    ±à¼­¹¤¾ß
+    ¼ôÇÐ Õ³Ìù ¸´ÖÆ  ²åÈë
 |--- endpoint.m
+    #Î´ÒýÓÃ
 |--- engy.m
-    #åŠŸèƒ½#
-    èƒ½é‡å¼ºåº¦æ›²çº¿ç»˜åˆ¶    
+    #¹¦ÄÜ#
+    ÄÜÁ¿Ç¿¶ÈÇúÏß»æÖÆ    
 |--- estf0.m
-    ç»˜åˆ¶åŸºé¢‘æ›²çº¿
+    »æÖÆ»ùÆµÇúÏß
 |--- estpsd.m
-    è®¡ç®—åŠŸçŽ‡è°±å¯†åº¦å¹¶æ˜¾ç¤º
-    è°ƒç”¨äº†å†…ç½®çš„psdå‡½æ•°
-    å»ºè®®ä¿®æ”¹ä¸ºPWELCH
+    ¼ÆËã¹¦ÂÊÆ×ÃÜ¶È²¢ÏÔÊ¾
+    µ÷ÓÃÁËÄÚÖÃµÄpsdº¯Êý
+    ½¨ÒéÐÞ¸ÄÎªPWELCH
 |--- filetool.m
+    ÎÄ¼þ¹¤¾ß´°¿Ú
+    Ìá¹©ËÆºõÊÇºÍ²ÉÑùÏà¹ØµÄ¹¦ÄÜ
 |--- filtdesi.m
+    ÂË²¨Æ÷Éè¼Æ£¿
 |--- filtool.m
+    ÂË²¨Æ÷´°Ìå
 |--- filtpar.m
+    ÂË²¨Æ÷²ÎÊý¼ì²é
 |--- formants.m
+    #Î´ÒýÓÃ#
+    ËÆºõÊÇÓÃÀ´¼ÆËã¹²Õñ·åµÄ
 |--- formpe.m
+    #Î´ÒýÓÃ#
+    ËÆºõÊÇÓÃÀ´¼ÆËã¹²Õñ·åµÄ
 |--- frmnts.m
-    #åŠŸèƒ½#
-    é€šè¿‡æ±‚è§£LPCå¤šé¡¹å¼çš„æ ¹æ¥è®¡ç®—å…±æŒ¯å³°
+    #¹¦ÄÜ#
+    Í¨¹ýÇó½âLPC¶àÏîÊ½µÄ¸ùÀ´¼ÆËã¹²Õñ·å
 |--- ftrack.m
-    #åŠŸèƒ½#
-    è®¡ç®—å…±æŒ¯å³°å¹¶æ˜¾ç¤º
+    #¹¦ÄÜ#
+    ¼ÆËã¹²Õñ·å²¢ÏÔÊ¾
 |--- getcontr.m
+    #Î´ÒýÓÃ#
 |--- getf0.m
+    #Î´ÒýÓÃ#
 |--- gethdr.m
-    èŽ·å–éŸ³é¢‘æ–‡ä»¶å¤´ç­‰ä¿¡æ¯ è¿”å›žéŸ³é¢‘æ–‡ä»¶å¤´å¤§å° éŸ³é¢‘é•¿åº¦ é‡‡æ ·ä½æ•° 
+    »ñÈ¡ÒôÆµÎÄ¼þÍ·µÈÐÅÏ¢ ·µ»ØÒôÆµÎÄ¼þÍ·´óÐ¡ ÒôÆµ³¤¶È ²ÉÑùÎ»Êý 
     function [HDRSIZE, Srate1, bps, filet] =  gethdr(fp,ext)
-    fp æ–‡ä»¶æŒ‡é’ˆ
-    ext æ‰©å±•å
-    filet æ–‡ä»¶æ•°æ®å®žé™…ç»„ç»‡å½¢å¼ï¼Ÿæˆ‘çœ‹åˆ°charå’Œshort
+    fp ÎÄ¼þÖ¸Õë
+    ext À©Õ¹Ãû
+    filet ÎÄ¼þÊý¾ÝÊµ¼Ê×éÖ¯ÐÎÊ½£¿ÎÒ¿´µ½charºÍshort
     bps  Bits per sample?
-    HDRSIZE æ–‡ä»¶å¤´å¤§å°
+    HDRSIZE ÎÄ¼þÍ·´óÐ¡
 |--- getkb.m
-    è¾“å…¥qQé€€å‡º
+    ÊäÈëqQÍË³ö
 |--- getrec.m
-    å½•éŸ³ ä½†æ˜¯æ˜¯åºŸç‰©
+    Â¼Òô µ«ÊÇÊÇ·ÏÎï
 |--- getslide.m
-    æ»‘åŠ¨æ¡
+    »¬¶¯Ìõ
 |--- getvec.m
+    #Î´ÒýÓÃ#
 |--- getvol.m
-|--- had.ils
 |--- helpf.m
-    å„ç§å¸®åŠ©
+    ¸÷ÖÖ°ïÖú
 |--- iadsil.m
-    åœ¨å…‰æ ‡ä½ç½®åŠ å…¥é™éŸ³æ®µçª—å£
+    ÔÚ¹â±êÎ»ÖÃ¼ÓÈë¾²Òô¶Î´°¿Ú
 |--- ilpc.m
-    #åŠŸèƒ½#
-    LPCåˆ†æž
+    #¹¦ÄÜ#
+    LPC·ÖÎö
     function [a,rx] = ilpc(x,p) 
-    x åŠ çª—åŽçš„æ ·æœ¬ç‚¹ 
-    p LPCé˜¶æ•°
+    x ¼Ó´°ºóµÄÑù±¾µã 
+    p LPC½×Êý
 |--- ishandl.m
+    #Î´ÒýÓÃ#
 |--- isnr.m
+    Ìí¼Ó¸ßË¹ÔëÉù´°Ìå
 |--- itext.m
-    æ·»åŠ æˆ–åˆ é™¤æ–‡æœ¬
+    Ìí¼Ó»òÉ¾³ýÎÄ±¾
 |--- label.m
 |--- labtext.m
 |--- labtool.m
 |--- loadfile.m
-    è½½å…¥æ–‡ä»¶
-    æ¶‰åŠå•æ–‡ä»¶è½½å…¥å’ŒåŒæ–‡ä»¶è½½å…¥
+    ÔØÈëÎÄ¼þ
+    Éæ¼°µ¥ÎÄ¼þÔØÈëºÍË«ÎÄ¼þÔØÈë
 |--- lpcset.m
-|--- manual.pdf
+    #Î´ÒýÓÃ#
 |--- mapfun.m
+    #Î´ÒýÓÃ#
 |--- mclick.m
-    å¤„ç†é¼ æ ‡ç‚¹å‡»äº‹ä»¶
+    ´¦ÀíÊó±êµã»÷ÊÂ¼þ
 |--- mel.m
+    ´Ëº¯Êý·µ»ØÔÚmel¿Ì¶ÈÖÐµÈ¼ä¸ôµÄÂË²¨Æ÷µÄÏÂ£¬ÖÐºÍÉÏÆµÂÊ
+    ÊäÈë£º
+    N - ¹ýÂËÆ÷ÊýÁ¿
+    µÍ - £¨×ó±ßÔµ£©3dBµãµÄµÚÒ»¸öÂË²¨Æ÷
+    ¸ß - £¨ÓÒ±ßÔµ£©×îºóÒ»¸öÂË²¨Æ÷µÄ3dBµã
 |--- metric.m
+    #Î´ÒýÓÃ#
+    ¿´ÆðÀ´ÊÇ¸ö²âÊÔ½Å±¾
 |--- modhder.m
+    #¹¦ÄÜ#
+    ÉèÖÃÒôÆµÎÄ¼þÍ·
 |--- modify.m
-    æ³¢å½¢ç¼–è¾‘
-    æŒ¯å¹…è°ƒæ•´
+    ²¨ÐÎ±à¼­
+    Õñ·ùµ÷Õû
 |--- pitch.m
-    #åŠŸèƒ½#
-    ä½¿ç”¨å€’è°±æ³•ä¼°è®¡åŸºéŸ³å‘¨æœŸ
+    #¹¦ÄÜ#
+    Ê¹ÓÃµ¹Æ×·¨¹À¼Æ»ùÒôÖÜÆÚ
 |--- pitch2.m
+    #Î´ÒýÓÃ#
 |--- pitch3.m
+    #Î´ÒýÓÃ#
 |--- pitchaut.m
-    #åŠŸèƒ½#
-    åˆ©ç”¨è‡ªç›¸å…³æ³•ä¼°è®¡åŸºéŸ³å‘¨æœŸ
+    #¹¦ÄÜ#
+    ÀûÓÃ×ÔÏà¹Ø·¨¹À¼Æ»ùÒôÖÜÆÚ
 |--- playf.m
+    ²¥·Å
+    ÀûÓÃÒ»¸öÄÚÖÃº¯Êý
 |--- pllpc.m
-    ç»˜åˆ¶/æ›´æ–°LPCè°±çª—ä½“
-    #åŠŸèƒ½# 
-    LPC FFTè¿ç®—çš„å¾ˆå¤šä¸œè¥¿éƒ½åœ¨è¿™ä¸ªæ–‡ä»¶é‡Œ
+    »æÖÆ/¸üÐÂLPCÆ×´°Ìå
+    #¹¦ÄÜ# 
+    LPC FFTÔËËãµÄºÜ¶à¶«Î÷¶¼ÔÚÕâ¸öÎÄ¼þÀï
 |--- preemp.m
+    ËÆºõÊÇÄ³ÖÖ²âÊÔ½Å±¾£¿
 |--- prefer.m
-    å„ç±»é¦–é€‰é¡¹
+    ¸÷ÀàÊ×Ñ¡Ïî
 |--- prnt.m
+    #Î´ÒýÓÃ#
 |--- prnt2.m
-    LPCçª—ä½“èœå•å‡½æ•°
-    ä¿å­˜è¾“å‡ºå„ç§ä¸œè¥¿
+    LPC´°Ìå²Ëµ¥º¯Êý
+    ±£´æÊä³ö¸÷ÖÖ¶«Î÷
 |--- prntg.m
 |--- prntg2.m
+    #Î´ÒýÓÃ#
 |--- pr_fig.m
+    #Î´ÒýÓÃ#
+    ºÍcprintÀàËÆ
 |--- puttext.m
-    å“åº”LPCçª—ä½“é¼ æ ‡ç‚¹å‡» 
-    åœ¨æŽ§åˆ¶çª—ä½“è¾“å‡ºå…‰æ ‡ä½ç½®
+    ÏìÓ¦LPC´°ÌåÊó±êµã»÷ 
+    ÔÚ¿ØÖÆ´°ÌåÊä³ö¹â±êÎ»ÖÃ
 |--- quitall.m
+    ËÆºõÊÇÓÃÓÚÍË³öµÄ
 |--- raw2ils.m
 |--- savechan.m
+    #Î´ÒýÓÃ#
 |--- savefile.m
 |--- savehder.m
 |--- savelpc.m
-    ä¿å­˜LPCæ•°æ®
+    ±£´æLPCÊý¾Ý
 |--- saveparm.m
-    ä¿å­˜å…±æŒ¯å³°æ•°æ® è°ƒç”¨äº†ftrack.m
-    æ— ç”¨
+    ±£´æ¹²Õñ·åÊý¾Ý µ÷ÓÃÁËftrack.m
 |--- setchan.m
+    ÉèÖÃÂË²¨Æ÷£¿ÉèÖÃÆµ´ø£¿ÉèÖÃ´ø¿í£¿
 |--- setdisp.m
-    ä¸»ç¨‹åºçª—ä½“å‡½æ•° è§†å›¾
-    æ—¶é—´å›¾ä¸Žé¢‘è°±å›¾è®¾ç½®
+    Ö÷³ÌÐò´°Ìåº¯Êý ÊÓÍ¼
+    Ê±¼äÍ¼ÓëÆµÆ×Í¼ÉèÖÃ
 |--- setdur.m
-    æŽ§åˆ¶çª—ä½“å‡½æ•°
-    è®¾ç½®æ—¶é—´é•¿åº¦/é‡‡æ ·ç‚¹æ•°é‡
+    ¿ØÖÆ´°Ìåº¯Êý
+    ÉèÖÃÊ±¼ä³¤¶È/²ÉÑùµãÊýÁ¿
 |--- setfft.m
-    æŽ§åˆ¶çª—ä½“å‡½æ•°
-    è®¾ç½®fftå¤§å°
+    ¿ØÖÆ´°Ìåº¯Êý
+    ÉèÖÃfft´óÐ¡
 |--- setlpc.m
-    æŽ§åˆ¶çª—ä½“å‡½æ•°
-    è®¾ç½®LPCé˜¶æ•°
+    ¿ØÖÆ´°Ìåº¯Êý
+    ÉèÖÃLPC½×Êý
 |--- seton.m
-    æŽ§åˆ¶çª—ä½“å‡½æ•°
-    å…è®¸é‡å¤æ˜¾ç¤º
+    ¿ØÖÆ´°Ìåº¯Êý
+    ÔÊÐíÖØ¸´ÏÔÊ¾
 |--- setovr.m
-    LPCçª—ä½“å‡½æ•°
-    è®¾ç½®å‚æ•°
+    LPC´°Ìåº¯Êý
+    ÉèÖÃ²ÎÊý
 |--- setpar.m
-    LPCçª—ä½“å‡½æ•°
-    è®¾ç½®å‚æ•°
+    LPC´°Ìåº¯Êý
+    ÉèÖÃ²ÎÊý
 |--- setsin.m
+    ÉèÖÃÕýÏÒ²¨Éú³ÉÆ÷µÄ²ÎÊý
 |--- showpt.m
-    ä¸»çª—ä½“å“åº”å‡½æ•° èŽ·å–å…‰æ ‡ä½ç½®
-    ç¡®å®šå•æ–‡ä»¶æ¨¡å¼ä¸ŽåŒæ–‡ä»¶æ¨¡å¼
-    åœ¨ä¸»çª—ä½“æ˜¾ç¤ºæ—¶é—´é¢‘çŽ‡ç­‰
+    Ö÷´°ÌåÏìÓ¦º¯Êý »ñÈ¡¹â±êÎ»ÖÃ
+    È·¶¨µ¥ÎÄ¼þÄ£Ê½ÓëË«ÎÄ¼þÄ£Ê½
+    ÔÚÖ÷´°ÌåÏÔÊ¾Ê±¼äÆµÂÊµÈ
 |--- singen.m
+    #¹¦ÄÜ#
+    ÕýÏÒ²¨Éú³ÉÆ÷
 |--- sintool.m
+    ÕýÏÒ²¨Éú³ÉÆ÷´°Ìå
 |--- smspspec.m
 |--- sndcard.cfg
-    å£°å¡é…ç½® æ— ç”¨
+    Éù¿¨ÅäÖÃ ÎÞÓÃ
 |--- specsel.m
-    æŽ§åˆ¶çª—ä½“å‡½æ•°
-    è®¾ç½®LPC/FFT
+    ¿ØÖÆ´°Ìåº¯Êý
+    ÉèÖÃLPC/FFT
 |--- spectrg.m
-    #åŠŸèƒ½#
-    é¢‘è°±åˆ†æž
+    #¹¦ÄÜ#
+    ÆµÆ×·ÖÎö
 |--- swapbyte.m
+    #¹¦ÄÜ#
+    ¸Ä±äÒôÆµÎÄ¼þ×Ö½ÚÐò ´óÐ¡¶Ë±ä¸ü£¿
 |--- volopt.m
 |--- voltool.m
 |--- zoomi.m
-    ä¸»ç¨‹åºçª—ä½“
-    æ³¢å½¢å›¾ç¼©æ”¾ä¸Žé¢‘è°±å›¾ç»˜åˆ¶ç¼©æ”¾
+    Ö÷³ÌÐò´°Ìå
+    ²¨ÐÎÍ¼Ëõ·ÅÓëÆµÆ×Í¼»æÖÆËõ·Å
 
 [global]
-bpsa é‡‡æ ·ä½æ•°
-ftype æ•°æ®ç»“æž„
-Srate é‡‡æ ·çŽ‡
-n_samples é‡‡æ ·ç‚¹æ•°
-n_Secs éŸ³é¢‘æ—¶é•¿
-Dur æ—¶é—´çª—ï¼ˆæ¯«ç§’ï¼‰
-S1 é€‰åŒºå³æ ‡ï¼Ÿ
-S0 é€‰åŒºå·¦æ ‡ï¼Ÿ
-Be é‡‡æ ·ç‚¹å¼€å¤´
-En é‡‡æ ·ç‚¹ç»“å°¾
-nLPC LPCé˜¶æ•°
+bpsa ²ÉÑùÎ»Êý
+ftype Êý¾Ý½á¹¹
+Srate ²ÉÑùÂÊ
+n_samples ²ÉÑùµãÊý
+n_Secs ÒôÆµÊ±³¤
+Dur Ê±¼ä´°£¨ºÁÃë£©
+S1 Ñ¡ÇøÓÒ±ê£¿
+S0 Ñ¡Çø×ó±ê£¿
+Be ²ÉÑùµã¿ªÍ·
+En ²ÉÑùµã½áÎ²
+nLPC LPC½×Êý
 
 [default setting]
 OVRL  if 1 then hold off plots, else hold on plots in 'pllpc'
 
 [gui]
-fno æœ€é¡¶ä¸Šé‚£ä¸ªçª—å£çš„å¥æŸ„
+fno ×î¶¥ÉÏÄÇ¸ö´°¿ÚµÄ¾ä±ú

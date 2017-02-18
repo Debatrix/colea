@@ -61,7 +61,7 @@ meen=mean(x);
 x= x - meen; %----------remove the DC bias---
 
 
-%-------------Filter the signal ------------------------------------
+%------------- 应用滤波 ------------------------------------
 %
 	if strcmp(type,'LPF')
 	    f=2*fcLPF/Srate;
@@ -79,7 +79,7 @@ x= x - meen; %----------remove the DC bias---
 	ebe= norm(y,2);
  	y = filter(b,a,y);
 	eaf=norm(y,2);
-	scale=(ebe/eaf); % ---- Scale so that the filtered signal has same energy as original
+	scale=(ebe/eaf); % ---- 缩放以使滤波的信号具有与原始信号相同的能量
 	x(Be+1:En-1)=scale*y;
 
 %------------ Save filtered signal and initialize variables for dual display----

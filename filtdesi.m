@@ -20,9 +20,13 @@ up=zeros(1,numch);
 low=zeros(1,numch);
 
 % ===============================================================
-if strcmp(type,'narrow') % ========== Narrowband filters ========
-
-   for i=1:numch  % ----- Figure out the center frequencies for all channels
+ % ========== Narrowband filters ========
+ %Õ­´øÂË²¨Æ÷
+if strcmp(type,'narrow')
+    
+    % ----- Figure out the center frequencies for all channels
+    %-----¼ÆËã³öËùÓÐÍ¨µÀµÄÖÐÐÄÆµÂÊ
+   for i=1:numch  
 	up1=LowFreq*10^(interval*i);
 	low1=LowFreq*10^(interval*(i-1));
 	center(i)=0.5*(up1+low1);
@@ -33,7 +37,9 @@ if strcmp(type,'narrow') % ========== Narrowband filters ========
 	up(i)=center(i)+BW/2;
    end
 
-elseif strcmp(type,'broad') % =============== Broadband filters ====== 
+   % =============== Broadband filters ======
+   %¿í´øÂË²¨Æ÷
+elseif strcmp(type,'broad')  
 
    for i=1:numch  % ----- Figure out the center frequencies for all channels
 	up(i) =LowFreq*10^(interval*i);
@@ -44,7 +50,7 @@ elseif strcmp(type,'broad') % =============== Broadband filters ======
 
 end
 % ===============================================================
-% ================== Now, design the filters ===================
+% ==================        Éè¼ÆÂË²¨Æ÷        ===================
 % ===============================================================
 
 if FS<up(numch), 	 useHigh=1;
@@ -65,15 +71,15 @@ filtB=zeros(numch,nOrd+1);
 	else
 	   [b,a]=butter(nOrd/2,W1);
 	end
-	filtB(i,1:nOrd+1)=b;   %----->  Save the coefficients 'b'
-	filtA(i,1:nOrd+1)=a;   %-----> Save the coefficients 'a'
+	filtB(i,1:nOrd+1)=b;   %----->  ±£´æÏµÊý 'b'
+	filtA(i,1:nOrd+1)=a;   %-----> ±£´æÏµÊý 'a'
 
 	if  DBG==1
 	 [h,f]=freqz(b,a,512,sfreq);
 	 semilogx(f,10*log10(abs(h)));
 	 axis([90 FS -50 5]);
-	 xlabel('æ£°æˆ å·¼ (Hz)');
-	 ylabel('å¯®å“„å®³(dB)');
+	 xlabel('ÆµÂÊ?(Hz)');
+	 ylabel('Ç¿¶È?(dB)');
 	 hold on
 	end
   end

@@ -3,3 +3,5 @@
 *.phn
 *.py
 *.pyc
+*.ils
+*.txt

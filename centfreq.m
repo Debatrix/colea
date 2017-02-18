@@ -1,7 +1,7 @@
 function [lower1, center, upper1]= centfreq(n,low,high)
 
 % Divides the spectrum into n bands equally spaced logarithmically
-%
+%将频谱划分为对数等间隔的n个频带
 
 % Copyright (c) 1995 Philipos C. Loizou
 %
@@ -11,8 +11,9 @@ UpperFreq   =high;
 range=log10(UpperFreq/LowFreq);
 interval=range/n;
 
-
-for i=1:n  % ----- Figure out the center frequencies for all channels
+% ----- Figure out the center frequencies for all channels
+% -----计算出所有通道的中心频率
+for i=1:n  
 	upper1(i)=LowFreq*10^(interval*i);
 	lower1(i)=LowFreq*10^(interval*(i-1));
 	center(i)=0.5*(upper1(i)+lower1(i));
