@@ -91,7 +91,7 @@ x= x - mean(x);  %----------remove the DC bias----
 if (nargin==2)
  Srate  = str2num(Srate1);
  if Srate<10000 | Srate>45000
-	error('指定的采样频率无效: 10,000<F<45,000');
+	error('指定的采样率无效: 10,000<F<45,000');
  end
 end
 

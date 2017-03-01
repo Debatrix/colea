@@ -12,7 +12,7 @@ global AnCmp NCmp CURS N_comp W_comp
 
 
 if TWOFILES==0
-   errordlg('需要两个文件进行比较.','错误','on');
+   errordlg('需要两个文件进行比较.请选择“文件-载入并比对”','错误','on');
    return;
 end
 

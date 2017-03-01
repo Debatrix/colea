@@ -14,7 +14,7 @@ if strcmp(type,'LPF')
 	  if f >0 & 2*f < Srate
 	    fcLPF=f;
 	  else
-	    errordlg('无效的频率输入..','过滤器工具错误','on');    
+	    errordlg('无效的频率输入..','滤波器工具错误','on');    
 	    return;
 	  end
 	  
@@ -24,7 +24,7 @@ if strcmp(type,'LPF')
 	  if f >0 & f< 30
 	    nuLPF=f;
 	  else
-	    errordlg('无效数的多项式系数输入..','过滤器工具错误','on');    
+	    errordlg('无效数的多项式系数输入..','滤波器工具错误','on');    
 	    return;
 	  end
 	end
@@ -38,7 +38,7 @@ elseif strcmp(type,'HPF') %----------- Get HPF parameters --------------------
 	  if f >0 & 2*f < Srate
 	    fcHPF=f;
 	  else
-	    errordlg('无效的频率输入..','过滤器工具错误','on');    
+	    errordlg('无效的频率输入..','滤波器工具错误','on');    
 	    return;
 	  end
 	  
@@ -48,7 +48,7 @@ elseif strcmp(type,'HPF') %----------- Get HPF parameters --------------------
 	  if f >0 & f< 30
 	    nuHPF=f;
 	  else
-	    errordlg('无效数的多项式系数输入..','过滤器工具错误','on');    
+	    errordlg('无效数的多项式系数输入..','滤波器工具错误','on');    
 	    return;
 	  end
 	end
@@ -61,7 +61,7 @@ else			%----------- Get BPF parameters--------------
 	  if f >0 & 2*f < Srate
 	    fc1BPF=f;
 	  else
-	    errordlg('无效的频率输入..','过滤器工具错误','on');    
+	    errordlg('无效的频率输入..','滤波器工具错误','on');    
 	    return;
 	  end
 	elseif strcmp(param1,'freq2') %--high freq
@@ -70,7 +70,7 @@ else			%----------- Get BPF parameters--------------
 	  if f >0 & 2*f < Srate
 	    fc2BPF=f;
 	  else
-	    errordlg('无效的频率输入..','过滤器工具错误','on');    
+	    errordlg('无效的频率输入..','滤波器工具错误','on');    
 	    return;
 	  end  
 	elseif strcmp(param1,'coeff')
@@ -79,13 +79,13 @@ else			%----------- Get BPF parameters--------------
 	  if f >0 & f< 30
 	    nuBPF=f;
 	  else
-	    errordlg('无效数的多项式系数输入..','过滤器工具错误','on');    
+	    errordlg('无效数的多项式系数输入..','滤波器工具错误','on');    
 	    return;
 	  end
 	end
 	%----- Check range in pass band ---------------
  	if fc1BPF>fc2BPF
-	  errordlg('低截止频率大于高截止频率..','过滤器工具错误','on');
+	  errordlg('低截止频率大于高截止频率..','滤波器工具错误','on');
 	else
  	  figure(filtFig);
 	end

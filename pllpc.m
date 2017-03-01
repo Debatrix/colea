@@ -68,7 +68,7 @@ if isempty(plt_type), plt_type='line'; end;
 	if ncount<nSamples, nSamples=ncount;  
 	end;
 	if nSamples<20, 
-	  fprintf('\n画LPC谱时出现错误. 窗口过小..\n\n');
+	  fprintf('\nLPC谱绘制时出现错误. 窗口过小..\n\n');
 	  fclose(fp); return;
 	end
 	

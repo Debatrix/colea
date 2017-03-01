@@ -85,7 +85,7 @@ if strcmp(action,'replace') % ============ Replace existing file ===============
 	fprintf('采样率: %d Hz,  采样点数: %d (%4.2f secs)\n',Srate,n_samples,n_Secs);
 	
 	if TWOFILES==1
-	  nm=sprintf('顶: %s --- 底: %s',lower(filename2),lower(fname));
+	  nm=sprintf('上图: %s --- 下图: %s',lower(filename2),lower(fname));
 	  set(fno,'Name',nm);
 	  TOP=0;
 	  doit1=0;
@@ -221,6 +221,6 @@ else
 end
 
 if strcmp(action,'stack')
- nm=sprintf('顶: %s --- 底: %s',lower(fname),filename);
+ nm=sprintf('上图: %s --- 下图: %s',lower(fname),filename);
  set(fno,'Name',nm);
 end

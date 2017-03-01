@@ -126,7 +126,7 @@ x= x - mean(x);
 if (nargin==2)
  Srate  = str2num(Srate1);
  if Srate<10000 | Srate>45000
-	error('指定的采样频率无效: 10,000<F<45,000');
+	error('指定的采样率无效: 10,000<F<45,000');
  end
 end
 
@@ -249,7 +249,7 @@ frq=uicontrol('Style','text','Position',[10 10 wide+10 15],'BackGroundColor',[0 
 %-------------------------MENUS---------------------------------卧槽这个翻译不下去了
 %
 ff=uimenu('Label','文件');
-   uimenu(ff,'Label','载入','Callback','loadfile(''stack'')');
+   uimenu(ff,'Label','载入并比对','Callback','loadfile(''stack'')');
    uimenu(ff,'Label','载入并替代','Callback','loadfile(''replace'')');
    uimenu(ff,'Label','保存整个文件','Callback','savefile(''whole'')','Separator','on');
    uimenu(ff,'Label','保存选中的区域','Callback','savefile(''seg'')');
@@ -268,7 +268,7 @@ fed=uimenu('Label','编辑');
     uimenu(fed,'Label','剪切','CallBack','editool(''cut'')');
     uimenu(fed,'Label','复制','CallBack','editool(''copy'')');
     uimenu(fed,'Label','粘贴','CallBack','editool(''paste'')');
-    uimenu(fed,'Label','零段','CallBack','modify(''zero'')','Separator','on');
+    uimenu(fed,'Label','置零','CallBack','modify(''zero'')','Separator','on');
     fm2=uimenu(fed,'Label','放大/衰减段');        
 	uimenu(fm2,'Label','X2','CallBack','modify(''multi2'')');       
 	uimenu(fm2,'Label','X0.5','CallBack','modify(''multi05'')');

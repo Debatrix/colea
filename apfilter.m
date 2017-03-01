@@ -38,7 +38,7 @@ if strcmp(action,'view') % =============== VIEW FILTER RESPONSE ==============
 else % ======================== APPLY FILTER============================
 
 if En < Be  % --- Check to see if the segment selected is valid -----
-  errordlg('选定的段无效：左标记大于右标记','过滤器错误','on');
+  errordlg('选定的段无效：左标记大于右标记','滤波器错误','on');
   return;
 end
 
@@ -117,7 +117,7 @@ if Srate >= 2*5000, upFreq=2*5000/Srate; end;
 zoomi('out');
 
 
- nm=sprintf('Top: %s --- Bottom: %s',lower(filename2),filename);
+ nm=sprintf('上: %s --- 下: %s',lower(filename2),filename);
  set(fno,'Name',nm);
 
 end
